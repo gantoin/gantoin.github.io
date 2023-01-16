@@ -1,0 +1,46 @@
+name: Fetch Gists
+on:
+  schedule:
+    - cron: "0 * * * *" # toutes les heures
+
+jobs:
+  fetch-gists:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '14'
+      - name: Fetch Gists
+        id: fetch-gists
+        uses: actions/github-script@0.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const gists = await github.gists.list();
+            gists.data.forEach(gist => {
+              if (!gist.files["file.md"]) { return; }
+              const fileContent = await github.gists.get({ gist_id: gist.id });
+              const mdContent = fileContent.data.files["file.md"].content;
+              // write the content to a file
+              const fs = require("fs");
+              const header = `
+              title=${gist.description}
+              date=${gist.created_at}
+              type=post
+              tags=blog
+              status=published
+              ~~~~~~`;
+                const content = header + mdContent;
+              fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
+            });
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "Github Actions"
+          git add .
+          git commit -m "Automated Gist Update"
+          git push
