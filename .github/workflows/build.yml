@@ -1,0 +1,26 @@
+name: JBake Build
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # every day at midnight
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          github-token: ${{ secrets.BLOG_TOKEN }}
+      - name: Install JBake
+        run: |
+          apt-get update
+          apt-get install -y jbake
+      - name: Build
+        run: jbake -b -s
+      - name: Commit and Push
+        run: |
+          git config --local user.email "gantoin@pm.me"
+          git config --local user.name "gantoin"
+          git add .
+          git commit -m "🤖 [Automated] JBake Build"
+          git push
