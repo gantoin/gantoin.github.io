@@ -11,14 +11,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
-      - name: Cache JBake
-        id: cache-jbake
-        uses: actions/cache@v2
-        with:
-          path: ${HOME}/jbake
-          key: ${{ runner.os }}-jbake-${{ hashFiles('**/jbake*') }}
+      - name: Install JBake
+        run: |
+          sudo apt-get install -y jbake
       - name: Build
-        run: ${HOME}/jbake/bin/jbake -b -s
+        run: jbake -b -s
       - name: Commit and Push
         run: |
           git config --local user.email "gantoin@pm.me"
