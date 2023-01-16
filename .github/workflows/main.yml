@@ -31,7 +31,7 @@ jobs:
                   const mdContent = fileContent.data.files[file].content;
                   // write the content to a file
                   const fs = require("fs");
-                  const header = "title=${gist.description}\ndate=${gist.created_at}\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
+                  const header = "title="+${gist.description}+"\ndate="+${gist.created_at}+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
                   const content = header + mdContent;
                   fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
                 }
