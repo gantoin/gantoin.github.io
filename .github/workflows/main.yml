@@ -17,30 +17,30 @@ jobs:
         uses: actions/github-script@0.3.0
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
-        script: |
-          const gists = await github.gists.list();
-          if (!gists.data) {
-            console.log("No gists found");
-            return;
-          }
-          gists.data.forEach(async (gist) => {
-            const files = Object.keys(gist.files);
-            files.forEach(async (file) => {
-              if (file.endsWith('.md')) {
-                const fileContent = await github.gists.get({ gist_id: gist.id });
-                let mdContent = fileContent.data.files[file].content;
-                // extract the title from the first line of the markdown content
-                let title = mdContent.substring(0, mdContent.indexOf('\n'));
-                // remove the first line from the markdown content
-                mdContent = mdContent.substring(mdContent.indexOf('\n') + 1);
-                // write the content to a file
-                const fs = require("fs");
-                const header = "title="+title+"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
-                const content = header + mdContent;
-                fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
-              }
+          script: |
+            const gists = await github.gists.list();
+            if (!gists.data) {
+              console.log("No gists found");
+              return;
+            }
+            gists.data.forEach(async (gist) => {
+              const files = Object.keys(gist.files);
+              files.forEach(async (file) => {
+                if (file.endsWith('.md')) {
+                  const fileContent = await github.gists.get({ gist_id: gist.id });
+                  let mdContent = fileContent.data.files[file].content;
+                  // extract the title from the first line of the markdown content
+                  let title = mdContent.substring(0, mdContent.indexOf('\n'));
+                  // remove the first line from the markdown content
+                  mdContent = mdContent.substring(mdContent.indexOf('\n') + 1);
+                  // write the content to a file
+                  const fs = require("fs");
+                  const header = "title="+title+"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
+                  const content = header + mdContent;
+                  fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
+                }
+              });
             });
-          });
       - name: Commit and Push
         run: |
           git config --local user.email "gantoin@pm.me"
