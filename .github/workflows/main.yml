@@ -23,19 +23,26 @@ jobs:
               console.log("No gists found");
               return;
             }
+            // get list of existing gists
+            const existingGists = fs.readdirSync('./content/blog/2023/');
             gists.data.forEach(async (gist) => {
               const files = Object.keys(gist.files);
               files.forEach(async (file) => {
                 if (file.endsWith('.md')) {
+                  // check if the gist is already downloaded
+                  if (existingGists.includes(gist.id)) {
+                    console.log(`Gist ${gist.id} already downloaded, skipping`);
+                    return;
+                  }
                   const fileContent = await github.gists.get({ gist_id: gist.id });
                   let mdContent = fileContent.data.files[file].content;
-                  // extract the title from the first line of the markdown content
-                  let title = mdContent.substring(0, mdContent.indexOf('\n'));
-                  // remove the first line from the markdown content
-                  mdContent = mdContent.substring(mdContent.indexOf('\n') + 1);
+                  // remove leading "# " from title
+                  if (mdContent.startsWith("# ")) {
+                    mdContent = mdContent.substring(2);
+                  }
                   // write the content to a file
                   const fs = require("fs");
-                  const header = "title="+title+"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
+                  const header = "title="+gist.description+"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
                   const content = header + mdContent;
                   fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
                 }
