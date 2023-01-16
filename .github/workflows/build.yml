@@ -11,15 +11,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
-      - name: Install JBake
-        run: |
-          apt-get update
-          apt-get install -y unzip
-          wget https://github.com/jbake-org/jbake/releases/download/v2.6.7/jbake-2.6.7-bin.zip
-          unzip jbake-2.6.7-bin.zip
-          export PATH=$PATH:$PWD/jbake-2.6.7/bin
       - name: Build
-        run: jbake -b -s
+        run: docker run --rm -u jbake -v "$PWD":/mnt/site jbake/jbake:latest bake
       - name: Commit and Push
         run: |
           git config --local user.email "gantoin@pm.me"
