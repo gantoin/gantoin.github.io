@@ -1,7 +1,6 @@
 name: Fetch Gists
-uses: actions/github-script@0.3.0
 env:
-    GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
+    GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
 on:
   # on click of the button
   workflow_dispatch:
@@ -15,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.BLOG_TOKEN }}
       - name: Fetch Gists
         id: fetch-gists
         uses: actions/github-script@0.3.0
