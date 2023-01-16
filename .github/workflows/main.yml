@@ -2,7 +2,8 @@ name: Fetch Gists
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    # toutes les 3 heures
+    - cron: '0 */3 * * *'
 
 jobs:
   fetch-gists:
