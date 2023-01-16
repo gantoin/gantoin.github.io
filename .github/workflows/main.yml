@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.BLOG_TOKEN }}
+          github-token: ${{ secrets.BLOG_TOKEN }}
       - name: Fetch Gists
         id: fetch-gists
         uses: actions/github-script@0.3.0
@@ -24,8 +24,8 @@ jobs:
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
           script: |
-            const gists = await github.gists.list();
-            gists.data.forEach(gist => {
+            const gists = github.gists.list();
+            gists.data.forEach(async (gist) => {
               if (!gist.files["file.md"]) { return; }
               const fileContent = await github.gists.get({ gist_id: gist.id });
               const mdContent = fileContent.data.files["file.md"].content;
