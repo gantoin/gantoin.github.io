@@ -1,8 +1,7 @@
 name: JBake Build
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # every day at midnight
+    - cron: '0 0 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,12 +10,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
-      - name: Install JBake
-        run: |
-          apt-get update
-          apt-get install -y jbake
+      - name: Cache JBake
+        id: cache-jbake
+        uses: actions/cache@v2
+        with:
+          path: ${HOME}/jbake
+          key: ${{ runner.os }}-jbake-${{ hashFiles('**/jbake*') }}
       - name: Build
-        run: jbake -b -s
+        run: ${HOME}/jbake/bin/jbake -b -s
       - name: Commit and Push
         run: |
           git config --local user.email "gantoin@pm.me"
