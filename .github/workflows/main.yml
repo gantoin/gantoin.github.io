@@ -18,6 +18,7 @@ jobs:
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
           script: |
+            const fs = require("fs");
             const gists = await github.gists.list();
             if (!gists.data) {
               console.log("No gists found");
@@ -40,8 +41,6 @@ jobs:
                   if (mdContent.startsWith("# ")) {
                     mdContent = mdContent.substring(2);
                   }
-                  // write the content to a file
-                  const fs = require("fs");
                   const header = "title="+gist.description+"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
                   const content = header + mdContent;
                   fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
