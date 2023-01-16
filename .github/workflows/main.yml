@@ -1,4 +1,7 @@
 name: Fetch Gists
+uses: actions/github-script@0.3.0
+env:
+    GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
 on:
   # on click of the button
   workflow_dispatch:
