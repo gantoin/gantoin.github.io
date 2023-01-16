@@ -1,5 +1,7 @@
 name: Fetch Gists
 on:
+  # on click of the button
+  workflow_dispatch:
   schedule:
     # toutes les heures à 20 minutes
     - cron: '20 * * * *'
