@@ -9,14 +9,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          github-token: ${{ secrets.BLOG_TOKEN }}
       - name: Build
-        run: docker run --rm -u jbake -v "$PWD":/mnt/site jbake/jbake:latest bake
+        run: |
+          docker run --rm -v $GITHUB_WORKSPACE:/mnt/site jbake/jbake:latest bake
       - name: Commit and Push
         run: |
-          git config --local user.email "gantoin@pm.me"
-          git config --local user.name "gantoin"
+          git config --local user.email "your_email@example.com"
+          git config --local user.name "your_username"
           git add .
           git commit -m "🤖 [Automated] JBake Build"
           git push
