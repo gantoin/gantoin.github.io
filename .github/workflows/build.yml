@@ -11,9 +11,16 @@ jobs:
         uses: actions/checkout@v2
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
-      - name: Install JBake
+      - name: Install SDKMAN!
         run: |
-          sudo apt-get install -y jbake
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+      - name: Set SDKMAN! environment variables
+        run: echo "SDKMAN_DIR=$HOME/.sdkman" >> $GITHUB_ENV
+      - name: Install JBake
+        run: sdk install jbake
+      - name: Check JBake version
+        run: jbake -v
       - name: Build
         run: jbake -b -s
       - name: Commit and Push
