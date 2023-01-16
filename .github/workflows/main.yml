@@ -16,7 +16,7 @@ jobs:
         id: fetch-gists
         uses: actions/github-script@0.3.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
         with:
           script: |
             const gists = await github.gists.list();
