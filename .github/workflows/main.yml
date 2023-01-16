@@ -1,7 +1,8 @@
 name: Fetch Gists
 on:
   schedule:
-    - cron: "0 * * * *" # toutes les heures
+    # toutes les heures à 20 minutes
+    - cron: '20 * * * *'
 
 jobs:
   fetch-gists:
