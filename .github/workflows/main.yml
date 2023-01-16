@@ -1,12 +1,8 @@
 name: Fetch Gists
-env:
-    GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
 on:
-  # on click of the button
   workflow_dispatch:
   schedule:
-    # toutes les heures à 20 minutes
-    - cron: '20 * * * *'
+    - cron: '0 * * * *'
 
 jobs:
   fetch-gists:
@@ -19,12 +15,14 @@ jobs:
       - name: Fetch Gists
         id: fetch-gists
         uses: actions/github-script@0.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.BLOG_TOKEN }}
         with:
           github-token: ${{ secrets.BLOG_TOKEN }}
           script: |
-            const gists = github.gists.list();
+            const gists = await github.gists.list();
+            if (!gists.data) {
+              console.log("No gists found");
+              return;
+            }
             gists.data.forEach(async (gist) => {
               if (!gist.files["file.md"]) { return; }
               const fileContent = await github.gists.get({ gist_id: gist.id });
