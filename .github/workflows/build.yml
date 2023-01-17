@@ -5,13 +5,16 @@ on:
     - cron: '0 0 * * *'
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install JBake
+        run: |
+          brew install jbake
       - name: Build
         run: |
-          docker run --rm -v $GITHUB_WORKSPACE:/srv/jbake jbake/jbake:latest
+          jbake -b
       - name: Commit and Push
         run: |
           git config --local user.email "your_email@example.com"
