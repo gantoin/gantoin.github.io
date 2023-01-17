@@ -17,8 +17,8 @@ jobs:
           jbake -b
       - name: Commit and Push
         run: |
-          git config --local user.email "your_email@example.com"
-          git config --local user.name "your_username"
+          git config --local user.email "gantoin@pm.me"
+          git config --local user.name "gantoin"
           git add .
           git commit -m "🤖 [Automated] JBake Build"
           git push
