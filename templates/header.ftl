@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title><#if (content.title)??>${content.title}<#else>JBake</#if></title>
+    <title><#if (content.title)??>${content.title}<#else>Antoine Gauthier</#if></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="generator" content="JBake">
 
-    <!-- Le styles -->
+    <!-- Les styles -->
     <link href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>css/bootstrap.min.css" rel="stylesheet">
     <link href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>css/asciidoctor.css" rel="stylesheet">
     <link href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>css/base.css" rel="stylesheet">
@@ -29,4 +29,3 @@
   </head>
   <body onload="prettyPrint()">
     <div id="wrap">
-   
