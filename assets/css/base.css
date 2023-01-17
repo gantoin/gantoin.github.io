@@ -4,72 +4,144 @@
 html,
 body {
     height: 100%;
-    /* The html and body elements cannot have any padding or margin. */
+    background-color: #FAFFFA;
 }
 
-/* Wrapper for page content to push down footer */
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    /* Negative indent footer by it's height */
-    margin: 0 auto -60px;
+.site-header {
+    background: url(/img/bg-header.jpg);
+    flex: 1 0 auto;
 }
 
-/* Set the fixed height of the footer here */
-#push,
-#footer {
-    height: 60px;
+.site-branding__image {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    background: url(/img/hot-cafe.png);
+    background-size: cover;
+    display: block;
+    height: 90px;
+    min-width: 90px;
+    width: 90px;
 }
 
-#footer {
-    background-color: #f5f5f5;
-    padding: 0;
+.site-branding__title {
+    font-family: Eight-bit, "Lucida Console", "Lucida Sans Typewriter", monospace;
+    font-size: 34.536px;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 700;
+    color: #372822;
 }
 
-/* Lastly, apply responsive CSS fixes as necessary */
-@media (max-width: 767px) {
-    #footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
+.site-branding__description {
+    font-size: 75%;
+    font-family: "Eight-bit", "Lucida Console", "Lucida Sans Typewriter", monospace;
+    line-height: 2;
+}
+
+.site-header__wrapper {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 52em;
+    padding: 1em;
+}
+
+.site-branding {
+    align-items: center;
+    display: flex;
+}
+
+.site-branding__wrapper {
+    margin-left: 1em;
+}
+
+.no-underline {
+    border: 0;
+    text-decoration: none;
+}
+
+
+.no-underline:hover {
+    text-decoration: none;
+}
+
+.site-nav {
+    display: flex;
+    margin-top: 1em;
+    width: 100%;
+    font-family: "Eight-bit", "Lucida Console", "Lucida Sans Typewriter", monospace;
+    font-size: 90%;
+}
+
+.site-nav a {
+    flex: auto;
+    text-align: center;
+    color: #372822;
+}
+
+@media (min-width: 60em) {
+    .site-header__wrapper .site-nav {
+        flex: 1 1 30%;
+    }
+
+    .site-nav {
+        margin-top: 0;
     }
 }
 
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
 
-#wrap > .container {
-    padding-top: 60px;
+@font-face {
+    font-family: 'Eight-bit';
+    src: url("/fonts/eight-bit-dragon.ttf");
+    font-style: normal;
 }
 
-.container .credit {
-    margin: 20px 0;
+@font-face {
+    font-family: 'Magnetic Pro';
+    src: url("/fonts/MagneticPro-Black.ttf");
+    font-style: normal;
 }
 
-.profilePicture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    padding: 5px;
+@font-face {
+    font-family: 'Magnetic Pro Light';
+    src: url("/fonts/MagneticPro-Light.ttf");
+    font-style: normal;
 }
 
-.content-excerpt {
-    overflow: hidden;
-    max-height: 20em;
-    position: relative;
+a {
+    text-decoration: none;
+    color: #0a6906;
+    transition: all 0.15s linear;
+    border-bottom: 1px dashed #0a6906;
 }
 
-.content-excerpt:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.content {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40rem;
+    background-color: #fafffa;
+    padding: 1.5em;
+    line-height: 1.5;
+}
+
+main {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Magnetic Pro","HeiTi SC Light","Microsoft YaHei",sans-serif;
+    max-width: 48em;
     width: 100%;
-    height: 30px;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
-    background-repeat: repeat-x;
+    flex: 1 0 auto;
+}
+
+.post-content {
+    font-family: "Magnetic Pro Light","HeiTi SC Light","Microsoft YaHei",sans-serif;
 }
