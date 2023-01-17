@@ -14,7 +14,7 @@ jobs:
           brew install jbake
       - name: Build
         run: |
-          jbake -b
+          jbake -b . ./docs
       - name: Commit and Push
         run: |
           git config --local user.email "gantoin@pm.me"
