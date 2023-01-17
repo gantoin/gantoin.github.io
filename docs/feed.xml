@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JBake</title>
+    <link>http://jbake.org</link>
+    <atom:link href="http://jbake.org/feed.xml" rel="self" type="application/rss+xml" />
+    <description>JBake Bootstrap Template</description>
+    <language>en-gb</language>
+    <pubDate>Tue, 17 Jan 2023 12:50:05 +0000</pubDate>
+    <lastBuildDate>Tue, 17 Jan 2023 12:50:05 +0000</lastBuildDate>
+
+    <item>
+      <title>🤖 How to use ChatGPT API in your Java application?</title>
+      <link>http://jbake.org/blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</link>
+      <pubDate>Sun, 8 Jan 2023 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</guid>
+      	<description>
+	&lt;p&gt;🤖 How to use ChatGPT API in your Java application?&lt;/p&gt;
+&lt;p&gt;Hi guys 👋 I&apos;m sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.&lt;/p&gt;
+&lt;p&gt;Today I&apos;ll show you how to use OpenAI ChatGPT API with Java, it&apos;s pretty easy.&lt;/p&gt;
+&lt;h2&gt;1. Register for an API key&lt;/h2&gt;
+&lt;p&gt;First, you&apos;ll need to register for an API key by going to the &lt;a href=&quot;https://beta.openai.com/signup/&quot;&gt;OpenAI API page&lt;/a&gt;. Follow the instructions to create an account and obtain an API key.&lt;/p&gt;
+&lt;h2&gt;2. Enter a credit card into your OpenAI account&lt;/h2&gt;
+&lt;p&gt;OpenAI blocks the API calls for &lt;code&gt;exceeded your current quota&lt;/code&gt; when you don&apos;t have any card registered in your account. So, you will need to configure one.&lt;/p&gt;
+&lt;h2&gt;3. Implements code like:&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
+
+public class ChatGPT {
+    public static void chatGPT(String text) throws Exception {
+        String url = &amp;quot;https://api.openai.com/v1/completions&amp;quot;;
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+
+        con.setRequestMethod(&amp;quot;POST&amp;quot;);
+        con.setRequestProperty(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/json&amp;quot;);
+        con.setRequestProperty(&amp;quot;Authorization&amp;quot;, &amp;quot;Bearer YOUR-API-KEY&amp;quot;);
+
+        JSONObject data = new JSONObject();
+        data.put(&amp;quot;model&amp;quot;, &amp;quot;text-davinci-003&amp;quot;);
+        data.put(&amp;quot;prompt&amp;quot;, text);
+        data.put(&amp;quot;max_tokens&amp;quot;, 4000);
+        data.put(&amp;quot;temperature&amp;quot;, 1.0);
+
+        con.setDoOutput(true);
+        con.getOutputStream().write(data.toString().getBytes());
+
+        String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
+                .reduce((a, b) -&amp;gt; a + b).get();
+
+        System.out.println(new JSONObject(output).getJSONArray(&amp;quot;choices&amp;quot;).getJSONObject(0).getString(&amp;quot;text&amp;quot;));
+    }
+
+    public static void main(String[] args) throws Exception {
+        chatGPT(&amp;quot;Hello, how are you?&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;It works!&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;src.main.java.ChatGPT
+
+
+I&apos;m doing great, thank you for asking. How about you?
+
+Process finished with exit code 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Resources used:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org.json&lt;/code&gt; &lt;a href=&quot;https://mvnrepository.com/artifact/org.json/json/20220924&quot;&gt;https://mvnrepository.com/artifact/org.json/json/20220924&lt;/a&gt; (add this dependency to your project)&lt;/li&gt;
+&lt;li&gt;this python tutorial I converted to Java &lt;a href=&quot;https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031&quot;&gt;https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+	</description>
+    </item>
+    <item>
+      <title>📌 Configure Twitch API OAuth2 provider on a Spring Security app</title>
+      <link>http://jbake.org/blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</link>
+      <pubDate>Wed, 4 Jan 2023 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</guid>
+      	<description>
+	&lt;p&gt;📺 Configure Twitch API OAuth2 provider on a Spring Security app&lt;/p&gt;
+&lt;p&gt;Hi guys, I&apos;m working on a SaaS to manage Twitch Clips of broadcasters:&lt;br /&gt;
+- Create vertical Clips automatically for TikTok, Youtube Shorts, etc.&lt;br /&gt;
+- Create compilation for clips to easily make best-of&lt;/p&gt;
+&lt;p&gt;So, I had to plug my Spring Security app into the Twitch OAuth2 provider and it was not easy...&lt;/p&gt;
+&lt;h2&gt;How to do that?&lt;/h2&gt;
+&lt;h3&gt;Prerequisites&lt;/h3&gt;
+&lt;p&gt;Before you begin, you need to have the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A Twitch account and a registered app on the Twitch Developer Dashboard. If you don&apos;t have one, you can create a new app &lt;a href=&quot;https://dev.twitch.tv/docs/authentication/#registration&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A Spring Security application. If you don&apos;t have one, you can follow &lt;a href=&quot;https://spring.io/guides/gs/securing-web/&quot;&gt;these instructions&lt;/a&gt; to create a simple Spring Security app.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 1: Add the necessary dependencies&lt;/h3&gt;
+&lt;p&gt;First, you need to add the following dependencies to your project&apos;s &lt;code&gt;pom.xml&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.security&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-security-oauth2-client&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.security&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-security-oauth2-jose&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Step 2: Configure the OAuth2 client&lt;/h3&gt;
+&lt;p&gt;Next, you need to configure the OAuth2 client by adding the following properties to your &lt;code&gt;application.properties&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;spring.security.oauth2.client.provider.twitch.authorization-uri=https://id.twitch.tv/oauth2/authorize
+spring.security.oauth2.client.provider.twitch.token-uri=https://id.twitch.tv/oauth2/token
+spring.security.oauth2.client.provider.twitch.jwk-set-uri=https://id.twitch.tv/oauth2/keys
+spring.security.oauth2.client.provider.twitch.user-info-uri=https://api.twitch.tv/helix/users
+spring.security.oauth2.client.registration.twitch.client-id=&amp;lt;your-client-id&amp;gt;
+spring.security.oauth2.client.registration.twitch.client-secret=&amp;lt;your-client-secret&amp;gt;
+spring.security.oauth2.client.registration.twitch.redirect-uri={baseUrl}/login/oauth2/code/{registrationId}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Replace &lt;code&gt;&amp;lt;your-client-id&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;your-client-secret&amp;gt;&lt;/code&gt; with the client ID and client secret of your registered app on the Twitch Developer Dashboard.&lt;/p&gt;
+&lt;h3&gt;Step 3: Configure the OAuth2 filter&lt;/h3&gt;
+&lt;p&gt;To configure the OAuth2 filter, you need to create a &lt;code&gt;WebSecurityConfigurerAdapter&lt;/code&gt; class and override the &lt;code&gt;configure(HttpSecurity http)&lt;/code&gt; method. Add the following code to the method:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;http.oauth2Login()
+  .authorizationEndpoint()
+    .baseUri(&amp;quot;/oauth2/authorization/twitch&amp;quot;)
+  .and()
+  .redirectionEndpoint()
+    .baseUri(&amp;quot;/oauth2/callback/*&amp;quot;)
+  .and()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;🎉 Congratulations! 🎉&lt;/p&gt;
+&lt;p&gt;You have successfully configured the Twitch API OAuth2 provider on your Spring Security application.&lt;/p&gt;
+&lt;p&gt;🌟 Happy coding! 💻&lt;/p&gt;
+
+	</description>
+    </item>
+    <item>
+      <title>🧷 How I became a FullStack Java developer with Vaadin?</title>
+      <link>http://jbake.org/blog/2023/8f3c78932057d730b351c17b79770e8c.html</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">blog/2023/8f3c78932057d730b351c17b79770e8c.html</guid>
+      	<description>
+	&lt;p&gt;💭 How I became a FullStack Java developer with Vaadin?&lt;/p&gt;
+&lt;h2&gt;What is Vaadin?&lt;/h2&gt;
+&lt;p&gt;Vaadin is an open-source framework for building modern web applications. It allows developers to create rich, interactive user interfaces using Java, without the need to learn JavaScript or any other client-side programming language.&lt;/p&gt;
+&lt;p&gt;Vaadin was first released in 2002 and has since become a popular choice for building enterprise-level applications. It is used by companies such as Nokia, Goldman Sachs, and the United States Air Force, among others.&lt;/p&gt;
+&lt;h2&gt;Why use Vaadin?&lt;/h2&gt;
+&lt;p&gt;There are several reasons why Vaadin might be a good choice for your web application development needs.&lt;/p&gt;
+&lt;p&gt;First and foremost, Vaadin allows developers to build web applications using a language that they are already familiar with: Java. This means that developers who are proficient in Java can start building web applications without needing to learn a new programming language.&lt;/p&gt;
+&lt;p&gt;Vaadin also has a large community of developers who contribute to the framework and offer support. This means that if you run into any issues while using Vaadin, you are likely to find a solution through the community forums or by reaching out to other developers.&lt;/p&gt;
+&lt;p&gt;Vaadin also offers a number of built-in features that can help speed up development. These include a visual designer for building user interfaces, a set of pre-designed UI components, and support for data binding and validation.&lt;/p&gt;
+&lt;p&gt;Another advantage of Vaadin is that it is highly customizable. You can create custom UI components and themes, and integrate with other Java libraries and frameworks.&lt;/p&gt;
+&lt;h2&gt;Getting started with Vaadin&lt;/h2&gt;
+&lt;p&gt;To start building web applications with Vaadin, you will need to have the following software installed on your computer:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java JDK 8 or newer&lt;/li&gt;
+&lt;li&gt;Apache Maven&lt;/li&gt;
+&lt;li&gt;An IDE (Integrated Development Environment) such as Eclipse or IntelliJ IDEA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once you have these tools installed, you can start building your first Vaadin application.&lt;/p&gt;
+&lt;p&gt;First, create a new Maven project in your IDE. In the project&apos;s &lt;code&gt;pom.xml&lt;/code&gt; file, you will need to add the following dependencies:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;dependencies&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;com.vaadin&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;vaadin-bom&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;14.4.1&amp;lt;/version&amp;gt;
+        &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt;
+        &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;com.vaadin&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;vaadin-server&amp;lt;/artifactId&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, create a servlet that maps to your UI class. This can be done by creating a new Java class that extends the com.vaadin.flow.server.VaadinServlet class and adding the following annotation:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@WebServlet(urlPatterns = &amp;quot;/*&amp;quot;, name = &amp;quot;MyUIServlet&amp;quot;, asyncSupported = true)
+@VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
+public class MyUIServlet extends VaadinServlet {
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This servlet will map the / URL pattern to your UI class, and configure the servlet to run in development mode (productionMode = false).&lt;/p&gt;
+&lt;p&gt;To run your application, you can either use the built-in Jetty server that comes with Vaadin, or you can deploy your application to an external servlet container such as Tomcat.&lt;/p&gt;
+&lt;p&gt;To run the application using the built-in Jetty server, you can use the mvn jetty:run command from the command line. This will start the Jetty server and deploy your application. You can then access the application by navigating to &lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt; in your web browser.&lt;/p&gt;
+&lt;p&gt;To deploy the application to an external servlet container, you will need to create a WAR (Web ARchive) file and deploy it to the container. This can be done by running the mvn package command, which will create a WAR file in the target directory of your project. You can then deploy the WAR file to your servlet container by following the instructions for your specific container.&lt;/p&gt;
+&lt;h2&gt;Building user interfaces with Vaadin&lt;/h2&gt;
+&lt;p&gt;Vaadin provides a number of UI components that you can use to build your application&apos;s user interface. These include buttons, text fields, tables, and many others.&lt;/p&gt;
+&lt;p&gt;To add a component to your UI, you simply need to instantiate the component and add it to the UI using the add method. For example, to add a button to your UI:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;Button button = new Button(&amp;quot;Click me&amp;quot;);
+add(button);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can also customize the appearance and behavior of UI components by setting their properties. For example, to set the text of a button:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;button.setText(&amp;quot;Click me&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vaadin also provides a visual designer tool that allows you to design your UI using a drag-and-drop interface. This can be a convenient way to quickly build your UI without having to write code.&lt;/p&gt;
+&lt;h2&gt;Data binding and validation&lt;/h2&gt;
+&lt;p&gt;Vaadin provides support for data binding and validation, which can help you to manage the flow of data between your application and its user interface.&lt;/p&gt;
+&lt;p&gt;Data binding allows you to bind UI components to data sources, so that the component&apos;s value is automatically updated when the data source changes, and vice versa. This can be useful for keeping your UI in sync with your application&apos;s data model.&lt;/p&gt;
+&lt;p&gt;To bind a component to a data source, you can use the setValue and getValue methods. For example, to bind a text field to a string data source:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;StringProperty dataSource = new StringProperty(&amp;quot;Initial value&amp;quot;);
+TextField textField = new TextField();
+textField.setValue(dataSource);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vaadin also provides support for validation, which allows you to ensure that the data entered by the user is valid. You can define validation rules for UI components using the setErrorMessage and setInvalid methods. For example, to ensure that a text field contains a valid email address:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;textField.setErrorMessage(&amp;quot;Please enter a valid email address&amp;quot;);
+textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vaadin also provides a number of built-in validators for common data types such as strings, numbers, and dates.&lt;/p&gt;
+&lt;h2&gt;Integrating with other Java libraries and frameworks&lt;/h2&gt;
+&lt;p&gt;Vaadin is built on top of the Java programming language, which means that you can easily integrate it with other Java libraries and frameworks.&lt;/p&gt;
+&lt;p&gt;For example, you can use Vaadin with the Spring framework to manage dependencies and configure your application. You can also use Vaadin with the Hibernate framework to manage database access and ORM (Object-Relational Mapping).&lt;/p&gt;
+&lt;p&gt;Vaadin also provides integrations with a number of other popular Java libraries and frameworks, such as Apache Commons, Apache Lucene, and Google Guice.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Vaadin is a powerful and flexible framework for building modern web applications using Java. It offers a large set of built-in features, a visual designer tool, and support for data binding and validation. It is also highly customizable and can be integrated with other Java libraries and frameworks.&lt;/p&gt;
+&lt;p&gt;If you are a Java developer looking to build web applications, Vaadin is definitely worth considering as a tool for your development needs.&lt;/p&gt;
+&lt;p&gt;➡️ Official documentation here: &lt;a href=&quot;https://vaadin.com/docs/latest&quot;&gt;https://vaadin.com/docs/latest&lt;/a&gt;&lt;/p&gt;
+
+	</description>
+    </item>
+    <item>
+      <title>☂️ How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app? (using Tailescape &amp; some docker commands)</title>
+      <link>http://jbake.org/blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</link>
+      <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</guid>
+      	<description>
+	&lt;p&gt;☂ How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app? (using Tailscale &amp;amp; some docker commands)&lt;/p&gt;
+&lt;h2&gt;Why you could want to do that?&lt;/h2&gt;
+&lt;p&gt;You could want to use the Nextcloud app to make saving your phone data easier or to get documents from your cloud easily (without a Tor browser, connect via onion etc.).&lt;/p&gt;
+&lt;h2&gt;Why is it not possible natively?&lt;/h2&gt;
+&lt;p&gt;It&apos;s impossible to connect the Nextcloud app to a onion address, you need a clear-net URL. We will use Tailscale to solve this problem.&lt;/p&gt;
+&lt;h2&gt;What is Tailscale?&lt;/h2&gt;
+&lt;p&gt;Tailscale is a zero-config VPN. The easiest way to create a secure network between your servers, computers, and cloud instances. We will use Tailscale to connect Umbrel&apos;s Nextcloud to your mobile with clear-net (or any other device).&lt;br /&gt;
+&lt;a href=&quot;https://github.com/tailscale/tailscale&quot;&gt;https://github.com/tailscale/tailscale&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Install Tailscale on your devices&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Umbrel: Go to your umbrel (directly &lt;a href=&quot;http://umbrel.local&quot;&gt;http://umbrel.local&lt;/a&gt;, not using onion because Tailescale doesn’t work - for me - using tor connection). Install the app via the App Store.&lt;/li&gt;
+&lt;li&gt;Phone: Install the Tailscale app via the Google/Apple Store.&lt;/li&gt;
+&lt;li&gt;Computer: &lt;a href=&quot;https://tailscale.com/&quot;&gt;https://tailscale.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Create a Tailscale account, and connect all your devices on this account.&lt;/p&gt;
+&lt;h2&gt;Configure new trusted domain on your Nextcloud app&lt;/h2&gt;
+&lt;p&gt;Connect via ssh on your umbrel :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh umbrel@umbrel.local
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Find the ID of the Nexcloud container :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker ps
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pick the ID of the service started with &lt;code&gt;/entrypoint.sh apac…&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enter this command, to add your nextcloud Tailscale address as truster_domain :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec --user www-data ID_OF_THE_NEXTCLOUD_CONTAINER php occ config:system:set trusted_domains 3 --value=IP_OF_YOUR_UMBREL_ON_TAILSCALE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Enjoy!&lt;/h3&gt;
+&lt;p&gt;Now, you can enter the Tailscale IP of your umbrel with the port on the Nextcloud App.&lt;/p&gt;
+&lt;p&gt;⚠️ Don&apos;t use SSL → HTTP instead HTTPS&lt;/p&gt;
+
+	</description>
+    </item>
+
+  </channel> 
+</rss>
