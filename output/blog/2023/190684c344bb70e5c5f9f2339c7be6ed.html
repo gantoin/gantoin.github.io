@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>🤖 How to use ChatGPT API in your Java application?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="generator" content="JBake">
+
+    <!-- Le styles -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/asciidoctor.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/prettify.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+  </head>
+  <body onload="prettyPrint()">
+    <div id="wrap">
+	
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../">JBake</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="../../feed.xml">Subscribe</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            <li><a href="../../archive.html">Archive</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container">
+	<div class="page-header">
+		<h1>🤖 How to use ChatGPT API in your Java application?</h1>
+	</div>
+
+	<p><em>08 January 2023</em></p>
+
+	<p><p>🤖 How to use ChatGPT API in your Java application?</p>
+<p>Hi guys 👋 I'm sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.</p>
+<p>Today I'll show you how to use OpenAI ChatGPT API with Java, it's pretty easy.</p>
+<h2>1. Register for an API key</h2>
+<p>First, you'll need to register for an API key by going to the <a href="https://beta.openai.com/signup/">OpenAI API page</a>. Follow the instructions to create an account and obtain an API key.</p>
+<h2>2. Enter a credit card into your OpenAI account</h2>
+<p>OpenAI blocks the API calls for <code>exceeded your current quota</code> when you don't have any card registered in your account. So, you will need to configure one.</p>
+<h2>3. Implements code like:</h2>
+<pre><code class="language-java">import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
+
+public class ChatGPT {
+    public static void chatGPT(String text) throws Exception {
+        String url = &quot;https://api.openai.com/v1/completions&quot;;
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+
+        con.setRequestMethod(&quot;POST&quot;);
+        con.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;);
+        con.setRequestProperty(&quot;Authorization&quot;, &quot;Bearer YOUR-API-KEY&quot;);
+
+        JSONObject data = new JSONObject();
+        data.put(&quot;model&quot;, &quot;text-davinci-003&quot;);
+        data.put(&quot;prompt&quot;, text);
+        data.put(&quot;max_tokens&quot;, 4000);
+        data.put(&quot;temperature&quot;, 1.0);
+
+        con.setDoOutput(true);
+        con.getOutputStream().write(data.toString().getBytes());
+
+        String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
+                .reduce((a, b) -&gt; a + b).get();
+
+        System.out.println(new JSONObject(output).getJSONArray(&quot;choices&quot;).getJSONObject(0).getString(&quot;text&quot;));
+    }
+
+    public static void main(String[] args) throws Exception {
+        chatGPT(&quot;Hello, how are you?&quot;);
+    }
+}
+</code></pre>
+<h2>It works!</h2>
+<pre><code>src.main.java.ChatGPT
+
+
+I'm doing great, thank you for asking. How about you?
+
+Process finished with exit code 0
+</code></pre>
+<h3>Resources used:</h3>
+<ul>
+<li><code>org.json</code> <a href="https://mvnrepository.com/artifact/org.json/json/20220924">https://mvnrepository.com/artifact/org.json/json/20220924</a> (add this dependency to your project)</li>
+<li>this python tutorial I converted to Java <a href="https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031">https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031</a></li>
+</ul>
+</p>
+
+	<hr />
+	
+		</div>
+		<div id="push"></div>
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">&copy; 2014 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.6.7</a></p>
+      </div>
+    </div>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/prettify.js"></script>
+    
+  </body>
+</html>
