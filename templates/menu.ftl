@@ -13,11 +13,19 @@
                 </div>
             </div>
         </div>
-            <nav class="site-nav">
-                <a class="site-nav__link no-underline" href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>index.html">Blog</a>
-                <a class="site-nav__link no-underline" href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">About</a>
-                <a class="site-nav__link no-underline" href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>${config.feed_file}">Subscribe</a>
-                <a class="site-nav__link no-underline" href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>archive.html">Archive</a>
-            </nav>
+        <nav class="site-nav">
+            <a class="site-nav__link no-underline"
+               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>index.html">Blog</a>
+            <a class="site-nav__link no-underline"
+               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">About</a>
+            <a class="site-nav__link no-underline"
+               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>${config.feed_file}">Subscribe</a>
+            <a class="site-nav__link no-underline"
+               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>archive.html">Archive</a>
+        </nav>
     </div>
 </div>
+
+<!-- Begin page content -->
+
+<main class="content">

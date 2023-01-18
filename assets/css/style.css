@@ -131,7 +131,7 @@ a {
     margin-left: auto;
     margin-right: auto;
     max-width: 40rem;
-    background-color: #fafffa;
+    /*background-color: #fafffa;*/
     padding: 1.5em;
     line-height: 1.5;
 }
@@ -232,4 +232,229 @@ main {
 
 .post-summary {
     font-family: "Magnetic Pro Light", "HeiTi SC Light", "Microsoft YaHei", sans-serif;
+}
+
+.profile-image {
+    height: 220px;
+    margin-right: auto;
+    border-radius: 20px;
+    display: block
+}
+
+@media all and (min-width: 35.9375em) {
+    .profile-image {
+        float: right;
+        margin-left: 0.5em
+    }
+}
+
+.page-content p, .page-content li {
+    font-family: "Magnetic Pro Light", "HeiTi SC Light", "Microsoft YaHei", sans-serif;
+    text-align: justify;
+}
+
+hr {
+    margin-bottom: 1.5em;
+}
+
+
+.site-footer {
+    font-family: "Eight-bit", "Lucida Console", "Lucida Sans Typewriter", monospace;
+    color: #fff
+}
+
+.site-footer a {
+    color: #4abc41
+}
+
+.site-footer a:hover {
+    color: #91d78c
+}
+
+.site-footer svg path {
+    fill: #4abc41
+}
+
+.site-footer__wrapper--main {
+    background: url("/img/bg-footer-2.jpg")
+}
+
+.site-footer__wrapper--secondary {
+    background: url("/img/bg-footer.jpg")
+}
+
+.footer-main {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 1140px;
+    padding: 0.5em
+}
+
+@media all and (min-width: 51.25em) {
+    .footer-main {
+        flex-flow: row nowrap
+    }
+
+    .footer-main .footer-main__about {
+        flex: 25 0 0
+    }
+
+    .footer-main .footer-main__contact {
+        flex: 1 0 250px
+    }
+}
+
+.footer-main p, .footer-main ul {
+    font-size: 80%;
+    line-height: 2
+}
+
+.footer-main input {
+    position: absolute;
+    opacity: 0
+}
+
+.footer-main label {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    display: block;
+    cursor: pointer
+}
+
+.footer-main input ~ label div {
+    display: none
+}
+
+.footer-main input:checked ~ label div {
+    display: block;
+    position: absolute;
+    top: -6.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #353542;
+    padding: 0.25em 0.5em;
+    border-radius: 4px
+}
+
+.footer-main label li {
+    width: max-content
+}
+
+.footer-main__about, .footer-main__contact {
+    margin: 0 1em 1em
+}
+
+.footer-main__about p {
+    font-family: "Magnetic Pro Light", "HeiTi SC Light", "Microsoft YaHei", sans-serif;
+    font-size: 90%;
+    line-height: 2;
+}
+
+@media all and (min-width: 51.25em) {
+    .footer-main__about, .footer-main__contact {
+        margin-top: 1em
+    }
+}
+
+.footer-main__avatar {
+    min-width: 200px;
+    width: 200px;
+    margin: 0.5em 0 40px 1em;
+    height: 200px;
+}
+
+@media all and (min-width: 51.25em) {
+    .footer-main__avatar {
+        flex: 1 0 0;
+    }
+}
+
+.footer-main__contact ul {
+    margin: 0
+}
+
+.footer-main__contact ul li {
+    list-style: none;
+    margin: 0
+}
+
+.footer-main__link {
+    display: flex;
+    align-items: center;
+    padding: 0.25em
+}
+
+.footer-main__link span:first-child {
+    margin-right: 0.5em
+}
+
+.footer-main__link:hover svg path {
+    fill: #91d78c
+}
+
+.footer-secondary {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 1140px;
+    padding: 1em;
+    font-size: 65%
+}
+
+@media all and (min-width: 51.25em) {
+    .footer-secondary {
+        flex-flow: row nowrap
+    }
+
+    .footer-secondary .footer-secondary__nav {
+        flex: 2 0 28.5714%
+    }
+}
+
+.footer-secondary .footer-secondary__text {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    line-height: 2
+}
+
+@media all and (max-width: 51.1875em) {
+    .footer-secondary .footer-secondary__text {
+        margin-bottom: 1em
+    }
+}
+
+@media all and (min-width: 51.25em) {
+    .footer-secondary .footer-secondary__text {
+        flex: 5 0 71.4285%
+    }
+}
+
+.footer-secondary__attribute, .footer-secondary__copyright {
+    flex: auto;
+    text-align: center;
+    width: 275px
+}
+
+.footer-secondary__nav {
+    display: flex;
+    width: 100%
+}
+
+.footer-secondary__nav a {
+    flex: auto;
+    text-align: center
+}
+
+strong {
+    font-size: 110%;
+    font-family: "Magnetic Pro", "HeiTi SC Light", "Microsoft YaHei", sans-serif;
 }
