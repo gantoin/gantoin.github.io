@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>JBake</title>
+    <title>Antoine's Blog</title>
     <link>http://jbake.org</link>
     <atom:link href="http://jbake.org/feed.xml" rel="self" type="application/rss+xml" />
-    <description>JBake Bootstrap Template</description>
+    <description>Basic blog of an average Java developer</description>
     <language>en-gb</language>
-    <pubDate>Tue, 17 Jan 2023 12:50:05 +0000</pubDate>
-    <lastBuildDate>Tue, 17 Jan 2023 12:50:05 +0000</lastBuildDate>
+    <pubDate>Wed, 18 Jan 2023 00:23:14 +0000</pubDate>
+    <lastBuildDate>Wed, 18 Jan 2023 00:23:14 +0000</lastBuildDate>
 
     <item>
       <title>🤖 How to use ChatGPT API in your Java application?</title>
@@ -262,5 +262,5 @@ textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
 	</description>
     </item>
 
-  </channel> 
+  </channel>
 </rss>

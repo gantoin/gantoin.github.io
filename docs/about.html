@@ -7,13 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <meta name="generator" content="JBake">
+    <meta name="generator" content="Antoine's blog">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Les styles -->
     <link href="css/asciidoctor.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet">
     <link href="css/prettify.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad("base16/railscasts");</script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -30,59 +33,85 @@
   <body onload="prettyPrint()">
     <div id="wrap">
 
-	<!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="">JBake</a>
+<!-- Fixed navbar -->
+<div class="site-header" role="navigation">
+    <div class="site-header__wrapper">
+        <div>
+            <div class="site-branding">
+                <a class="no-underline" href="https://gantoin.github.io"><span class="site-branding__image">Home</span></a>
+                <div class="site-branding__wrapper">
+                    <h1 class="site-branding__title">
+                        <a class="no-underline" href="https://gantoin.github.io">Antoine Gauthier</a>
+                    </h1>
+                    <p class="site-branding__description">Just a Java developer trying to brew up some good code, one
+                        cup at a time.</p>
+                </div>
+            </div>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="feed.xml">Subscribe</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-            <li><a href="archive.html">Archive</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+            <nav class="site-nav">
+                <a class="site-nav__link no-underline" href="index.html">Blog</a>
+                <a class="site-nav__link no-underline" href="about.html">About</a>
+                <a class="site-nav__link no-underline" href="feed.xml">Subscribe</a>
+                <a class="site-nav__link no-underline" href="archive.html">Archive</a>
+            </nav>
     </div>
-    <div class="container">
+</div>
+<div class="container">
+
 	<div class="page-header">
 		<h1>About</h1>
 	</div>
 
-	<p><em>24 September 2013</em></p>
+	<p><em>18 January 2023</em></p>
 
 	<p>
-<!-- reference to image using relative path stored along side content files -->
-<img src="about/jbake_logo.png" alt="JBake Logo"/><br/><br />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner&family=Mulish&display=swap" rel="stylesheet">
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel diam purus. Curabitur ut nisi lacus.
-Nam id nisl quam. Donec a lorem sit amet libero pretium vulputate vel ut purus. Suspendisse leo arcu,
-mattis et imperdiet luctus, pulvinar vitae mi. Quisque fermentum sollicitudin feugiat. Mauris nec leo
-ligula. Vestibulum tristique odio ut risus ultricies a hendrerit quam iaculis. Duis tempor elit sit amet
-ligula vehicula et iaculis sem placerat. Fusce dictum, metus at volutpat lacinia, elit massa auctor risus,
-id auctor arcu enim eu augue. Donec ultrices turpis in mi imperdiet ac venenatis sapien sodales. In
-consequat imperdiet nunc quis bibendum. Nulla semper, erat quis ornare tristique, lectus massa posuere
-libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.
+<img src="about/profile.png" alt="Picture profile" class="profilePicture"/>
+
+<div>
+	<h2>Experiences</h2>
+	<p><strong>JAVA/SQL Developer</strong></p>
+	<p>SAP Concur - Since January 2022</p>
+	<ul role="list">
+		<li>Java development on a web application for travel management and allowances</li>
+		<li>PL/SQL functions, procedures and scripts to update data in an Oracle database</li>
+		<li>Ext JS and SCSS development for front-end rework</li>
+	</ul>
+	<p><strong>Back-end developer</strong></p>
+	<p>DoubleTrade - July 2019 to January 2022</p>
+	<ul role="list">
+		<li>Java 11, micro-services architecture, Apache Kafka, Spring Cloud, Docker, continuous integration with GitLab
+			CI
+		</li>
+		<li>Scrum, code review/pair-programming, Pull/Merge requests</li>
+		<li>Development of new APIs for a SaaS business intelligence application on public markets in France</li>
+	</ul>
+	<p><strong>Full Stack Developer</strong></p>
+	<p>Wemoov - April 2019 to June 2019</p>
+	<ul role="list">
+		<li>Development of a back-office and APIs for video editing with FFmpeg using JHipster with Java, AngularJS,
+			SQL, Jenkins and Git
+		</li>
+	</ul>
+	<p><strong>Web Developer</strong></p>
+	<p>Ministry of Justice - January 2018 to August 2018</p>
+	<ul role="list">
+		<li>Development of a Java 8 backend</li>
+		<li>Training and development of Angular for the frontend of the applications</li>
+		<li>Docker for the deployment of the applications</li>
+	</ul>
+	<h2>Education</h2>
+	<p><strong>Professional degree in computer systems and software</strong></p>
+	<p>Nantes (France) University (2016 - 2017)</p>
+	<p><strong>Advanced Technician's Certificate</strong></p>
+	<ul role="list">
+		<li>La Coliniere High school (2014 - 2016)</li>
+		<li>IT services for organizations option B software solutions and business applications</li>
+	</ul>
+</div>
 </p>
 
 	<hr />
@@ -90,19 +119,12 @@ libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.
 		</div>
 		<div id="push"></div>
     </div>
-    
-    <div id="footer">
-      <div class="container">
-        <p class="muted credit">&copy; 2014 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.6.7</a></p>
-      </div>
-    </div>
-    
+
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/prettify.js"></script>
-    
+
   </body>
 </html>

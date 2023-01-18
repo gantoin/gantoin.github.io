@@ -2,18 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Antoine Gauthier</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <meta name="generator" content="JBake">
+    <meta name="generator" content="Antoine's blog">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Les styles -->
     <link href="css/asciidoctor.css" rel="stylesheet">
     <link href="css/base.css" rel="stylesheet">
     <link href="css/prettify.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad("base16/railscasts");</script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -29,294 +32,69 @@
   </head>
   <body onload="prettyPrint()">
     <div id="wrap">
-	
-	<!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="">JBake</a>
+
+<!-- Fixed navbar -->
+<div class="site-header" role="navigation">
+    <div class="site-header__wrapper">
+        <div>
+            <div class="site-branding">
+                <a class="no-underline" href="https://gantoin.github.io"><span class="site-branding__image">Home</span></a>
+                <div class="site-branding__wrapper">
+                    <h1 class="site-branding__title">
+                        <a class="no-underline" href="https://gantoin.github.io">Antoine Gauthier</a>
+                    </h1>
+                    <p class="site-branding__description">Just a Java developer trying to brew up some good code, one
+                        cup at a time.</p>
+                </div>
+            </div>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="feed.xml">Subscribe</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-            <li><a href="archive.html">Archive</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+            <nav class="site-nav">
+                <a class="site-nav__link no-underline" href="index.html">Blog</a>
+                <a class="site-nav__link no-underline" href="about.html">About</a>
+                <a class="site-nav__link no-underline" href="feed.xml">Subscribe</a>
+                <a class="site-nav__link no-underline" href="archive.html">Archive</a>
+            </nav>
     </div>
-    <div class="container">
-	<div class="page-header">
-		<h1>Blog</h1>
-	</div>
-  			<a href="blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html"><h1>🤖 How to use ChatGPT API in your Java application?</h1></a>
-  			<p>08 January 2023</p>
-  			<p><p>🤖 How to use ChatGPT API in your Java application?</p>
-<p>Hi guys 👋 I'm sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.</p>
-<p>Today I'll show you how to use OpenAI ChatGPT API with Java, it's pretty easy.</p>
-<h2>1. Register for an API key</h2>
-<p>First, you'll need to register for an API key by going to the <a href="https://beta.openai.com/signup/">OpenAI API page</a>. Follow the instructions to create an account and obtain an API key.</p>
-<h2>2. Enter a credit card into your OpenAI account</h2>
-<p>OpenAI blocks the API calls for <code>exceeded your current quota</code> when you don't have any card registered in your account. So, you will need to configure one.</p>
-<h2>3. Implements code like:</h2>
-<pre><code class="language-java">import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
+</div>
+<div class="container">
 
-public class ChatGPT {
-    public static void chatGPT(String text) throws Exception {
-        String url = &quot;https://api.openai.com/v1/completions&quot;;
-        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+<main class="content">
+    <div class="articles">
+                <article class="content-excerpt">
+                    <a class="link" href="blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html"><h1>🤖 How to use ChatGPT API in your Java application?</h1></a>
+                    <p>08 January 2023</p>
+                        <p>blog</p>
+                </article>
+                <article class="content-excerpt">
+                    <a class="link" href="blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html"><h1>📌 Configure Twitch API OAuth2 provider on a Spring Security app</h1></a>
+                    <p>04 January 2023</p>
+                        <p>blog</p>
+                </article>
+                <article class="content-excerpt">
+                    <a class="link" href="blog/2023/8f3c78932057d730b351c17b79770e8c.html"><h1>🧷 How I became a FullStack Java developer with Vaadin?</h1></a>
+                    <p>30 December 2022</p>
+                        <p>blog</p>
+                </article>
+                <article class="content-excerpt">
+                    <a class="link" href="blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html"><h1>☂️ How to plug your Umbrel's Nextcloud into the official Nextcloud mobile app? (using Tailescape & some docker commands)</h1></a>
+                    <p>21 August 2022</p>
+                        <p>blog</p>
+                </article>
+    </div>
 
-        con.setRequestMethod(&quot;POST&quot;);
-        con.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;);
-        con.setRequestProperty(&quot;Authorization&quot;, &quot;Bearer YOUR-API-KEY&quot;);
+    <hr/>
 
-        JSONObject data = new JSONObject();
-        data.put(&quot;model&quot;, &quot;text-davinci-003&quot;);
-        data.put(&quot;prompt&quot;, text);
-        data.put(&quot;max_tokens&quot;, 4000);
-        data.put(&quot;temperature&quot;, 1.0);
-
-        con.setDoOutput(true);
-        con.getOutputStream().write(data.toString().getBytes());
-
-        String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
-                .reduce((a, b) -&gt; a + b).get();
-
-        System.out.println(new JSONObject(output).getJSONArray(&quot;choices&quot;).getJSONObject(0).getString(&quot;text&quot;));
-    }
-
-    public static void main(String[] args) throws Exception {
-        chatGPT(&quot;Hello, how are you?&quot;);
-    }
-}
-</code></pre>
-<h2>It works!</h2>
-<pre><code>src.main.java.ChatGPT
-
-
-I'm doing great, thank you for asking. How about you?
-
-Process finished with exit code 0
-</code></pre>
-<h3>Resources used:</h3>
-<ul>
-<li><code>org.json</code> <a href="https://mvnrepository.com/artifact/org.json/json/20220924">https://mvnrepository.com/artifact/org.json/json/20220924</a> (add this dependency to your project)</li>
-<li>this python tutorial I converted to Java <a href="https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031">https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031</a></li>
-</ul>
-</p>
-  			<a href="blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html"><h1>📌 Configure Twitch API OAuth2 provider on a Spring Security app</h1></a>
-  			<p>04 January 2023</p>
-  			<p><p>📺 Configure Twitch API OAuth2 provider on a Spring Security app</p>
-<p>Hi guys, I'm working on a SaaS to manage Twitch Clips of broadcasters:<br />
-- Create vertical Clips automatically for TikTok, Youtube Shorts, etc.<br />
-- Create compilation for clips to easily make best-of</p>
-<p>So, I had to plug my Spring Security app into the Twitch OAuth2 provider and it was not easy...</p>
-<h2>How to do that?</h2>
-<h3>Prerequisites</h3>
-<p>Before you begin, you need to have the following:</p>
-<ul>
-<li>
-<p>A Twitch account and a registered app on the Twitch Developer Dashboard. If you don't have one, you can create a new app <a href="https://dev.twitch.tv/docs/authentication/#registration">here</a>.</p>
-</li>
-<li>
-<p>A Spring Security application. If you don't have one, you can follow <a href="https://spring.io/guides/gs/securing-web/">these instructions</a> to create a simple Spring Security app.</p>
-</li>
-</ul>
-<h3>Step 1: Add the necessary dependencies</h3>
-<p>First, you need to add the following dependencies to your project's <code>pom.xml</code> file:</p>
-<pre><code class="language-xml">&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
-&lt;/dependency&gt;
-
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-security-oauth2-client&lt;/artifactId&gt;
-&lt;/dependency&gt;
-
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-security-oauth2-jose&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h3>Step 2: Configure the OAuth2 client</h3>
-<p>Next, you need to configure the OAuth2 client by adding the following properties to your <code>application.properties</code> file:</p>
-<pre><code>spring.security.oauth2.client.provider.twitch.authorization-uri=https://id.twitch.tv/oauth2/authorize
-spring.security.oauth2.client.provider.twitch.token-uri=https://id.twitch.tv/oauth2/token
-spring.security.oauth2.client.provider.twitch.jwk-set-uri=https://id.twitch.tv/oauth2/keys
-spring.security.oauth2.client.provider.twitch.user-info-uri=https://api.twitch.tv/helix/users
-spring.security.oauth2.client.registration.twitch.client-id=&lt;your-client-id&gt;
-spring.security.oauth2.client.registration.twitch.client-secret=&lt;your-client-secret&gt;
-spring.security.oauth2.client.registration.twitch.redirect-uri={baseUrl}/login/oauth2/code/{registrationId}
-</code></pre>
-<p>Replace <code>&lt;your-client-id&gt;</code> and <code>&lt;your-client-secret&gt;</code> with the client ID and client secret of your registered app on the Twitch Developer Dashboard.</p>
-<h3>Step 3: Configure the OAuth2 filter</h3>
-<p>To configure the OAuth2 filter, you need to create a <code>WebSecurityConfigurerAdapter</code> class and override the <code>configure(HttpSecurity http)</code> method. Add the following code to the method:</p>
-<pre><code class="language-java">http.oauth2Login()
-  .authorizationEndpoint()
-    .baseUri(&quot;/oauth2/authorization/twitch&quot;)
-  .and()
-  .redirectionEndpoint()
-    .baseUri(&quot;/oauth2/callback/*&quot;)
-  .and()
-</code></pre>
-<p>🎉 Congratulations! 🎉</p>
-<p>You have successfully configured the Twitch API OAuth2 provider on your Spring Security application.</p>
-<p>🌟 Happy coding! 💻</p>
-</p>
-  			<a href="blog/2023/8f3c78932057d730b351c17b79770e8c.html"><h1>🧷 How I became a FullStack Java developer with Vaadin?</h1></a>
-  			<p>30 December 2022</p>
-  			<p><p>💭 How I became a FullStack Java developer with Vaadin?</p>
-<h2>What is Vaadin?</h2>
-<p>Vaadin is an open-source framework for building modern web applications. It allows developers to create rich, interactive user interfaces using Java, without the need to learn JavaScript or any other client-side programming language.</p>
-<p>Vaadin was first released in 2002 and has since become a popular choice for building enterprise-level applications. It is used by companies such as Nokia, Goldman Sachs, and the United States Air Force, among others.</p>
-<h2>Why use Vaadin?</h2>
-<p>There are several reasons why Vaadin might be a good choice for your web application development needs.</p>
-<p>First and foremost, Vaadin allows developers to build web applications using a language that they are already familiar with: Java. This means that developers who are proficient in Java can start building web applications without needing to learn a new programming language.</p>
-<p>Vaadin also has a large community of developers who contribute to the framework and offer support. This means that if you run into any issues while using Vaadin, you are likely to find a solution through the community forums or by reaching out to other developers.</p>
-<p>Vaadin also offers a number of built-in features that can help speed up development. These include a visual designer for building user interfaces, a set of pre-designed UI components, and support for data binding and validation.</p>
-<p>Another advantage of Vaadin is that it is highly customizable. You can create custom UI components and themes, and integrate with other Java libraries and frameworks.</p>
-<h2>Getting started with Vaadin</h2>
-<p>To start building web applications with Vaadin, you will need to have the following software installed on your computer:</p>
-<ul>
-<li>Java JDK 8 or newer</li>
-<li>Apache Maven</li>
-<li>An IDE (Integrated Development Environment) such as Eclipse or IntelliJ IDEA</li>
-</ul>
-<p>Once you have these tools installed, you can start building your first Vaadin application.</p>
-<p>First, create a new Maven project in your IDE. In the project's <code>pom.xml</code> file, you will need to add the following dependencies:</p>
-<pre><code class="language-xml">&lt;dependencies&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;com.vaadin&lt;/groupId&gt;
-        &lt;artifactId&gt;vaadin-bom&lt;/artifactId&gt;
-        &lt;version&gt;14.4.1&lt;/version&gt;
-        &lt;type&gt;pom&lt;/type&gt;
-        &lt;scope&gt;import&lt;/scope&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;com.vaadin&lt;/groupId&gt;
-        &lt;artifactId&gt;vaadin-server&lt;/artifactId&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre>
-<p>Finally, create a servlet that maps to your UI class. This can be done by creating a new Java class that extends the com.vaadin.flow.server.VaadinServlet class and adding the following annotation:</p>
-<pre><code class="language-java">@WebServlet(urlPatterns = &quot;/*&quot;, name = &quot;MyUIServlet&quot;, asyncSupported = true)
-@VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-public class MyUIServlet extends VaadinServlet {
-}
-</code></pre>
-<p>This servlet will map the / URL pattern to your UI class, and configure the servlet to run in development mode (productionMode = false).</p>
-<p>To run your application, you can either use the built-in Jetty server that comes with Vaadin, or you can deploy your application to an external servlet container such as Tomcat.</p>
-<p>To run the application using the built-in Jetty server, you can use the mvn jetty:run command from the command line. This will start the Jetty server and deploy your application. You can then access the application by navigating to <a href="http://localhost:8080">http://localhost:8080</a> in your web browser.</p>
-<p>To deploy the application to an external servlet container, you will need to create a WAR (Web ARchive) file and deploy it to the container. This can be done by running the mvn package command, which will create a WAR file in the target directory of your project. You can then deploy the WAR file to your servlet container by following the instructions for your specific container.</p>
-<h2>Building user interfaces with Vaadin</h2>
-<p>Vaadin provides a number of UI components that you can use to build your application's user interface. These include buttons, text fields, tables, and many others.</p>
-<p>To add a component to your UI, you simply need to instantiate the component and add it to the UI using the add method. For example, to add a button to your UI:</p>
-<pre><code class="language-java">Button button = new Button(&quot;Click me&quot;);
-add(button);
-</code></pre>
-<p>You can also customize the appearance and behavior of UI components by setting their properties. For example, to set the text of a button:</p>
-<pre><code class="language-java">button.setText(&quot;Click me&quot;);
-</code></pre>
-<p>Vaadin also provides a visual designer tool that allows you to design your UI using a drag-and-drop interface. This can be a convenient way to quickly build your UI without having to write code.</p>
-<h2>Data binding and validation</h2>
-<p>Vaadin provides support for data binding and validation, which can help you to manage the flow of data between your application and its user interface.</p>
-<p>Data binding allows you to bind UI components to data sources, so that the component's value is automatically updated when the data source changes, and vice versa. This can be useful for keeping your UI in sync with your application's data model.</p>
-<p>To bind a component to a data source, you can use the setValue and getValue methods. For example, to bind a text field to a string data source:</p>
-<pre><code class="language-java">StringProperty dataSource = new StringProperty(&quot;Initial value&quot;);
-TextField textField = new TextField();
-textField.setValue(dataSource);
-</code></pre>
-<p>Vaadin also provides support for validation, which allows you to ensure that the data entered by the user is valid. You can define validation rules for UI components using the setErrorMessage and setInvalid methods. For example, to ensure that a text field contains a valid email address:</p>
-<pre><code class="language-java">textField.setErrorMessage(&quot;Please enter a valid email address&quot;);
-textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
-</code></pre>
-<p>Vaadin also provides a number of built-in validators for common data types such as strings, numbers, and dates.</p>
-<h2>Integrating with other Java libraries and frameworks</h2>
-<p>Vaadin is built on top of the Java programming language, which means that you can easily integrate it with other Java libraries and frameworks.</p>
-<p>For example, you can use Vaadin with the Spring framework to manage dependencies and configure your application. You can also use Vaadin with the Hibernate framework to manage database access and ORM (Object-Relational Mapping).</p>
-<p>Vaadin also provides integrations with a number of other popular Java libraries and frameworks, such as Apache Commons, Apache Lucene, and Google Guice.</p>
-<h2>Conclusion</h2>
-<p>Vaadin is a powerful and flexible framework for building modern web applications using Java. It offers a large set of built-in features, a visual designer tool, and support for data binding and validation. It is also highly customizable and can be integrated with other Java libraries and frameworks.</p>
-<p>If you are a Java developer looking to build web applications, Vaadin is definitely worth considering as a tool for your development needs.</p>
-<p>➡️ Official documentation here: <a href="https://vaadin.com/docs/latest">https://vaadin.com/docs/latest</a></p>
-</p>
-  			<a href="blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html"><h1>☂️ How to plug your Umbrel's Nextcloud into the official Nextcloud mobile app? (using Tailescape & some docker commands)</h1></a>
-  			<p>21 August 2022</p>
-  			<p><p>☂ How to plug your Umbrel's Nextcloud into the official Nextcloud mobile app? (using Tailscale &amp; some docker commands)</p>
-<h2>Why you could want to do that?</h2>
-<p>You could want to use the Nextcloud app to make saving your phone data easier or to get documents from your cloud easily (without a Tor browser, connect via onion etc.).</p>
-<h2>Why is it not possible natively?</h2>
-<p>It's impossible to connect the Nextcloud app to a onion address, you need a clear-net URL. We will use Tailscale to solve this problem.</p>
-<h2>What is Tailscale?</h2>
-<p>Tailscale is a zero-config VPN. The easiest way to create a secure network between your servers, computers, and cloud instances. We will use Tailscale to connect Umbrel's Nextcloud to your mobile with clear-net (or any other device).<br />
-<a href="https://github.com/tailscale/tailscale">https://github.com/tailscale/tailscale</a></p>
-<h2>Install Tailscale on your devices</h2>
-<ul>
-<li>Umbrel: Go to your umbrel (directly <a href="http://umbrel.local">http://umbrel.local</a>, not using onion because Tailescale doesn’t work - for me - using tor connection). Install the app via the App Store.</li>
-<li>Phone: Install the Tailscale app via the Google/Apple Store.</li>
-<li>Computer: <a href="https://tailscale.com/">https://tailscale.com/</a></li>
-</ul>
-<p>Create a Tailscale account, and connect all your devices on this account.</p>
-<h2>Configure new trusted domain on your Nextcloud app</h2>
-<p>Connect via ssh on your umbrel :</p>
-<pre><code>ssh umbrel@umbrel.local
-</code></pre>
-<p>Find the ID of the Nexcloud container :</p>
-<pre><code>docker ps
-</code></pre>
-<p>Pick the ID of the service started with <code>/entrypoint.sh apac…</code></p>
-<p>Enter this command, to add your nextcloud Tailscale address as truster_domain :</p>
-<pre><code>docker exec --user www-data ID_OF_THE_NEXTCLOUD_CONTAINER php occ config:system:set trusted_domains 3 --value=IP_OF_YOUR_UMBREL_ON_TAILSCALE
-</code></pre>
-<h3>Enjoy!</h3>
-<p>Now, you can enter the Tailscale IP of your umbrel with the port on the Nextcloud App.</p>
-<p>⚠️ Don't use SSL → HTTP instead HTTPS</p>
-</p>
-	
-	<hr />
-	
-	<p>Older posts are available in the <a href="archive.html">archive</a>.</p>
-
+    <p>Older posts are available in the <a href="archive.html">archive</a>.</p>
+</main>
 		</div>
 		<div id="push"></div>
     </div>
-    
-    <div id="footer">
-      <div class="container">
-        <p class="muted credit">&copy; 2014 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.6.7</a></p>
-      </div>
-    </div>
-    
+
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/prettify.js"></script>
-    
+
   </body>
 </html>
