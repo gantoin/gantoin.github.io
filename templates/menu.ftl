@@ -5,7 +5,7 @@
             <div class="site-branding">
                 <a class="no-underline" href="https://gantoin.github.io"><span class="site-branding__image">Home</span></a>
                 <div class="site-branding__wrapper">
-                    <h1 class="site-branding__title">
+                    <h1 class="site-branding__title no-underline">
                         <a class="no-underline" href="https://gantoin.github.io">Antoine Gauthier</a>
                     </h1>
                     <p class="site-branding__description">Just a Java developer trying to brew up some good code, one
@@ -21,4 +21,3 @@
             </nav>
     </div>
 </div>
-<div class="container">
