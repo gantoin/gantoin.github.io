@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Antoine's Blog</title>
-    <link>http://jbake.org</link>
-    <atom:link href="http://jbake.org/feed.xml" rel="self" type="application/rss+xml" />
-    <description>Basic blog of an average Java developer</description>
-    <language>en-gb</language>
-    <pubDate>Wed, 18 Jan 2023 00:23:14 +0000</pubDate>
-    <lastBuildDate>Wed, 18 Jan 2023 00:23:14 +0000</lastBuildDate>
+    <channel>
+        <title>Antoine's Blog</title>
+        <link>https://gantoin.github.io/</link>
+        <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
+        <description>Basic blog of an average Java developer</description>
+        <language>en-gb</language>
+        <pubDate>Thu, 19 Jan 2023 00:23:36 +0000</pubDate>
+        <lastBuildDate>Thu, 19 Jan 2023 00:23:36 +0000</lastBuildDate>
 
-    <item>
-      <title>🤖 How to use ChatGPT API in your Java application?</title>
-      <link>http://jbake.org/blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</link>
-      <pubDate>Sun, 8 Jan 2023 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</guid>
-      	<description>
-	&lt;p&gt;🤖 How to use ChatGPT API in your Java application?&lt;/p&gt;
+            <item>
+                <title>🤖 How to use ChatGPT API in your Java application?</title>
+                <link>https://gantoin.github.io//blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</link>
+                <pubDate>Sun, 8 Jan 2023 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</guid>
+                <description>
+                        &lt;p&gt;🤖 How to use ChatGPT API in your Java application?&lt;/p&gt;
 &lt;p&gt;Hi guys 👋 I&apos;m sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.&lt;/p&gt;
 &lt;p&gt;Today I&apos;ll show you how to use OpenAI ChatGPT API with Java, it&apos;s pretty easy.&lt;/p&gt;
 &lt;h2&gt;1. Register for an API key&lt;/h2&gt;
@@ -72,15 +72,15 @@ Process finished with exit code 0
 &lt;li&gt;this python tutorial I converted to Java &lt;a href=&quot;https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031&quot;&gt;https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-	</description>
-    </item>
-    <item>
-      <title>📌 Configure Twitch API OAuth2 provider on a Spring Security app</title>
-      <link>http://jbake.org/blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</link>
-      <pubDate>Wed, 4 Jan 2023 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</guid>
-      	<description>
-	&lt;p&gt;📺 Configure Twitch API OAuth2 provider on a Spring Security app&lt;/p&gt;
+                </description>
+            </item>
+            <item>
+                <title>📌 Configure Twitch API OAuth2 provider on a Spring Security app</title>
+                <link>https://gantoin.github.io//blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</link>
+                <pubDate>Wed, 4 Jan 2023 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</guid>
+                <description>
+                        &lt;p&gt;📺 Configure Twitch API OAuth2 provider on a Spring Security app&lt;/p&gt;
 &lt;p&gt;Hi guys, I&apos;m working on a SaaS to manage Twitch Clips of broadcasters:&lt;br /&gt;
 - Create vertical Clips automatically for TikTok, Youtube Shorts, etc.&lt;br /&gt;
 - Create compilation for clips to easily make best-of&lt;/p&gt;
@@ -138,15 +138,15 @@ spring.security.oauth2.client.registration.twitch.redirect-uri={baseUrl}/login/o
 &lt;p&gt;You have successfully configured the Twitch API OAuth2 provider on your Spring Security application.&lt;/p&gt;
 &lt;p&gt;🌟 Happy coding! 💻&lt;/p&gt;
 
-	</description>
-    </item>
-    <item>
-      <title>🧷 How I became a FullStack Java developer with Vaadin?</title>
-      <link>http://jbake.org/blog/2023/8f3c78932057d730b351c17b79770e8c.html</link>
-      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">blog/2023/8f3c78932057d730b351c17b79770e8c.html</guid>
-      	<description>
-	&lt;p&gt;💭 How I became a FullStack Java developer with Vaadin?&lt;/p&gt;
+                </description>
+            </item>
+            <item>
+                <title>🧷 How I became a FullStack Java developer with Vaadin?</title>
+                <link>https://gantoin.github.io//blog/2023/8f3c78932057d730b351c17b79770e8c.html</link>
+                <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/8f3c78932057d730b351c17b79770e8c.html</guid>
+                <description>
+                        &lt;p&gt;💭 How I became a FullStack Java developer with Vaadin?&lt;/p&gt;
 &lt;h2&gt;What is Vaadin?&lt;/h2&gt;
 &lt;p&gt;Vaadin is an open-source framework for building modern web applications. It allows developers to create rich, interactive user interfaces using Java, without the need to learn JavaScript or any other client-side programming language.&lt;/p&gt;
 &lt;p&gt;Vaadin was first released in 2002 and has since become a popular choice for building enterprise-level applications. It is used by companies such as Nokia, Goldman Sachs, and the United States Air Force, among others.&lt;/p&gt;
@@ -221,46 +221,8 @@ textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
 &lt;p&gt;If you are a Java developer looking to build web applications, Vaadin is definitely worth considering as a tool for your development needs.&lt;/p&gt;
 &lt;p&gt;➡️ Official documentation here: &lt;a href=&quot;https://vaadin.com/docs/latest&quot;&gt;https://vaadin.com/docs/latest&lt;/a&gt;&lt;/p&gt;
 
-	</description>
-    </item>
-    <item>
-      <title>☂️ How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app? (using Tailescape &amp; some docker commands)</title>
-      <link>http://jbake.org/blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</link>
-      <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
-      <guid isPermaLink="false">blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</guid>
-      	<description>
-	&lt;p&gt;☂ How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app? (using Tailscale &amp;amp; some docker commands)&lt;/p&gt;
-&lt;h2&gt;Why you could want to do that?&lt;/h2&gt;
-&lt;p&gt;You could want to use the Nextcloud app to make saving your phone data easier or to get documents from your cloud easily (without a Tor browser, connect via onion etc.).&lt;/p&gt;
-&lt;h2&gt;Why is it not possible natively?&lt;/h2&gt;
-&lt;p&gt;It&apos;s impossible to connect the Nextcloud app to a onion address, you need a clear-net URL. We will use Tailscale to solve this problem.&lt;/p&gt;
-&lt;h2&gt;What is Tailscale?&lt;/h2&gt;
-&lt;p&gt;Tailscale is a zero-config VPN. The easiest way to create a secure network between your servers, computers, and cloud instances. We will use Tailscale to connect Umbrel&apos;s Nextcloud to your mobile with clear-net (or any other device).&lt;br /&gt;
-&lt;a href=&quot;https://github.com/tailscale/tailscale&quot;&gt;https://github.com/tailscale/tailscale&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Install Tailscale on your devices&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Umbrel: Go to your umbrel (directly &lt;a href=&quot;http://umbrel.local&quot;&gt;http://umbrel.local&lt;/a&gt;, not using onion because Tailescale doesn’t work - for me - using tor connection). Install the app via the App Store.&lt;/li&gt;
-&lt;li&gt;Phone: Install the Tailscale app via the Google/Apple Store.&lt;/li&gt;
-&lt;li&gt;Computer: &lt;a href=&quot;https://tailscale.com/&quot;&gt;https://tailscale.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Create a Tailscale account, and connect all your devices on this account.&lt;/p&gt;
-&lt;h2&gt;Configure new trusted domain on your Nextcloud app&lt;/h2&gt;
-&lt;p&gt;Connect via ssh on your umbrel :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ssh umbrel@umbrel.local
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Find the ID of the Nexcloud container :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker ps
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Pick the ID of the service started with &lt;code&gt;/entrypoint.sh apac…&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Enter this command, to add your nextcloud Tailscale address as truster_domain :&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker exec --user www-data ID_OF_THE_NEXTCLOUD_CONTAINER php occ config:system:set trusted_domains 3 --value=IP_OF_YOUR_UMBREL_ON_TAILSCALE
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3&gt;Enjoy!&lt;/h3&gt;
-&lt;p&gt;Now, you can enter the Tailscale IP of your umbrel with the port on the Nextcloud App.&lt;/p&gt;
-&lt;p&gt;⚠️ Don&apos;t use SSL → HTTP instead HTTPS&lt;/p&gt;
+                </description>
+            </item>
 
-	</description>
-    </item>
-
-  </channel>
+    </channel>
 </rss>

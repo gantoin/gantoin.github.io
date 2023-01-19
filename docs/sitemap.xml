@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <url>
-        <loc>http://jbake.org/about.html</loc>
-        <lastmod>2023-01-18</lastmod>
-    </url>
-    <url>
-        <loc>http://jbake.org/blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</loc>
-        <lastmod>2023-01-08</lastmod>
-    </url>
-    <url>
-        <loc>http://jbake.org/blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</loc>
-        <lastmod>2023-01-04</lastmod>
-    </url>
-    <url>
-        <loc>http://jbake.org/blog/2023/8f3c78932057d730b351c17b79770e8c.html</loc>
-        <lastmod>2022-12-30</lastmod>
-    </url>
-    <url>
-        <loc>http://jbake.org/blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</loc>
-        <lastmod>2022-08-21</lastmod>
-    </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+            <url>
+            <loc>https://gantoin.github.io//about.html</loc>
+            <lastmod>2023-01-19</lastmod>
+        </url>
+        <url>
+            <loc>https://gantoin.github.io//blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</loc>
+            <lastmod>2023-01-08</lastmod>
+        </url>
+        <url>
+            <loc>https://gantoin.github.io//blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</loc>
+            <lastmod>2023-01-04</lastmod>
+        </url>
+        <url>
+            <loc>https://gantoin.github.io//blog/2023/8f3c78932057d730b351c17b79770e8c.html</loc>
+            <lastmod>2022-12-30</lastmod>
+        </url>
 </urlset>

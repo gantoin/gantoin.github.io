@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8"/>
     <title>🧷 How I became a FullStack Java developer with Vaadin?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +8,12 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="generator" content="Antoine's blog">
-
-    <!-- Les styles -->
-    <link href="../../css/asciidoctor.css" rel="stylesheet">
-    <link href="../../css/base.css" rel="stylesheet">
-    <link href="../../css/prettify.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
     <link rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad("base16/railscasts");</script>
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
     <link rel="shortcut icon" href="../../favicon.ico">
-  </head>
-  <body onload="prettyPrint()">
-    <div id="wrap">
+</head>
+<body>
 
 <!-- Fixed navbar -->
 <div class="site-header" role="navigation">
@@ -40,7 +22,7 @@
             <div class="site-branding">
                 <a class="no-underline" href="https://gantoin.github.io"><span class="site-branding__image">Home</span></a>
                 <div class="site-branding__wrapper">
-                    <h1 class="site-branding__title">
+                    <h1 class="site-branding__title no-underline">
                         <a class="no-underline" href="https://gantoin.github.io">Antoine Gauthier</a>
                     </h1>
                     <p class="site-branding__description">Just a Java developer trying to brew up some good code, one
@@ -48,22 +30,28 @@
                 </div>
             </div>
         </div>
-            <nav class="site-nav">
-                <a class="site-nav__link no-underline" href="../../index.html">Blog</a>
-                <a class="site-nav__link no-underline" href="../../about.html">About</a>
-                <a class="site-nav__link no-underline" href="../../feed.xml">Subscribe</a>
-                <a class="site-nav__link no-underline" href="../../archive.html">Archive</a>
-            </nav>
+        <nav class="site-nav">
+            <a class="site-nav__link no-underline"
+               href="../../index.html">Blog</a>
+            <a class="site-nav__link no-underline"
+               href="../../about.html">About</a>
+            <a class="site-nav__link no-underline"
+               href="../../feed.xml">Subscribe</a>
+            <a class="site-nav__link no-underline"
+               href="../../archive.html">Archive</a>
+        </nav>
     </div>
 </div>
-<div class="container">
+
+<!-- Begin page content -->
+
 <main class="content">
-        <div class="page-header">
-            <h1>🧷 How I became a FullStack Java developer with Vaadin?</h1>
-        </div>
-    <p><em>30 December 2022</em></p>
-    <div class="post-content">
-        <p><p>💭 How I became a FullStack Java developer with Vaadin?</p>
+    <div class="page-header">
+        <h1>🧷 How I became a FullStack Java developer with Vaadin?</h1>
+    </div>
+<p><em>30 December 2022</em></p>
+<div class="post-content">
+    <p><p>💭 How I became a FullStack Java developer with Vaadin?</p>
 <h2>What is Vaadin?</h2>
 <p>Vaadin is an open-source framework for building modern web applications. It allows developers to create rich, interactive user interfaces using Java, without the need to learn JavaScript or any other client-side programming language.</p>
 <p>Vaadin was first released in 2002 and has since become a popular choice for building enterprise-level applications. It is used by companies such as Nokia, Goldman Sachs, and the United States Air Force, among others.</p>
@@ -138,18 +126,84 @@ textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
 <p>If you are a Java developer looking to build web applications, Vaadin is definitely worth considering as a tool for your development needs.</p>
 <p>➡️ Official documentation here: <a href="https://vaadin.com/docs/latest">https://vaadin.com/docs/latest</a></p>
 </p>
-    </div>
+</div>
+
+</div>
+<div id="push"></div>
+</div>
+
 </main>
-
-		</div>
-		<div id="push"></div>
+<footer class="site-footer">
+    <div class="site-footer__wrapper--main">
+        <div class="footer-main">
+            <img src="/img/minecraft2.gif" alt="Minecraft gif" class="footer-main__avatar">
+            <div class="footer-main__about">
+                Hi Java enthusiasts!
+                <p>I'm Antoine Gauthier a.k.a gantoin. I'm freelance developer till January 2022. I'm mainly experienced
+                    in Java back-end development and can do front-end with React, Angular, or Ext JS. I'm looking for
+                    challenging assignments in an exciting industry to implement my Java skills and improve my
+                    JavaScript skills.</p>
+            </div>
+            <div class="footer-main__contact">
+                <h3>Connect with me</h3>
+                <ul>
+                    <li>
+                        <a href="mailto:antoine@gauthier.lol" class="no-underline footer-main__link">
+                            <span class="icon">
+                                <svg aria-hidden="true" viewBox="0 0 16 16">
+                                    <path d="M11.9 4.6c0-.1.0-.3-.2-.3C11 3.9 10.2 3.8 9.3 3.8c-3 0-5.4 2.4-5.4 5.4.0 2 1.3 3 2.6 3 1.2.0 2.1-.5 2.9-1.4.1.3.2.6.5.9.3.4.8.6 1.4.6 2 0 4.1-1.8 4.1-5.4.0-3.8-2.7-6.5-6.5-6.5-4.6.0-8.1 3.7-8.1 8.5.0 4 2.8 7 6.8 7 1.6.0 2.8-.3 3.9-.9.1-.1.2-.2.1-.4l-.3-.9c0-.1-.1-.1-.2-.2-.1.0-.2.0-.2.0-.8.5-1.9.7-3.1.7-3.1.0-5.2-2.2-5.2-5.5.0-3.9 2.6-6.8 6.1-6.8 3 0 4.9 1.9 4.9 5 0 2.2-1 3.6-2 3.6-.2.0-.3-.1-.3-.1-.1-.2-.3-.6.0-1.9L11.9 4.6zM9 5.5c.3.0.5.0.7.1L9.4 7.7C9.1 8.9 8.1 10.4 7 10.4c-1 0-1.1-.9-1.1-1.3C5.9 7.1 7.3 5.5 9 5.5z"/>
+                                </svg>
+                            </span>
+                            <span>
+                                Email
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/gantoin" class="no-underline footer-main__link" rel="me">
+                            <span class="icon">
+                                <svg aria-hidden="true" viewBox="0 0 16 16">
+                                    <path d="M7.999.431c-4.285.0-7.76 3.474-7.76 7.761.0 3.428 2.223 6.337 5.307 7.363.388.071.53-.168.53-.374.0-.184-.007-.672-.01-1.32-2.159.469-2.614-1.04-2.614-1.04-.353-.896-.862-1.135-.862-1.135-.705-.481.053-.472.053-.472.779.055 1.189.8 1.189.8.692 1.186 1.816.843 2.258.645.071-.502.271-.843.493-1.037C4.86 11.425 3.049 10.76 3.049 7.786c0-.847.302-1.54.799-2.082C3.768 5.507 3.501 4.718 3.924 3.65c0 0 .652-.209 2.134.796C6.677 4.273 7.34 4.187 8 4.184c.659.003 1.323.089 1.943.261 1.482-1.004 2.132-.796 2.132-.796.423 1.068.157 1.857.077 2.054.497.542.798 1.235.798 2.082.0 2.981-1.814 3.637-3.543 3.829.279.24.527.713.527 1.437.0 1.037-.01 1.874-.01 2.129.0.208.14.449.534.373 3.081-1.028 5.302-3.935 5.302-7.362C15.76 3.906 12.285.431 7.999.431z"/>
+                                </svg>
+                            </span>
+                            <span>
+                                GitHub
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/gant0in" class="no-underline footer-main__link" rel="me">
+                            <span class="icon">
+                                <svg aria-hidden="true" viewBox="0 0 16 16">
+                                    <path d="M15.969 3.058c-.586.26-1.217.436-1.878.515.675-.405 1.194-1.045 1.438-1.809-.632.375-1.332.647-2.076.793-.596-.636-1.446-1.033-2.387-1.033-1.806.0-3.27 1.464-3.27 3.27.0.256.029.506.085.745C5.163 5.404 2.753 4.102 1.14 2.124.859 2.607.698 3.168.698 3.767c0 1.134.577 2.135 1.455 2.722C1.616 6.472 1.112 6.325.671 6.08c0 .014.0.027.0.041.0 1.584 1.127 2.906 2.623 3.206C3.02 9.402 2.731 9.442 2.433 9.442c-.211.0-.416-.021-.615-.059.416 1.299 1.624 2.245 3.055 2.271-1.119.877-2.529 1.4-4.061 1.4-.264.0-.524-.015-.78-.046 1.447.928 3.166 1.469 5.013 1.469 6.015.0 9.304-4.983 9.304-9.304.0-.142-.003-.283-.009-.423C14.976 4.29 15.531 3.714 15.969 3.058z"/>
+                                </svg>
+                            </span>
+                            <span>
+                                Twitter
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <div class="site-footer__wrapper--secondary">
+        <div class="footer-secondary">
+            <div class="footer-secondary__text">
+                <span class="footer-secondary__attribute">Made by <a href="https://github.com/gantoin">@gantoin</a> with cups of coffee. Inspired by <a
+                            href="https://chenhuijing.com/">@huijing</a>.</span>
+                <span class="footer-secondary__copyright">© 2023 Antoine Gauthier - All rights reserved.</span></div>
+            <nav class="footer-secondary__nav"><a class="footer-secondary__resources no-underline"
+                                                  href="https://github.com/gantoin/gantoin.github.io/">Resources</a>
+            </nav>
+        </div>
+    </div>
+</footer>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../../js/jquery-1.11.1.min.js"></script>
-    <script src="../../js/prettify.js"></script>
+<script src="../../js/jquery-1.11.1.min.js"></script>
+<script src="../../js/prettify.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad("base16/railscasts");</script>
 
-  </body>
+</body>
 </html>
