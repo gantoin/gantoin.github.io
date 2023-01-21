@@ -1,4 +1,4 @@
-name: Fetch Gists
+name: fetch-gists
 on:
   workflow_dispatch:
   schedule:
@@ -43,7 +43,11 @@ jobs:
                   if (mdContent.startsWith("# ")) {
                     mdContent = mdContent.substring(2);
                   }
-                  const header = "title="+gist.description+"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
+                  let title = gist.description;
+                  if(title.length > 30) {
+                    title = title.slice(0, 30) + "...";
+                  }
+                  const header = "title="+ title +"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
                   const content = header + mdContent;
                   fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
                   newArticles++;
