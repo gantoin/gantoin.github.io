@@ -36,8 +36,8 @@ jobs:
                     mdContent = mdContent.substring(2);
                   }
                   let title = gist.description;
-                  if(title.length > 30) {
-                    title = title.slice(0, 30) + "...";
+                  if(title.length > 80) {
+                    title = title.slice(0, 80) + "...";
                   }
                   const header = "title="+ title +"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
                   const content = header + mdContent;
