@@ -20,7 +20,6 @@ jobs:
           github-token: ${{ secrets.BLOG_TOKEN }}
           script: |
             const fs = require("fs");
-            let newArticles = 0;
             const gists = await github.gists.list();
             if (!gists.data) {
               console.log("No gists found");
@@ -43,12 +42,10 @@ jobs:
                   const header = "title="+ title +"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
                   const content = header + mdContent;
                   fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
-                  newArticles++;
                 }
               });
             });
       - name: Commit and Push
-        if: steps.fetch-gists.outputs.newArticles > 0
         run: |
           git config --local user.email "gantoin@pm.me"
           git config --local user.name "gantoin"
