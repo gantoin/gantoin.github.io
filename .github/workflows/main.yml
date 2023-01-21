@@ -26,17 +26,10 @@ jobs:
               console.log("No gists found");
               return;
             }
-            // get list of existing gists
-            const existingGists = fs.readdirSync('./content/blog/2023/');
             gists.data.forEach(async (gist) => {
               const files = Object.keys(gist.files);
               files.forEach(async (file) => {
                 if (file.endsWith('.md')) {
-                  // check if the gist is already downloaded
-                  if (existingGists.includes(gist.id)) {
-                    console.log(`Gist ${gist.id} already downloaded, skipping`);
-                    return;
-                  }
                   const fileContent = await github.gists.get({ gist_id: gist.id });
                   let mdContent = fileContent.data.files[file].content;
                   // remove leading "# " from title
