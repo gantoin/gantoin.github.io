@@ -31,7 +31,7 @@ jobs:
                 if (file.endsWith('.md')) {
                   const fileContent = await github.gists.get({ gist_id: gist.id });
                   let mdContent = fileContent.data.files[file].content;
-                  mdContent = mdContent.replace(/^.*\n/, '');
+                  mdContent = mdContent.replace(/^.*\n\n/, '');
                   let title = gist.description;
                   if(title.length > 80) {
                     title = title.slice(0, 80) + "...";
