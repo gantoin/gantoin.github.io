@@ -31,10 +31,7 @@ jobs:
                 if (file.endsWith('.md')) {
                   const fileContent = await github.gists.get({ gist_id: gist.id });
                   let mdContent = fileContent.data.files[file].content;
-                  // remove leading "# " from title
-                  if (mdContent.startsWith("# ")) {
-                    mdContent = mdContent.substring(2);
-                  }
+                  mdContent = mdContent.replace(/^.*\n/, '');
                   let title = gist.description;
                   if(title.length > 80) {
                     title = title.slice(0, 80) + "...";
