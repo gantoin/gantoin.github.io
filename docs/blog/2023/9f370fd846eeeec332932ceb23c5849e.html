@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>ᗩᑎTOIᑎE GᗩᑌTᕼIEᖇ</title>
+    <title>🐳 How to run 'landoop/fast-da...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="generator" content="Antoine's blog">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
     <link rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../../favicon.ico">
 </head>
 <body>
 
@@ -32,13 +32,13 @@
         </div>
         <nav class="site-nav">
             <a class="site-nav__link no-underline"
-               href="../index.html">Blog</a>
+               href="../../index.html">Blog</a>
             <a class="site-nav__link no-underline"
-               href="../about.html">About</a>
+               href="../../about.html">About</a>
             <a class="site-nav__link no-underline"
-               href="../feed.xml">Subscribe</a>
+               href="../../feed.xml">Subscribe</a>
             <a class="site-nav__link no-underline"
-               href="../archive.html">Archive</a>
+               href="../../archive.html">Archive</a>
         </nav>
     </div>
 </div>
@@ -46,31 +46,47 @@
 <!-- Begin page content -->
 
 <main class="content">
+    <div class="page-header">
+        <h1>🐳 How to run 'landoop/fast-da...</h1>
+    </div>
+<p><em>19 January 2023</em></p>
+<div class="post-content">
+    <p><p>🐳 How to run 'landoop/fast-data-dev' on Mac M1?</p>
+<p>Hey guys!</p>
+<p>I was following a lecture about Kafka Schema Registry when I suddenly had to run Landoop and a bunch of tools with Docker on my Mac.</p>
+<p>I met this error after running this <a href="https://github.com/lensesio/fast-data-dev/blob/fdd/main/Dockerfile">Dockerfile</a>:</p>
+<pre><code>Setting advertised host to 127.0.0.1.
+runtime: failed to create new OS thread (have 2 already; errno=22)
+fatal error: newosproc
+</code></pre>
+<p>After a few minutes of searching, I understood that's because I ran it on my M1 arm chip. So, I'll have to find an ARM version of these programs.</p>
+<p>This it! I found this <a href="https://github.com/lensesio/fast-data-dev/pull/185">Dockerfile</a> which can help you to run easily on your fabulous Mac M1:</p>
+<pre><code>FROM golang:bullseye as compile-lkd
+MAINTAINER Marios Andreopoulos &lt;marios@landoop.com&gt;
 
-<div class="page-header">
-    <h1>Tag: blog</h1>
+RUN apt-get update \
+    &amp;&amp; apt-get install -y \
+         unzip \
+         wget \
+	 file \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* \
+    &amp;&amp; echo &quot;progress = dot:giga&quot; | tee /etc/wgetrc \
+    &amp;&amp; mkdir -p /mnt /opt /data \
+    &amp;&amp; go install github.com/andmarios/duphard@latest \
+    &amp;&amp; go install gitlab.com/andmarios/checkport@latest \
+    &amp;&amp; go install github.com/andmarios/quickcert@latest \
+    &amp;&amp; ln -s  /go/bin/duphard /bin/duphard
+...
+</code></pre>
+<p>So, the easiest to do is to go on your <code>Docker for Mac</code> software and click on <code>Search</code> &amp; search <code>dougdonohoe/fast-data-dev</code> :</p>
+<p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/screenshot1.png" alt="https://github.com/gantoin/gantoin.github.io/blob/master/assets/img/screenshot1.png" /></p>
+<p>After the image is pulled, get on the <code>Images</code> tab and run it with exposed port <code>-p 3030:3030</code>, something like:</p>
+<pre><code class="language-bash">docker run --hostname=912d813335a8 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=LANG=en_US.UTF-8 --env=LANGUAGE=en_US.UTF-8 --env=LC_ALL=en_US.UTF-8 --volume=/data --workdir=/ --runtime=runc -d --add-host host.docker.internal:host-gateway -p 3030:3030 --name=web dougdonohoe/fast-data-dev:latest
+</code></pre>
+<p>And it's done, enjoy Kafka Schema Registry!</p>
+<p>P.S: the tool <code>kafka-avro-console-producer</code> will be able to use in the container.</p>
+</p>
 </div>
-
-<!--<ul>-->
-        <h4>January 2023</h4>
-        <ul>
-
-    <li>19 - <a href="../blog/2023/9f370fd846eeeec332932ceb23c5849e.html">🐳 How to run 'landoop/fast-da...</a></li>
-
-    <li>08 - <a href="../blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html">🤖 How to use ChatGPT API in y...</a></li>
-
-    <li>04 - <a href="../blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html">📌 Configure Twitch API OAuth2...</a></li>
-            </ul>
-            <h4>December 2022</h4>
-            <ul>
-
-    <li>30 - <a href="../blog/2023/8f3c78932057d730b351c17b79770e8c.html">🧷 How I became a FullStack Ja...</a></li>
-            </ul>
-            <h4>August 2022</h4>
-            <ul>
-
-    <li>21 - <a href="../blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html">☂️ How to plug your Umbrel's N...</a></li>
-    </ul>
 
 </div>
 <div id="push"></div>
@@ -144,8 +160,8 @@
     </div>
 </footer>
 
-<script src="../js/jquery-1.11.1.min.js"></script>
-<script src="../js/prettify.js"></script>
+<script src="../../js/jquery-1.11.1.min.js"></script>
+<script src="../../js/prettify.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad("base16/railscasts");</script>
 

@@ -6,11 +6,54 @@
         <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
         <description>Basic blog of an average Java developer</description>
         <language>en-gb</language>
-        <pubDate>Sat, 21 Jan 2023 00:22:18 +0000</pubDate>
-        <lastBuildDate>Sat, 21 Jan 2023 00:22:18 +0000</lastBuildDate>
+        <pubDate>Sun, 22 Jan 2023 00:24:14 +0000</pubDate>
+        <lastBuildDate>Sun, 22 Jan 2023 00:24:14 +0000</lastBuildDate>
 
             <item>
-                <title>🤖 How to use ChatGPT API in your Java application?</title>
+                <title>🐳 How to run &apos;landoop/fast-da...</title>
+                <link>https://gantoin.github.io//blog/2023/9f370fd846eeeec332932ceb23c5849e.html</link>
+                <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/9f370fd846eeeec332932ceb23c5849e.html</guid>
+                <description>
+                        &lt;p&gt;🐳 How to run &apos;landoop/fast-data-dev&apos; on Mac M1?&lt;/p&gt;
+&lt;p&gt;Hey guys!&lt;/p&gt;
+&lt;p&gt;I was following a lecture about Kafka Schema Registry when I suddenly had to run Landoop and a bunch of tools with Docker on my Mac.&lt;/p&gt;
+&lt;p&gt;I met this error after running this &lt;a href=&quot;https://github.com/lensesio/fast-data-dev/blob/fdd/main/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Setting advertised host to 127.0.0.1.
+runtime: failed to create new OS thread (have 2 already; errno=22)
+fatal error: newosproc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After a few minutes of searching, I understood that&apos;s because I ran it on my M1 arm chip. So, I&apos;ll have to find an ARM version of these programs.&lt;/p&gt;
+&lt;p&gt;This it! I found this &lt;a href=&quot;https://github.com/lensesio/fast-data-dev/pull/185&quot;&gt;Dockerfile&lt;/a&gt; which can help you to run easily on your fabulous Mac M1:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM golang:bullseye as compile-lkd
+MAINTAINER Marios Andreopoulos &amp;lt;marios@landoop.com&amp;gt;
+
+RUN apt-get update \
+    &amp;amp;&amp;amp; apt-get install -y \
+         unzip \
+         wget \
+	 file \
+    &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/* \
+    &amp;amp;&amp;amp; echo &amp;quot;progress = dot:giga&amp;quot; | tee /etc/wgetrc \
+    &amp;amp;&amp;amp; mkdir -p /mnt /opt /data \
+    &amp;amp;&amp;amp; go install github.com/andmarios/duphard@latest \
+    &amp;amp;&amp;amp; go install gitlab.com/andmarios/checkport@latest \
+    &amp;amp;&amp;amp; go install github.com/andmarios/quickcert@latest \
+    &amp;amp;&amp;amp; ln -s  /go/bin/duphard /bin/duphard
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So, the easiest to do is to go on your &lt;code&gt;Docker for Mac&lt;/code&gt; software and click on &lt;code&gt;Search&lt;/code&gt; &amp;amp; search &lt;code&gt;dougdonohoe/fast-data-dev&lt;/code&gt; :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/screenshot1.png&quot; alt=&quot;https://github.com/gantoin/gantoin.github.io/blob/master/assets/img/screenshot1.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;After the image is pulled, get on the &lt;code&gt;Images&lt;/code&gt; tab and run it with exposed port &lt;code&gt;-p 3030:3030&lt;/code&gt;, something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker run --hostname=912d813335a8 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=LANG=en_US.UTF-8 --env=LANGUAGE=en_US.UTF-8 --env=LC_ALL=en_US.UTF-8 --volume=/data --workdir=/ --runtime=runc -d --add-host host.docker.internal:host-gateway -p 3030:3030 --name=web dougdonohoe/fast-data-dev:latest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And it&apos;s done, enjoy Kafka Schema Registry!&lt;/p&gt;
+&lt;p&gt;P.S: the tool &lt;code&gt;kafka-avro-console-producer&lt;/code&gt; will be able to use in the container.&lt;/p&gt;
+
+                </description>
+            </item>
+            <item>
+                <title>🤖 How to use ChatGPT API in y...</title>
                 <link>https://gantoin.github.io//blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</link>
                 <pubDate>Sun, 8 Jan 2023 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</guid>
@@ -75,7 +118,7 @@ Process finished with exit code 0
                 </description>
             </item>
             <item>
-                <title>📌 Configure Twitch API OAuth2 provider on a Spring Security app</title>
+                <title>📌 Configure Twitch API OAuth2...</title>
                 <link>https://gantoin.github.io//blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</link>
                 <pubDate>Wed, 4 Jan 2023 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</guid>
@@ -141,7 +184,7 @@ spring.security.oauth2.client.registration.twitch.redirect-uri={baseUrl}/login/o
                 </description>
             </item>
             <item>
-                <title>🧷 How I became a FullStack Java developer with Vaadin?</title>
+                <title>🧷 How I became a FullStack Ja...</title>
                 <link>https://gantoin.github.io//blog/2023/8f3c78932057d730b351c17b79770e8c.html</link>
                 <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/8f3c78932057d730b351c17b79770e8c.html</guid>
@@ -220,6 +263,44 @@ textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
 &lt;p&gt;Vaadin is a powerful and flexible framework for building modern web applications using Java. It offers a large set of built-in features, a visual designer tool, and support for data binding and validation. It is also highly customizable and can be integrated with other Java libraries and frameworks.&lt;/p&gt;
 &lt;p&gt;If you are a Java developer looking to build web applications, Vaadin is definitely worth considering as a tool for your development needs.&lt;/p&gt;
 &lt;p&gt;➡️ Official documentation here: &lt;a href=&quot;https://vaadin.com/docs/latest&quot;&gt;https://vaadin.com/docs/latest&lt;/a&gt;&lt;/p&gt;
+
+                </description>
+            </item>
+            <item>
+                <title>☂️ How to plug your Umbrel&apos;s N...</title>
+                <link>https://gantoin.github.io//blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</link>
+                <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</guid>
+                <description>
+                        &lt;p&gt;☂ How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app? (using Tailscale &amp;amp; some docker commands)&lt;/p&gt;
+&lt;h2&gt;Why you could want to do that?&lt;/h2&gt;
+&lt;p&gt;You could want to use the Nextcloud app to make saving your phone data easier or to get documents from your cloud easily (without a Tor browser, connect via onion etc.).&lt;/p&gt;
+&lt;h2&gt;Why is it not possible natively?&lt;/h2&gt;
+&lt;p&gt;It&apos;s impossible to connect the Nextcloud app to a onion address, you need a clear-net URL. We will use Tailscale to solve this problem.&lt;/p&gt;
+&lt;h2&gt;What is Tailscale?&lt;/h2&gt;
+&lt;p&gt;Tailscale is a zero-config VPN. The easiest way to create a secure network between your servers, computers, and cloud instances. We will use Tailscale to connect Umbrel&apos;s Nextcloud to your mobile with clear-net (or any other device).&lt;br /&gt;
+&lt;a href=&quot;https://github.com/tailscale/tailscale&quot;&gt;https://github.com/tailscale/tailscale&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Install Tailscale on your devices&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Umbrel: Go to your umbrel (directly &lt;a href=&quot;http://umbrel.local&quot;&gt;http://umbrel.local&lt;/a&gt;, not using onion because Tailescale doesn’t work - for me - using tor connection). Install the app via the App Store.&lt;/li&gt;
+&lt;li&gt;Phone: Install the Tailscale app via the Google/Apple Store.&lt;/li&gt;
+&lt;li&gt;Computer: &lt;a href=&quot;https://tailscale.com/&quot;&gt;https://tailscale.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Create a Tailscale account, and connect all your devices on this account.&lt;/p&gt;
+&lt;h2&gt;Configure new trusted domain on your Nextcloud app&lt;/h2&gt;
+&lt;p&gt;Connect via ssh on your umbrel :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh umbrel@umbrel.local
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Find the ID of the Nexcloud container :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker ps
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pick the ID of the service started with &lt;code&gt;/entrypoint.sh apac…&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Enter this command, to add your nextcloud Tailscale address as truster_domain :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec --user www-data ID_OF_THE_NEXTCLOUD_CONTAINER php occ config:system:set trusted_domains 3 --value=IP_OF_YOUR_UMBREL_ON_TAILSCALE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Enjoy!&lt;/h3&gt;
+&lt;p&gt;Now, you can enter the Tailscale IP of your umbrel with the port on the Nextcloud App.&lt;/p&gt;
+&lt;p&gt;⚠️ Don&apos;t use SSL → HTTP instead HTTPS&lt;/p&gt;
 
                 </description>
             </item>
