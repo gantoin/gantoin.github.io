@@ -73,7 +73,7 @@
 <script src="<#if (content.rootpath)??>${content.rootpath}<#else></#if>js/jquery-1.11.1.min.js"></script>
 <script src="<#if (content.rootpath)??>${content.rootpath}<#else></#if>js/prettify.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad("base16/railscasts");</script>
+<script>hljs.highlightAll("base16/railscasts");</script>
 
 </body>
 </html>
