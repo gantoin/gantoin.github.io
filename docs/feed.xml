@@ -6,17 +6,16 @@
         <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
         <description>Basic blog of an average Java developer</description>
         <language>en-gb</language>
-        <pubDate>Sun, 22 Jan 2023 00:24:14 +0000</pubDate>
-        <lastBuildDate>Sun, 22 Jan 2023 00:24:14 +0000</lastBuildDate>
+        <pubDate>Sun, 22 Jan 2023 17:12:57 +0000</pubDate>
+        <lastBuildDate>Sun, 22 Jan 2023 17:12:57 +0000</lastBuildDate>
 
             <item>
-                <title>🐳 How to run &apos;landoop/fast-da...</title>
+                <title>🐳 How to run &apos;landoop/fast-data-dev&apos; on Mac M1?</title>
                 <link>https://gantoin.github.io//blog/2023/9f370fd846eeeec332932ceb23c5849e.html</link>
                 <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/9f370fd846eeeec332932ceb23c5849e.html</guid>
                 <description>
-                        &lt;p&gt;🐳 How to run &apos;landoop/fast-data-dev&apos; on Mac M1?&lt;/p&gt;
-&lt;p&gt;Hey guys!&lt;/p&gt;
+                        &lt;p&gt;Hey guys!&lt;/p&gt;
 &lt;p&gt;I was following a lecture about Kafka Schema Registry when I suddenly had to run Landoop and a bunch of tools with Docker on my Mac.&lt;/p&gt;
 &lt;p&gt;I met this error after running this &lt;a href=&quot;https://github.com/lensesio/fast-data-dev/blob/fdd/main/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Setting advertised host to 127.0.0.1.
@@ -53,13 +52,12 @@ RUN apt-get update \
                 </description>
             </item>
             <item>
-                <title>🤖 How to use ChatGPT API in y...</title>
+                <title>🤖 How to use ChatGPT API in your Java application?</title>
                 <link>https://gantoin.github.io//blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</link>
                 <pubDate>Sun, 8 Jan 2023 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html</guid>
                 <description>
-                        &lt;p&gt;🤖 How to use ChatGPT API in your Java application?&lt;/p&gt;
-&lt;p&gt;Hi guys 👋 I&apos;m sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.&lt;/p&gt;
+                        &lt;p&gt;Hi guys 👋 I&apos;m sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.&lt;/p&gt;
 &lt;p&gt;Today I&apos;ll show you how to use OpenAI ChatGPT API with Java, it&apos;s pretty easy.&lt;/p&gt;
 &lt;h2&gt;1. Register for an API key&lt;/h2&gt;
 &lt;p&gt;First, you&apos;ll need to register for an API key by going to the &lt;a href=&quot;https://beta.openai.com/signup/&quot;&gt;OpenAI API page&lt;/a&gt;. Follow the instructions to create an account and obtain an API key.&lt;/p&gt;
@@ -118,13 +116,12 @@ Process finished with exit code 0
                 </description>
             </item>
             <item>
-                <title>📌 Configure Twitch API OAuth2...</title>
+                <title>📌 Configure Twitch API OAuth2 provider on a Spring Security app</title>
                 <link>https://gantoin.github.io//blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</link>
                 <pubDate>Wed, 4 Jan 2023 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/b8ac42b8bc2daeddf90278569b07b93b.html</guid>
                 <description>
-                        &lt;p&gt;📺 Configure Twitch API OAuth2 provider on a Spring Security app&lt;/p&gt;
-&lt;p&gt;Hi guys, I&apos;m working on a SaaS to manage Twitch Clips of broadcasters:&lt;br /&gt;
+                        &lt;p&gt;Hi guys, I&apos;m working on a SaaS to manage Twitch Clips of broadcasters:&lt;br /&gt;
 - Create vertical Clips automatically for TikTok, Youtube Shorts, etc.&lt;br /&gt;
 - Create compilation for clips to easily make best-of&lt;/p&gt;
 &lt;p&gt;So, I had to plug my Spring Security app into the Twitch OAuth2 provider and it was not easy...&lt;/p&gt;
@@ -184,13 +181,12 @@ spring.security.oauth2.client.registration.twitch.redirect-uri={baseUrl}/login/o
                 </description>
             </item>
             <item>
-                <title>🧷 How I became a FullStack Ja...</title>
+                <title>💭 How I became a FullStack Java developer with Vaadin?</title>
                 <link>https://gantoin.github.io//blog/2023/8f3c78932057d730b351c17b79770e8c.html</link>
                 <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/8f3c78932057d730b351c17b79770e8c.html</guid>
                 <description>
-                        &lt;p&gt;💭 How I became a FullStack Java developer with Vaadin?&lt;/p&gt;
-&lt;h2&gt;What is Vaadin?&lt;/h2&gt;
+                        &lt;h2&gt;What is Vaadin?&lt;/h2&gt;
 &lt;p&gt;Vaadin is an open-source framework for building modern web applications. It allows developers to create rich, interactive user interfaces using Java, without the need to learn JavaScript or any other client-side programming language.&lt;/p&gt;
 &lt;p&gt;Vaadin was first released in 2002 and has since become a popular choice for building enterprise-level applications. It is used by companies such as Nokia, Goldman Sachs, and the United States Air Force, among others.&lt;/p&gt;
 &lt;h2&gt;Why use Vaadin?&lt;/h2&gt;
@@ -267,13 +263,12 @@ textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
                 </description>
             </item>
             <item>
-                <title>☂️ How to plug your Umbrel&apos;s N...</title>
+                <title>☂️ How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app? (...</title>
                 <link>https://gantoin.github.io//blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</link>
                 <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
                 <guid isPermaLink="false">blog/2023/d619467f6d9574cddf0072fb9f9f70f6.html</guid>
                 <description>
-                        &lt;p&gt;☂ How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app? (using Tailscale &amp;amp; some docker commands)&lt;/p&gt;
-&lt;h2&gt;Why you could want to do that?&lt;/h2&gt;
+                        &lt;h2&gt;Why you could want to do that?&lt;/h2&gt;
 &lt;p&gt;You could want to use the Nextcloud app to make saving your phone data easier or to get documents from your cloud easily (without a Tor browser, connect via onion etc.).&lt;/p&gt;
 &lt;h2&gt;Why is it not possible natively?&lt;/h2&gt;
 &lt;p&gt;It&apos;s impossible to connect the Nextcloud app to a onion address, you need a clear-net URL. We will use Tailscale to solve this problem.&lt;/p&gt;
