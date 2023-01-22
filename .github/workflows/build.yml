@@ -1,4 +1,4 @@
-name: JBake Build
+name: jBake-build
 on:
   workflow_dispatch:
   schedule:
