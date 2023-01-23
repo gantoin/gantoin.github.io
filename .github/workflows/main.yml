@@ -32,11 +32,13 @@ jobs:
                   const fileContent = await github.gists.get({ gist_id: gist.id });
                   let mdContent = fileContent.data.files[file].content;
                   mdContent = mdContent.replace(/^.*\n\n/, '');
+                  let tags = mdContent.match(/tags: (.*)\n/)[1];
+                  mdContent = mdContent.replace(/tags: (.*)\n/, '');
                   let title = gist.description;
                   if(title.length > 80) {
                     title = title.slice(0, 80) + "...";
                   }
-                  const header = "title="+ title +"\ndate="+gist.created_at+"\ntype=post\ntags=blog\nstatus=published\n~~~~~~\n";
+                  const header = "title="+ title +"\ndate="+gist.created_at+"\ntype=post\ntags="+tags+"\nstatus=published\n~~~~~~\n";
                   const content = header + mdContent;
                   fs.writeFileSync(`./content/blog/2023/${gist.id}.md`, content);
                 }
