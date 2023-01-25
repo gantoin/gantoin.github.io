@@ -1,16 +1,14 @@
 <!-- Fixed navbar -->
 <div class="site-header" role="navigation">
     <div class="site-header__wrapper">
-        <div>
-            <div class="site-branding">
-                <a class="no-underline" href="https://gantoin.github.io"><span class="site-branding__image">Home</span></a>
-                <div class="site-branding__wrapper">
-                    <h1 class="site-branding__title no-underline">
-                        <a class="no-underline" href="https://gantoin.github.io">Antoine Gauthier</a>
-                    </h1>
-                    <p class="site-branding__description">Just a Java developer trying to brew up some good code, one
-                        cup at a time.</p>
-                </div>
+        <div class="site-branding">
+            <a class="no-underline" href="https://gantoin.github.io"><span class="site-branding__image">Home</span></a>
+            <div class="site-branding__wrapper">
+                <h1 class="site-branding__title no-underline">
+                    <a class="no-underline" href="https://gantoin.github.io">Antoine Gauthier</a>
+                </h1>
+                <p class="site-branding__description">Just a Java developer trying to brew up some good code, one
+                    cup at a time.</p>
             </div>
         </div>
         <nav class="site-nav">
