@@ -6,8 +6,8 @@
         <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
         <description>Basic blog of an average Java developer</description>
         <language>en-gb</language>
-        <pubDate>Tue, 24 Jan 2023 00:23:02 +0000</pubDate>
-        <lastBuildDate>Tue, 24 Jan 2023 00:23:02 +0000</lastBuildDate>
+        <pubDate>Wed, 25 Jan 2023 00:22:49 +0000</pubDate>
+        <lastBuildDate>Wed, 25 Jan 2023 00:22:49 +0000</lastBuildDate>
 
             <item>
                 <title>🐳 How to run &apos;landoop/fast-data-dev&apos; on Mac M1?</title>
