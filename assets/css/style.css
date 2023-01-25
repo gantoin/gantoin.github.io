@@ -14,7 +14,7 @@ body {
 
 .site-header {
     background: url(/img/glass.png);
-    flex: 1 0 auto;
+    /*flex: 1 0 auto;*/
     max-height: 100%;
 }
 
@@ -478,3 +478,5 @@ strong {
     font-size: 110%;
     font-family: "Magnetic Pro", "HeiTi SC Light", "Microsoft YaHei", sans-serif;
 }
+
+html, body { height: 100% !important }
