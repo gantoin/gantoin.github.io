@@ -135,7 +135,7 @@ a {
     margin-right: auto;
     max-width: 40rem;
     /*background-color: #fafffa;*/
-    padding: 1.5em;
+    /*padding: 1.5em;*/
     line-height: 1.5;
 }
 
@@ -479,4 +479,31 @@ strong {
     font-family: "Magnetic Pro", "HeiTi SC Light", "Microsoft YaHei", sans-serif;
 }
 
-html, body { height: 100% !important }
+html, body {
+    height: 100% !important;
+    /*margin: 0 !important;*/
+    width: 100% !important;
+}
+
+/* Media Query for mobile devices */
+@media only screen and (max-width: 767px) {
+    .site-header {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 70em;
+        padding: 1em;
+    }
+    .site-footer {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 70em;
+    }
+}
