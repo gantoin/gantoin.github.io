@@ -6,9 +6,219 @@
         <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
         <description>Basic blog of an average Java developer</description>
         <language>en-gb</language>
-        <pubDate>Thu, 26 Jan 2023 00:21:49 +0000</pubDate>
-        <lastBuildDate>Thu, 26 Jan 2023 00:21:49 +0000</lastBuildDate>
+        <pubDate>Thu, 26 Jan 2023 14:07:24 +0000</pubDate>
+        <lastBuildDate>Thu, 26 Jan 2023 14:07:24 +0000</lastBuildDate>
 
+            <item>
+                <title>🚌 Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry</title>
+                <link>https://gantoin.github.io//blog/2023/7d0dd6a8a41688208218958ef9cc9b8d.html</link>
+                <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/7d0dd6a8a41688208218958ef9cc9b8d.html</guid>
+                <description>
+                        &lt;p&gt;In this article, you will learn how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.&lt;/p&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to&lt;br /&gt;
+a message&lt;br /&gt;
+queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications.&lt;br /&gt;
+It is a very powerful tool, but it is not without its challenges. One of the most common challenges is the lack of data&lt;br /&gt;
+validation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro1.png&quot; alt=&quot;Kafka bus&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;It is important to understand that Kafka take bytes as input and output. It is up to the application to serialize and&lt;br /&gt;
+deserialize.&lt;br /&gt;
+Also, if you don&apos;t have a total control on application that consume your data, you can&apos;t be sure that the data will be&lt;br /&gt;
+valid.&lt;/p&gt;
+&lt;p&gt;If you need to update your data model, you will have to deal with backward compatibility with probably some consumer&lt;br /&gt;
+that will&lt;br /&gt;
+not be able to read the new data.&lt;/p&gt;
+&lt;h2&gt;Let&apos;s make the Kafka cluster validating the data?&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro2.png&quot; alt=&quot;Kafka validator&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;In theory, it is possible to validate the data in the Kafka cluster. But, the most important, it is not very efficient.&lt;br /&gt;
+You will break&lt;br /&gt;
+what Kafka is doing best: &lt;strong&gt;distributing data fast&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;That&apos;s definitely not what we want.&lt;/p&gt;
+&lt;h2&gt;Solution: Apache Avro &amp;amp; Confluent Schema Registry&lt;/h2&gt;
+&lt;p&gt;The solution is to use Apache Avro and Confluent Schema Registry.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro3.png&quot; alt=&quot;Kafka validator&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;How to implement it?&lt;/h2&gt;
+&lt;h3&gt;1. Define your data model&lt;/h3&gt;
+&lt;p&gt;First, you need to define your data model. It is very important to understand that Avro is a schema-based serialization&lt;br /&gt;
+format.&lt;/p&gt;
+&lt;p&gt;You will need to add Apache Avro dependency in your project.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
+&amp;lt;dependencies&amp;gt;
+  &amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.apache.avro&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;avro&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.10.2&amp;lt;/version&amp;gt;
+  &amp;lt;/dependency&amp;gt;
+  &amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.apache.avro&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;avro-maven-plugin&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;1.10.2&amp;lt;/version&amp;gt;
+  &amp;lt;/dependency&amp;gt;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To define a new model you will have to create a new Avro schema. It is a JSON file that describe the data model.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;{
+  &amp;quot;namespace&amp;quot;: &amp;quot;fr.gantoin.domain&amp;quot;,
+  &amp;quot;name&amp;quot;: &amp;quot;Book&amp;quot;,
+  &amp;quot;type&amp;quot;: &amp;quot;record&amp;quot;,
+  &amp;quot;fields&amp;quot;: [
+    {
+      &amp;quot;name&amp;quot;: &amp;quot;title&amp;quot;,
+      &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;,
+      &amp;quot;doc&amp;quot;: &amp;quot;The title of the book&amp;quot;
+    },
+    {
+      &amp;quot;name&amp;quot;: &amp;quot;author&amp;quot;,
+      &amp;quot;type&amp;quot;: [
+        &amp;quot;null&amp;quot;,
+        {
+          &amp;quot;namespace&amp;quot;: &amp;quot;fr.gantoin.domain&amp;quot;,
+          &amp;quot;name&amp;quot;: &amp;quot;Author&amp;quot;,
+          &amp;quot;type&amp;quot;: &amp;quot;record&amp;quot;,
+          &amp;quot;fields&amp;quot;: [
+            {
+              &amp;quot;name&amp;quot;: &amp;quot;firstName&amp;quot;,
+              &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;,
+              &amp;quot;doc&amp;quot;: &amp;quot;The author&apos;s first name&amp;quot;
+            },
+            {
+              &amp;quot;name&amp;quot;: &amp;quot;lastName&amp;quot;,
+              &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;,
+              &amp;quot;doc&amp;quot;: &amp;quot;The author&apos;s last name&amp;quot;
+            }
+          ]
+        }
+      ],
+      &amp;quot;default&amp;quot;: null,
+      &amp;quot;doc&amp;quot;: &amp;quot;The author of the book&amp;quot;
+    },
+    {
+      &amp;quot;name&amp;quot;: &amp;quot;year&amp;quot;,
+      &amp;quot;type&amp;quot;: &amp;quot;int&amp;quot;,
+      &amp;quot;logicalType&amp;quot;: &amp;quot;timestamp-millis&amp;quot;,
+      &amp;quot;doc&amp;quot;: &amp;quot;The year of the book&amp;quot;
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can create really complex data model with Avro. You can check&lt;br /&gt;
+the &lt;a href=&quot;https://avro.apache.org/docs/current/spec.html&quot;&gt;Avro documentation&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;p&gt;You will also have to create a maven profile to generate the Java classes from the Avro schema.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
+&amp;lt;plugin&amp;gt;
+  &amp;lt;groupId&amp;gt;org.apache.avro&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;avro-maven-plugin&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;1.10.2&amp;lt;/version&amp;gt;
+  &amp;lt;executions&amp;gt;
+    &amp;lt;execution&amp;gt;
+      &amp;lt;phase&amp;gt;generate-sources&amp;lt;/phase&amp;gt;
+      &amp;lt;goals&amp;gt;
+        &amp;lt;goal&amp;gt;schema&amp;lt;/goal&amp;gt;
+        &amp;lt;goal&amp;gt;protocol&amp;lt;/goal&amp;gt;
+        &amp;lt;goal&amp;gt;idl-protocol&amp;lt;/goal&amp;gt;
+      &amp;lt;/goals&amp;gt;
+      &amp;lt;configuration&amp;gt;
+        &amp;lt;sourceDirectory&amp;gt;${project.basedir}/src/main/resources/avro&amp;lt;/sourceDirectory&amp;gt;
+        &amp;lt;stringType&amp;gt;String&amp;lt;/stringType&amp;gt;
+        &amp;lt;createSetters&amp;gt;false&amp;lt;/createSetters&amp;gt;
+        &amp;lt;enableDecimalLogicalType&amp;gt;true&amp;lt;/enableDecimalLogicalType&amp;gt;
+        &amp;lt;fieldVisibility&amp;gt;private&amp;lt;/fieldVisibility&amp;gt;
+      &amp;lt;/configuration&amp;gt;
+    &amp;lt;/execution&amp;gt;
+  &amp;lt;/executions&amp;gt;
+&amp;lt;/plugin&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With a simple command, you will be able to generate the Java classes from the Avro schema.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;mvn clean package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;2. Register your schema in the Confluent Schema Registry&lt;/h3&gt;
+&lt;p&gt;Once you have defined your data model, you will have to register it in the Confluent Schema Registry.&lt;br /&gt;
+Confluent Schema Registry is a schema registry for Avro developed by Confluent.&lt;/p&gt;
+&lt;p&gt;Is it important to know that with this kind of architecture, your schema registry become a vital part of your&lt;br /&gt;
+infrastructure.&lt;br /&gt;
+If your schema registry is down, your Kafka cluster will not be able to validate the data.&lt;/p&gt;
+&lt;p&gt;To try it, you can start with the project fast-data-dev. It is a docker image that contains a Kafka cluster with&lt;br /&gt;
+Confluent Schema Registry:&lt;br /&gt;
+&lt;a href=&quot;https://hub.docker.com/r/landoop/fast-data-dev/dockerfile&quot;&gt;https://hub.docker.com/r/landoop/fast-data-dev/dockerfile&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;3. Use the Confluent Schema Registry in your application&lt;/h3&gt;
+&lt;p&gt;Now, you can use the Confluent Schema Registry in your application. First, add the Confluent Avro serializer and deserializer dependency in your project:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;io.confluent&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;kafka-avro-serializer&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;6.2.1&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And Confluence Schema Registry dependency.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;io.confluent&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;kafka-schema-registry-client&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;6.2.1&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You will need to add the Confluent Maven repository.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
+&amp;lt;repositories&amp;gt;
+  &amp;lt;repository&amp;gt;
+    &amp;lt;id&amp;gt;confluent&amp;lt;/id&amp;gt;
+    &amp;lt;name&amp;gt;Confluent&amp;lt;/name&amp;gt;
+    &amp;lt;url&amp;gt;https://packages.confluent.io/maven/&amp;lt;/url&amp;gt;
+  &amp;lt;/repository&amp;gt;
+&amp;lt;/repositories&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You will also have to configure the Kafka producer and consumer to use the Confluent Avro serializer and deserializer.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+@Configuration
+public class KafkaSenderConfiguration {
+    @Bean
+    public ProducerFactory&amp;lt;String, GenericRecord&amp;gt; producerFactory() {
+        return new DefaultKafkaProducerFactory&amp;lt;&amp;gt;(Map.of(
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers,
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class,
+                &amp;quot;schema.registry.url&amp;quot;, schemaRegistryUrl,
+                &amp;quot;specific.avro.reader&amp;quot;, true,
+                &amp;quot;auto.register.schemas&amp;quot;, true
+        ));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, is referred the serializer and the schema registry url.&lt;/p&gt;
+&lt;h3&gt;4. Use the Confluent Schema Registry in your consumer&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+@Configuration
+public class KafkaReceiverConfiguration {
+    @Bean
+    public ConsumerFactory&amp;lt;String, GenericRecord&amp;gt; consumerFactory() {
+        return new DefaultKafkaConsumerFactory&amp;lt;&amp;gt;(Map.of(
+                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers,
+                ConsumerConfig.GROUP_ID_CONFIG, groupId,
+                ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
+                ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class,
+                &amp;quot;schema.registry.url&amp;quot;, schemaRegistryUrl,
+                &amp;quot;specific.avro.reader&amp;quot;, true,
+                &amp;quot;auto.register.schemas&amp;quot;, true
+        ));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;5. Update your data model&lt;/h3&gt;
+&lt;p&gt;If you need to update your data model, you will have to update the Avro schema and register it in the Confluent Schema&lt;br /&gt;
+Registry.&lt;br /&gt;
+Once it is done, you can send your new data model with the new version. Your old consumer will still be able to read&lt;br /&gt;
+your data.&lt;br /&gt;
+If you want to know more about Confluent Schema Registry, you can check this article:&lt;br /&gt;
+&lt;a href=&quot;https://docs.confluent.io/current/schema-registry/docs/index.html&quot;&gt;https://docs.confluent.io/current/schema-registry/docs/index.html&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;In this article, you have learned how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more&lt;br /&gt;
+robust.&lt;/p&gt;
+&lt;p&gt;For more details on how to do, here is a live coding video that I made on YouTube (in French, sorry about that):&lt;/p&gt;
+
+                </description>
+            </item>
             <item>
                 <title>🐳 How to run &apos;landoop/fast-data-dev&apos; on Mac M1?</title>
                 <link>https://gantoin.github.io//blog/2023/9f370fd846eeeec332932ceb23c5849e.html</link>
@@ -42,7 +252,7 @@ RUN apt-get update \
 ...
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So, the easiest to do is to go on your &lt;code&gt;Docker for Mac&lt;/code&gt; software and click on &lt;code&gt;Search&lt;/code&gt; &amp;amp; search &lt;code&gt;dougdonohoe/fast-data-dev&lt;/code&gt; :&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/screenshot1.png&quot; alt=&quot;https://github.com/gantoin/gantoin.github.io/blob/master/assets/img/screenshot1.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/screenshot-docker.png&quot; alt=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/screenshot-docker.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;After the image is pulled, get on the &lt;code&gt;Images&lt;/code&gt; tab and run it with exposed port &lt;code&gt;-p 3030:3030&lt;/code&gt;, something like:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker run --hostname=912d813335a8 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=LANG=en_US.UTF-8 --env=LANGUAGE=en_US.UTF-8 --env=LC_ALL=en_US.UTF-8 --volume=/data --workdir=/ --runtime=runc -d --add-host host.docker.internal:host-gateway -p 3030:3030 --name=web dougdonohoe/fast-data-dev:latest
 &lt;/code&gt;&lt;/pre&gt;

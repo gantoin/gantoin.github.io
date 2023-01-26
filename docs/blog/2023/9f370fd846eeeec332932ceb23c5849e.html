@@ -75,7 +75,7 @@ RUN apt-get update \
 ...
 </code></pre>
 <p>So, the easiest to do is to go on your <code>Docker for Mac</code> software and click on <code>Search</code> &amp; search <code>dougdonohoe/fast-data-dev</code> :</p>
-<p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/screenshot1.png" alt="https://github.com/gantoin/gantoin.github.io/blob/master/assets/img/screenshot1.png" /></p>
+<p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/screenshot-docker.png" alt="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/screenshot-docker.png" /></p>
 <p>After the image is pulled, get on the <code>Images</code> tab and run it with exposed port <code>-p 3030:3030</code>, something like:</p>
 <pre><code class="language-bash">docker run --hostname=912d813335a8 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=LANG=en_US.UTF-8 --env=LANGUAGE=en_US.UTF-8 --env=LC_ALL=en_US.UTF-8 --volume=/data --workdir=/ --runtime=runc -d --add-host host.docker.internal:host-gateway -p 3030:3030 --name=web dougdonohoe/fast-data-dev:latest
 </code></pre>
