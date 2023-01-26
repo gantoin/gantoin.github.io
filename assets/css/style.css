@@ -507,3 +507,8 @@ html, body {
         max-width: 70em;
     }
 }
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+}
