@@ -1,0 +1,60 @@
+title=🎨 How I created a Twitter bot which paints like Van Gogh
+date=2022-11-03T09:12:55Z
+type=post
+tags=blog, twitter, ai
+status=published
+~~~~~~
+
+<h2>List of tools I used:</h2>
+<ul>
+	<li><a href="https://n8n.io/">n8n</a>: free and source-available workflow automation tool (I ran my own
+		n8n service on local <a href="https://www.docker.com/">Docker</a>)
+	</li>
+	<li><a href="https://openai.com/dall-e-2/">DALL·E 2</a>: AI system that can create realistic images and
+		art from a description in natural language
+	</li>
+	<li><a href="https://core.telegram.org/bots">Telegram bot</a>: small applications that run entirely
+		within the Telegram app
+	</li>
+	<li><a href="https://en.wikipedia.org/">Wikipedia</a>: you know what this is...</li>
+</ul>
+
+<figure class="w-richtext-figure-type-image w-richtext-align-center" data-rt-type="image" data-rt-align="center">
+	<div><img
+			src="https://uploads-ssl.webflow.com/635f732c77408df7618d836b/636387a94a12d44a906eaacb_Capture%20d%E2%80%99e%CC%81cran%202022-11-03%20a%CC%80%2010.19.29.png"
+			loading="lazy" width="auto" height="auto"></div>
+</figure>
+
+<p>First, I needed to generate a random sentence that dalle API will consume to produce images for me.</p>
+<p>
+	As I want, the bot will draw like Vincent Van Gogh, so I started with this sentence structure:
+	"Impressionist painting of ... by Vincent van Gogh"</p>
+<p>After a few tries it works well:</p>
+<figure class="w-richtext-figure-type-image w-richtext-align-center" data-rt-type="image" data-rt-align="center">
+	<div>
+		<img
+				src="https://uploads-ssl.webflow.com/635f732c77408df7618d836b/63638793e987e8e0a267348c_Capture%20d%E2%80%99e%CC%81cran%202022-11-03%20a%CC%80%2010.18.45.png"
+				loading="lazy" width="auto" height="auto">
+	</div>
+</figure>
+<p>So I installed and run locally a n8n service with <a
+		href="https://docs.docker.com/desktop/install/mac-install/">Docker for Mac</a>, please refer to <a
+		href="https://docs.n8n.io/hosting/installation/docker/">this documentation</a> if you want to do the same.
+</p>
+<p>Let's create a new automation workflow on n8n (you can find the JSON here: <a
+		href="https://github.com/gantoin/my-n8n/blob/master/van_gogh.json">https://github.com/gantoin/my-n8n/blob/master/van_gogh.json</a>)
+</p>
+<ol start="">
+	<li>Schedule the trigger of automation → 1 per day, 11:00</li>
+	<li>Get the random words to paint → Wikipedia random page <a
+			href="https://en.wikipedia.org/wiki/Special:Random">https://en.wikipedia.org/wiki/Special:Random</a>
+	</li>
+	<li>Scrap the title of the random page picked</li>
+	<li>Call the DALL-E&nbsp;API to generate the images: I created a project for that, I dockerized it so I&nbsp;can
+		run it locally with my n8n service → <a href="https://github.com/gantoin/dalle2-in-python-as-webservice">https://github.com/gantoin/dalle2-in-python-as-webservice</a>
+	</li>
+	<li>Send the pictures to this Telegram bot (I contributed to it), when you will link your Twitter account to
+		this bot, it will tweet everything you text him → <a
+				href="https://github.com/QuentinWidlocher/telegram-to-twitter-bot">https://github.com/QuentinWidlocher/telegram-to-twitter-bot</a>
+	</li>
+</ol><p>It's done! <a href="https://twitter.com/bot_van_gogh">@bot_van_gogh</a> will post automatically.</p>

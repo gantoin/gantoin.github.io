@@ -1,0 +1,48 @@
+title=🤖 I fully automatized a YouTube channel
+date=2022-08-21T19:12:55Z
+type=post
+tags=blog, java, architecture
+status=published
+~~~~~~
+
+<h2>How I fully automatized a YouTube channel?</h2>
+<p>You can check the channel here: <a
+		href="https://www.youtube.com/channel/UCAq2Yn8ASBF76LV85TxR9CQ">https://www.youtube.com/channel/UCAq2Yn8ASBF76LV85TxR9CQ/</a>
+</p>
+<p>One year ago, I&nbsp;discovered a fabulous GitHub project called <a
+		href="https://github.com/offish/twitchtube">twitchtube</a>. This tool creates a compilation of <a href=""
+>Twitch</a>
+	clips automatically.</p>
+<p>You just have to give him as input the <a href="https://www.twitch.tv/">Twitch</a>
+	channel or the game you want to compile and the frequency like a week, a month, etc. So I&nbsp;planned to create a
+	channel for video compilations of a game called <a href="https://dayz.com/">DayZ</a> and post it monthly.</p>
+<p>The bot coded by <a href="https://github.com/offish">offish</a> was able to create a compilation video
+	and post it on YouTube. But I wanted the bot to also create a thumbnail for the video, so I upgraded it. You can find
+	the full code of the upgraded project here:&nbsp;<a href="https://github.com/gantoin/twitchtube-for-dayz">https://github.com/gantoin/twitchtube-for-dayz</a>
+</p>
+<figure class="w-richtext-figure-type-image w-richtext-align-center" data-rt-type="image" data-rt-align="center">
+	<div>
+		<img src="https://uploads-ssl.webflow.com/635f732c77408df7618d836b/636e189d5753ff0b35d4aab8_Capture%20d%E2%80%99e%CC%81cran%202022-11-11%20a%CC%80%2010.34.30.png"
+				loading="lazy" width="auto" height="auto">
+	</div>
+	<figcaption>Screenshot of the automatized YouTube channel</figcaption>
+</figure>
+<p>To create these thumbnails, I used <a href="https://imagemagick.org/">imagemagick</a> and <a
+		href="https://ffmpeg.org/">ffmpeg</a>. Fantastic tools to manipulate images and videos with simple
+	commands.</p>
+<p>With <a href="https://imagemagick.org/">imagemagick</a>, I&nbsp;picked 4 images from
+	clips, pasted my logo in the middle, and it's done!</p>
+<figure class="w-richtext-figure-type-image w-richtext-align-center" data-rt-type="image" data-rt-align="center">
+	<div>
+		<img src="https://uploads-ssl.webflow.com/635f732c77408df7618d836b/636e1a86124c7a88b2a603d7_Capture%20d%E2%80%99e%CC%81cran%202022-11-11%20a%CC%80%2010.48.41.png"
+				loading="lazy" width="auto" height="auto">
+	</div>
+	<figcaption>Code to generate thumbnails</figcaption>
+</figure>
+<p>I also customized the bot to put the name of the video dynamically.</p>
+<p>I&nbsp;just had to
+	create a scheduled command which runs the startup command: <em>python3 run main.py</em></p>
+<p>And that's
+	all, my YouTube channel was fully automatized. Nowadays, it's not. You know... Maintaining side projects asks a lot
+	of energy. So Twitch updated their APIs and the bot didn't work well.</p>
+<p>I should fix it... Some day...</p>

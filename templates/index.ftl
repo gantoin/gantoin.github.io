@@ -15,6 +15,13 @@
                 </h2>
                 <p class="post-summary no-margin">
                     ${post.body
+                    ?replace("</p>", "")
+                    ?replace("<ul>", "")
+                    ?replace("</ul>", "")
+                    ?replace("<li>", "")
+                    ?replace("</li>", "")
+                    ?replace("<a>", "")
+                    ?replace("</a>", "")
                     ?replace("<h1>", "")
                     ?replace("</h1>", "")
                     ?replace("<h2>", "")
@@ -22,9 +29,6 @@
                     ?replace("<h3>", "")
                     ?replace("</h3>", "")
                     ?replace("<p>", "")
-                    ?replace("</p>", "")
-                    ?replace("<a>", "")
-                    ?replace("</a>", "")
                     ?chop_linebreak
                     ?truncate(180)}
                 </p>
