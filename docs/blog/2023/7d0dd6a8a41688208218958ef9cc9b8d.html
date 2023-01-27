@@ -50,32 +50,20 @@
 <div class="post-content">
     <p><p>In this article, you will learn how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.</p>
 <h2>Introduction</h2>
-<p>Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to<br />
-a message<br />
-queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications.<br />
-It is a very powerful tool, but it is not without its challenges. One of the most common challenges is the lack of data<br />
-validation.</p>
+<p>Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to a message queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications. It is a very powerful tool, but it is not without its challenges. One of the most common challenges is the lack of data validation.</p>
 <p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro1.png" alt="Kafka bus" /></p>
-<p>It is important to understand that Kafka take bytes as input and output. It is up to the application to serialize and<br />
-deserialize.<br />
-Also, if you don't have a total control on application that consume your data, you can't be sure that the data will be<br />
-valid.</p>
-<p>If you need to update your data model, you will have to deal with backward compatibility with probably some consumer<br />
-that will<br />
-not be able to read the new data.</p>
+<p>It is important to understand that Kafka take bytes as input and output. It is up to the application to serialize and deserialize. Also, if you don't have a total control on application that consume your data, you can't be sure that the data will be valid.</p>
+<p>If you need to update your data model, you will have to deal with backward compatibility with probably some consumer that will not be able to read the new data.</p>
 <h2>Let's make the Kafka cluster validating the data?</h2>
 <p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro2.png" alt="Kafka validator" /></p>
-<p>In theory, it is possible to validate the data in the Kafka cluster. But, the most important, it is not very efficient.<br />
-You will break<br />
-what Kafka is doing best: <strong>distributing data fast</strong>.</p>
+<p>In theory, it is possible to validate the data in the Kafka cluster. But, the most important, it is not very efficient. You will break what Kafka is doing best: <strong>distributing data fast</strong>.</p>
 <p>That's definitely not what we want.</p>
 <h2>Solution: Apache Avro &amp; Confluent Schema Registry</h2>
 <p>The solution is to use Apache Avro and Confluent Schema Registry.</p>
 <p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro3.png" alt="Kafka validator" /></p>
 <h2>How to implement it?</h2>
 <h3>1. Define your data model</h3>
-<p>First, you need to define your data model. It is very important to understand that Avro is a schema-based serialization<br />
-format.</p>
+<p>First, you need to define your data model. It is very important to understand that Avro is a schema-based serialization format.</p>
 <p>You will need to add Apache Avro dependency in your project.</p>
 <pre><code class="language-xml">
 &lt;dependencies&gt;
@@ -136,8 +124,7 @@ format.</p>
   ]
 }
 </code></pre>
-<p>You can create really complex data model with Avro. You can check<br />
-the <a href="https://avro.apache.org/docs/current/spec.html">Avro documentation</a> for more information.</p>
+<p>You can create really complex data model with Avro. You can check the <a href="https://avro.apache.org/docs/current/spec.html">Avro documentation</a> for more information.</p>
 <p>You will also have to create a maven profile to generate the Java classes from the Avro schema.</p>
 <pre><code class="language-xml">
 &lt;plugin&gt;
@@ -169,11 +156,8 @@ the <a href="https://avro.apache.org/docs/current/spec.html">Avro documentation<
 <h3>2. Register your schema in the Confluent Schema Registry</h3>
 <p>Once you have defined your data model, you will have to register it in the Confluent Schema Registry.<br />
 Confluent Schema Registry is a schema registry for Avro developed by Confluent.</p>
-<p>Is it important to know that with this kind of architecture, your schema registry become a vital part of your<br />
-infrastructure.<br />
-If your schema registry is down, your Kafka cluster will not be able to validate the data.</p>
-<p>To try it, you can start with the project fast-data-dev. It is a docker image that contains a Kafka cluster with<br />
-Confluent Schema Registry:<br />
+<p>Is it important to know that with this kind of architecture, your schema registry become a vital part of your infrastructure. If your schema registry is down, your Kafka cluster will not be able to validate the data.</p>
+<p>To try it, you can start with the project fast-data-dev. It is a docker image that contains a Kafka cluster with Confluent Schema Registry:<br />
 <a href="https://hub.docker.com/r/landoop/fast-data-dev/dockerfile">https://hub.docker.com/r/landoop/fast-data-dev/dockerfile</a>.</p>
 <h3>3. Use the Confluent Schema Registry in your application</h3>
 <p>Now, you can use the Confluent Schema Registry in your application. First, add the Confluent Avro serializer and deserializer dependency in your project:</p>
@@ -239,16 +223,14 @@ public class KafkaReceiverConfiguration {
 }
 </code></pre>
 <h3>5. Update your data model</h3>
-<p>If you need to update your data model, you will have to update the Avro schema and register it in the Confluent Schema<br />
-Registry.<br />
-Once it is done, you can send your new data model with the new version. Your old consumer will still be able to read<br />
-your data.<br />
+<p>If you need to update your data model, you will have to update the Avro schema and register it in the Confluent Schema Registry.<br />
+Once it is done, you can send your new data model with the new version. Your old consumer will still be able to read your data.<br />
 If you want to know more about Confluent Schema Registry, you can check this article:<br />
 <a href="https://docs.confluent.io/current/schema-registry/docs/index.html">https://docs.confluent.io/current/schema-registry/docs/index.html</a>.</p>
 <h2>Conclusion</h2>
-<p>In this article, you have learned how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more<br />
-robust.</p>
+<p>In this article, you have learned how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.</p>
 <p>For more details on how to do, here is a live coding video that I made on YouTube (in French, sorry about that):</p>
+<p>[soon]</p>
 </p>
 </div>
 

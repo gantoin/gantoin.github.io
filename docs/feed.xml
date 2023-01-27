@@ -6,8 +6,8 @@
         <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
         <description>Basic blog of an average Java developer</description>
         <language>en-gb</language>
-        <pubDate>Fri, 27 Jan 2023 00:23:41 +0000</pubDate>
-        <lastBuildDate>Fri, 27 Jan 2023 00:23:41 +0000</lastBuildDate>
+        <pubDate>Fri, 27 Jan 2023 13:56:40 +0000</pubDate>
+        <lastBuildDate>Fri, 27 Jan 2023 13:56:40 +0000</lastBuildDate>
 
             <item>
                 <title>🚌 Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry</title>
@@ -17,32 +17,20 @@
                 <description>
                         &lt;p&gt;In this article, you will learn how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.&lt;/p&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to&lt;br /&gt;
-a message&lt;br /&gt;
-queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications.&lt;br /&gt;
-It is a very powerful tool, but it is not without its challenges. One of the most common challenges is the lack of data&lt;br /&gt;
-validation.&lt;/p&gt;
+&lt;p&gt;Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to a message queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications. It is a very powerful tool, but it is not without its challenges. One of the most common challenges is the lack of data validation.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro1.png&quot; alt=&quot;Kafka bus&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;It is important to understand that Kafka take bytes as input and output. It is up to the application to serialize and&lt;br /&gt;
-deserialize.&lt;br /&gt;
-Also, if you don&apos;t have a total control on application that consume your data, you can&apos;t be sure that the data will be&lt;br /&gt;
-valid.&lt;/p&gt;
-&lt;p&gt;If you need to update your data model, you will have to deal with backward compatibility with probably some consumer&lt;br /&gt;
-that will&lt;br /&gt;
-not be able to read the new data.&lt;/p&gt;
+&lt;p&gt;It is important to understand that Kafka take bytes as input and output. It is up to the application to serialize and deserialize. Also, if you don&apos;t have a total control on application that consume your data, you can&apos;t be sure that the data will be valid.&lt;/p&gt;
+&lt;p&gt;If you need to update your data model, you will have to deal with backward compatibility with probably some consumer that will not be able to read the new data.&lt;/p&gt;
 &lt;h2&gt;Let&apos;s make the Kafka cluster validating the data?&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro2.png&quot; alt=&quot;Kafka validator&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;In theory, it is possible to validate the data in the Kafka cluster. But, the most important, it is not very efficient.&lt;br /&gt;
-You will break&lt;br /&gt;
-what Kafka is doing best: &lt;strong&gt;distributing data fast&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;In theory, it is possible to validate the data in the Kafka cluster. But, the most important, it is not very efficient. You will break what Kafka is doing best: &lt;strong&gt;distributing data fast&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;That&apos;s definitely not what we want.&lt;/p&gt;
 &lt;h2&gt;Solution: Apache Avro &amp;amp; Confluent Schema Registry&lt;/h2&gt;
 &lt;p&gt;The solution is to use Apache Avro and Confluent Schema Registry.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/img/blog_content/avro3.png&quot; alt=&quot;Kafka validator&quot; /&gt;&lt;/p&gt;
 &lt;h2&gt;How to implement it?&lt;/h2&gt;
 &lt;h3&gt;1. Define your data model&lt;/h3&gt;
-&lt;p&gt;First, you need to define your data model. It is very important to understand that Avro is a schema-based serialization&lt;br /&gt;
-format.&lt;/p&gt;
+&lt;p&gt;First, you need to define your data model. It is very important to understand that Avro is a schema-based serialization format.&lt;/p&gt;
 &lt;p&gt;You will need to add Apache Avro dependency in your project.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
 &amp;lt;dependencies&amp;gt;
@@ -103,8 +91,7 @@ format.&lt;/p&gt;
   ]
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can create really complex data model with Avro. You can check&lt;br /&gt;
-the &lt;a href=&quot;https://avro.apache.org/docs/current/spec.html&quot;&gt;Avro documentation&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;p&gt;You can create really complex data model with Avro. You can check the &lt;a href=&quot;https://avro.apache.org/docs/current/spec.html&quot;&gt;Avro documentation&lt;/a&gt; for more information.&lt;/p&gt;
 &lt;p&gt;You will also have to create a maven profile to generate the Java classes from the Avro schema.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
 &amp;lt;plugin&amp;gt;
@@ -136,11 +123,8 @@ the &lt;a href=&quot;https://avro.apache.org/docs/current/spec.html&quot;&gt;Avr
 &lt;h3&gt;2. Register your schema in the Confluent Schema Registry&lt;/h3&gt;
 &lt;p&gt;Once you have defined your data model, you will have to register it in the Confluent Schema Registry.&lt;br /&gt;
 Confluent Schema Registry is a schema registry for Avro developed by Confluent.&lt;/p&gt;
-&lt;p&gt;Is it important to know that with this kind of architecture, your schema registry become a vital part of your&lt;br /&gt;
-infrastructure.&lt;br /&gt;
-If your schema registry is down, your Kafka cluster will not be able to validate the data.&lt;/p&gt;
-&lt;p&gt;To try it, you can start with the project fast-data-dev. It is a docker image that contains a Kafka cluster with&lt;br /&gt;
-Confluent Schema Registry:&lt;br /&gt;
+&lt;p&gt;Is it important to know that with this kind of architecture, your schema registry become a vital part of your infrastructure. If your schema registry is down, your Kafka cluster will not be able to validate the data.&lt;/p&gt;
+&lt;p&gt;To try it, you can start with the project fast-data-dev. It is a docker image that contains a Kafka cluster with Confluent Schema Registry:&lt;br /&gt;
 &lt;a href=&quot;https://hub.docker.com/r/landoop/fast-data-dev/dockerfile&quot;&gt;https://hub.docker.com/r/landoop/fast-data-dev/dockerfile&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;3. Use the Confluent Schema Registry in your application&lt;/h3&gt;
 &lt;p&gt;Now, you can use the Confluent Schema Registry in your application. First, add the Confluent Avro serializer and deserializer dependency in your project:&lt;/p&gt;
@@ -206,16 +190,14 @@ public class KafkaReceiverConfiguration {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;5. Update your data model&lt;/h3&gt;
-&lt;p&gt;If you need to update your data model, you will have to update the Avro schema and register it in the Confluent Schema&lt;br /&gt;
-Registry.&lt;br /&gt;
-Once it is done, you can send your new data model with the new version. Your old consumer will still be able to read&lt;br /&gt;
-your data.&lt;br /&gt;
+&lt;p&gt;If you need to update your data model, you will have to update the Avro schema and register it in the Confluent Schema Registry.&lt;br /&gt;
+Once it is done, you can send your new data model with the new version. Your old consumer will still be able to read your data.&lt;br /&gt;
 If you want to know more about Confluent Schema Registry, you can check this article:&lt;br /&gt;
 &lt;a href=&quot;https://docs.confluent.io/current/schema-registry/docs/index.html&quot;&gt;https://docs.confluent.io/current/schema-registry/docs/index.html&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;In this article, you have learned how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more&lt;br /&gt;
-robust.&lt;/p&gt;
+&lt;p&gt;In this article, you have learned how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.&lt;/p&gt;
 &lt;p&gt;For more details on how to do, here is a live coding video that I made on YouTube (in French, sorry about that):&lt;/p&gt;
+&lt;p&gt;[soon]&lt;/p&gt;
 
                 </description>
             </item>
@@ -469,6 +451,176 @@ textField.setInvalid(!EmailValidator.isValid(textField.getValue()));
 &lt;p&gt;Vaadin is a powerful and flexible framework for building modern web applications using Java. It offers a large set of built-in features, a visual designer tool, and support for data binding and validation. It is also highly customizable and can be integrated with other Java libraries and frameworks.&lt;/p&gt;
 &lt;p&gt;If you are a Java developer looking to build web applications, Vaadin is definitely worth considering as a tool for your development needs.&lt;/p&gt;
 &lt;p&gt;➡️ Official documentation here: &lt;a href=&quot;https://vaadin.com/docs/latest&quot;&gt;https://vaadin.com/docs/latest&lt;/a&gt;&lt;/p&gt;
+
+                </description>
+            </item>
+            <item>
+                <title>🎨 How I created a Twitter bot which paints like Van Gogh</title>
+                <link>https://gantoin.github.io//blog/2023/legacy_article1.html</link>
+                <pubDate>Thu, 3 Nov 2022 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/legacy_article1.html</guid>
+                <description>
+                        
+&lt;h2&gt;List of tools I used:&lt;/h2&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;a href=&quot;https://n8n.io/&quot;&gt;n8n&lt;/a&gt;: free and source-available workflow automation tool (I ran my own
+		n8n service on local &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;)
+	&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://openai.com/dall-e-2/&quot;&gt;DALL·E 2&lt;/a&gt;: AI system that can create realistic images and
+		art from a description in natural language
+	&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://core.telegram.org/bots&quot;&gt;Telegram bot&lt;/a&gt;: small applications that run entirely
+		within the Telegram app
+	&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/&quot;&gt;Wikipedia&lt;/a&gt;: you know what this is...&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;w-richtext-figure-type-image w-richtext-align-center&quot; data-rt-type=&quot;image&quot; data-rt-align=&quot;center&quot;&gt;
+	&lt;div&gt;&lt;img
+			src=&quot;https://uploads-ssl.webflow.com/635f732c77408df7618d836b/636387a94a12d44a906eaacb_Capture%20d%E2%80%99e%CC%81cran%202022-11-03%20a%CC%80%2010.19.29.png&quot;
+			loading=&quot;lazy&quot; width=&quot;auto&quot; height=&quot;auto&quot;&gt;&lt;/div&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;First, I needed to generate a random sentence that dalle API will consume to produce images for me.&lt;/p&gt;
+&lt;p&gt;
+	As I want, the bot will draw like Vincent Van Gogh, so I started with this sentence structure:
+	&quot;Impressionist painting of ... by Vincent van Gogh&quot;&lt;/p&gt;
+&lt;p&gt;After a few tries it works well:&lt;/p&gt;
+&lt;figure class=&quot;w-richtext-figure-type-image w-richtext-align-center&quot; data-rt-type=&quot;image&quot; data-rt-align=&quot;center&quot;&gt;
+	&lt;div&gt;
+		&lt;img
+				src=&quot;https://uploads-ssl.webflow.com/635f732c77408df7618d836b/63638793e987e8e0a267348c_Capture%20d%E2%80%99e%CC%81cran%202022-11-03%20a%CC%80%2010.18.45.png&quot;
+				loading=&quot;lazy&quot; width=&quot;auto&quot; height=&quot;auto&quot;&gt;
+	&lt;/div&gt;
+&lt;/figure&gt;
+&lt;p&gt;So I installed and run locally a n8n service with &lt;a
+		href=&quot;https://docs.docker.com/desktop/install/mac-install/&quot;&gt;Docker for Mac&lt;/a&gt;, please refer to &lt;a
+		href=&quot;https://docs.n8n.io/hosting/installation/docker/&quot;&gt;this documentation&lt;/a&gt; if you want to do the same.
+&lt;/p&gt;
+&lt;p&gt;Let&apos;s create a new automation workflow on n8n (you can find the JSON here: &lt;a
+		href=&quot;https://github.com/gantoin/my-n8n/blob/master/van_gogh.json&quot;&gt;https://github.com/gantoin/my-n8n/blob/master/van_gogh.json&lt;/a&gt;)
+&lt;/p&gt;
+&lt;ol start=&quot;&quot;&gt;
+	&lt;li&gt;Schedule the trigger of automation → 1 per day, 11:00&lt;/li&gt;
+	&lt;li&gt;Get the random words to paint → Wikipedia random page &lt;a
+			href=&quot;https://en.wikipedia.org/wiki/Special:Random&quot;&gt;https://en.wikipedia.org/wiki/Special:Random&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Scrap the title of the random page picked&lt;/li&gt;
+	&lt;li&gt;Call the DALL-E&amp;nbsp;API to generate the images: I created a project for that, I dockerized it so I&amp;nbsp;can
+		run it locally with my n8n service → &lt;a href=&quot;https://github.com/gantoin/dalle2-in-python-as-webservice&quot;&gt;https://github.com/gantoin/dalle2-in-python-as-webservice&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Send the pictures to this Telegram bot (I contributed to it), when you will link your Twitter account to
+		this bot, it will tweet everything you text him → &lt;a
+				href=&quot;https://github.com/QuentinWidlocher/telegram-to-twitter-bot&quot;&gt;https://github.com/QuentinWidlocher/telegram-to-twitter-bot&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;It&apos;s done! &lt;a href=&quot;https://twitter.com/bot_van_gogh&quot;&gt;@bot_van_gogh&lt;/a&gt; will post automatically.&lt;/p&gt;
+
+                </description>
+            </item>
+            <item>
+                <title>☕️ Hexagonal architecture on java applications</title>
+                <link>https://gantoin.github.io//blog/2023/legacy_article2.html</link>
+                <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/legacy_article2.html</guid>
+                <description>
+                        
+&lt;p&gt;Hi 👋 today we are going to speak about hexagonal architectures.&lt;/p&gt;
+&lt;p&gt;Hexagonal architecture, also known
+	as the &quot;ports and adapters&quot; architecture, is a software design pattern that focuses on the separation of business
+	logic from the technical details of how that logic is implemented. In this architecture, the business logic of the
+	application is contained in the &quot;core&quot; of the application, while the technical details, such as the user interface
+	and the database access, are contained in &quot;adapters&quot; that surround the core.&lt;/p&gt;
+&lt;figure class=&quot;w-richtext-figure-type-image w-richtext-align-center&quot; data-rt-type=&quot;image&quot; data-rt-align=&quot;center&quot;&gt;
+	&lt;div&gt;
+		&lt;img
+				src=&quot;https://uploads-ssl.webflow.com/635f732c77408df7618d836b/63906107726deea938fab71d_1_9LELTYyRhtTU4oCvpZxL2Q.webp&quot;
+				loading=&quot;lazy&quot; width=&quot;auto&quot; height=&quot;auto&quot;&gt;&lt;/div&gt;
+&lt;/figure&gt;
+&lt;p&gt;One of the main benefits of using hexagonal architecture in a Java application is that it allows for
+	greater flexibility and modularity. Because the business logic is isolated from the technical details, it is easier
+	to make changes to the application without affecting the core functionality. This makes it possible to swap out one
+	adapter for another without having to modify the core of the application.&lt;/p&gt;
+&lt;figure class=&quot;w-richtext-figure-type-video w-richtext-align-center&quot; style=&quot;padding-bottom:33.723653395784545%&quot;
+		data-rt-type=&quot;video&quot; data-rt-align=&quot;center&quot; data-rt-max-width=&quot;&quot; data-rt-max-height=&quot;33.723653395784545%&quot;
+		data-rt-dimensions=&quot;854:480&quot; data-page-url=&quot;https://www.youtube.com/watch?v=QCOMeiMYb6I&quot;&gt;
+	&lt;div&gt;
+		&lt;iframe allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://www.youtube.com/embed/QCOMeiMYb6I&quot;
+				title=&quot;Structure your microservice using a hexagonal architecture by Fredrik Lindgren&quot;&gt;&lt;/iframe&gt;
+	&lt;/div&gt;
+&lt;/figure&gt;
+&lt;p&gt;For example, if you want to change the user interface of your application from a command-line
+	interface to a graphical user interface, you can simply create a new adapter for the GUI and swap it in without
+	having to touch the core of the application. This makes it easier to maintain and evolve your application over
+	time.&lt;/p&gt;
+&lt;p&gt;Another benefit of hexagonal architecture is that it promotes the use of testing. Because the core
+	of the application is isolated from the adapters, it is easier to test the business logic in isolation. This makes
+	it possible to write unit tests for the core of the application, which can help to ensure that it is functioning
+	correctly and can help to catch bugs early on in the development process.&lt;/p&gt;
+&lt;figure class=&quot;w-richtext-figure-type-image w-richtext-align-center&quot; data-rt-type=&quot;image&quot; data-rt-align=&quot;center&quot;&gt;
+	&lt;div&gt;
+		&lt;img
+				src=&quot;https://uploads-ssl.webflow.com/635f732c77408df7618d836b/639061b9423aac1984e44a02_1_f9NnhYBFEibJKRu8EXSfJQ.webp&quot;
+				loading=&quot;lazy&quot; width=&quot;auto&quot; height=&quot;auto&quot;&gt;&lt;/div&gt;
+&lt;/figure&gt;
+&lt;p&gt;Overall, hexagonal architecture is a powerful design pattern that can help to improve the flexibility,
+	modularity, and testability of Java applications. If you are building a Java application and want to take advantage
+	of these benefits, consider using hexagonal architecture to design your application.&lt;/p&gt;
+&lt;p&gt;Thanks for reading,
+	enjoy hexagonal architectures!&lt;/p&gt;
+&lt;p&gt;(This brief was highly inspired by this article: &lt;a
+		href=&quot;https://itnext.io/hexagonal-architecture-principles-practical-example-in-java-364bb2e50075&quot;&gt;https://itnext.io/hexagonal-architecture-principles-practical-example-in-java-364bb2e50075&lt;/a&gt;)
+&lt;/p&gt;
+
+                </description>
+            </item>
+            <item>
+                <title>🤖 I fully automatized a YouTube channel</title>
+                <link>https://gantoin.github.io//blog/2023/legacy_article3.html</link>
+                <pubDate>Sun, 21 Aug 2022 00:00:00 +0000</pubDate>
+                <guid isPermaLink="false">blog/2023/legacy_article3.html</guid>
+                <description>
+                        
+&lt;h2&gt;How I fully automatized a YouTube channel?&lt;/h2&gt;
+&lt;p&gt;You can check the channel here: &lt;a
+		href=&quot;https://www.youtube.com/channel/UCAq2Yn8ASBF76LV85TxR9CQ&quot;&gt;https://www.youtube.com/channel/UCAq2Yn8ASBF76LV85TxR9CQ/&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;One year ago, I&amp;nbsp;discovered a fabulous GitHub project called &lt;a
+		href=&quot;https://github.com/offish/twitchtube&quot;&gt;twitchtube&lt;/a&gt;. This tool creates a compilation of &lt;a href=&quot;&quot;
+&gt;Twitch&lt;/a&gt;
+	clips automatically.&lt;/p&gt;
+&lt;p&gt;You just have to give him as input the &lt;a href=&quot;https://www.twitch.tv/&quot;&gt;Twitch&lt;/a&gt;
+	channel or the game you want to compile and the frequency like a week, a month, etc. So I&amp;nbsp;planned to create a
+	channel for video compilations of a game called &lt;a href=&quot;https://dayz.com/&quot;&gt;DayZ&lt;/a&gt; and post it monthly.&lt;/p&gt;
+&lt;p&gt;The bot coded by &lt;a href=&quot;https://github.com/offish&quot;&gt;offish&lt;/a&gt; was able to create a compilation video
+	and post it on YouTube. But I wanted the bot to also create a thumbnail for the video, so I upgraded it. You can find
+	the full code of the upgraded project here:&amp;nbsp;&lt;a href=&quot;https://github.com/gantoin/twitchtube-for-dayz&quot;&gt;https://github.com/gantoin/twitchtube-for-dayz&lt;/a&gt;
+&lt;/p&gt;
+&lt;figure class=&quot;w-richtext-figure-type-image w-richtext-align-center&quot; data-rt-type=&quot;image&quot; data-rt-align=&quot;center&quot;&gt;
+	&lt;div&gt;
+		&lt;img src=&quot;https://uploads-ssl.webflow.com/635f732c77408df7618d836b/636e189d5753ff0b35d4aab8_Capture%20d%E2%80%99e%CC%81cran%202022-11-11%20a%CC%80%2010.34.30.png&quot;
+				loading=&quot;lazy&quot; width=&quot;auto&quot; height=&quot;auto&quot;&gt;
+	&lt;/div&gt;
+	&lt;figcaption&gt;Screenshot of the automatized YouTube channel&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;To create these thumbnails, I used &lt;a href=&quot;https://imagemagick.org/&quot;&gt;imagemagick&lt;/a&gt; and &lt;a
+		href=&quot;https://ffmpeg.org/&quot;&gt;ffmpeg&lt;/a&gt;. Fantastic tools to manipulate images and videos with simple
+	commands.&lt;/p&gt;
+&lt;p&gt;With &lt;a href=&quot;https://imagemagick.org/&quot;&gt;imagemagick&lt;/a&gt;, I&amp;nbsp;picked 4 images from
+	clips, pasted my logo in the middle, and it&apos;s done!&lt;/p&gt;
+&lt;figure class=&quot;w-richtext-figure-type-image w-richtext-align-center&quot; data-rt-type=&quot;image&quot; data-rt-align=&quot;center&quot;&gt;
+	&lt;div&gt;
+		&lt;img src=&quot;https://uploads-ssl.webflow.com/635f732c77408df7618d836b/636e1a86124c7a88b2a603d7_Capture%20d%E2%80%99e%CC%81cran%202022-11-11%20a%CC%80%2010.48.41.png&quot;
+				loading=&quot;lazy&quot; width=&quot;auto&quot; height=&quot;auto&quot;&gt;
+	&lt;/div&gt;
+	&lt;figcaption&gt;Code to generate thumbnails&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;I also customized the bot to put the name of the video dynamically.&lt;/p&gt;
+&lt;p&gt;I&amp;nbsp;just had to
+	create a scheduled command which runs the startup command: &lt;em&gt;python3 run main.py&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;And that&apos;s
+	all, my YouTube channel was fully automatized. Nowadays, it&apos;s not. You know... Maintaining side projects asks a lot
+	of energy. So Twitch updated their APIs and the bot didn&apos;t work well.&lt;/p&gt;
+&lt;p&gt;I should fix it... Some day...&lt;/p&gt;
 
                 </description>
             </item>

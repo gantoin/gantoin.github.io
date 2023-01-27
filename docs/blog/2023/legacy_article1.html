@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>ᗩᑎTOIᑎE GᗩᑌTᕼIEᖇ</title>
+    <title>🎨 How I created a Twitter bot which paints like Van Gogh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -10,7 +10,7 @@
     <meta name="generator" content="Antoine's blog">
     <link rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../../favicon.ico">
 </head>
 <body>
 
@@ -29,13 +29,13 @@
         </div>
         <nav class="site-nav">
             <a class="site-nav__link no-underline"
-               href="../index.html">Blog</a>
+               href="../../index.html">Blog</a>
             <a class="site-nav__link no-underline"
-               href="../about.html">About</a>
+               href="../../about.html">About</a>
             <a class="site-nav__link no-underline"
-               href="../feed.xml">Subscribe</a>
+               href="../../feed.xml">Subscribe</a>
             <a class="site-nav__link no-underline"
-               href="../archive.html">Archive</a>
+               href="../../archive.html">Archive</a>
         </nav>
     </div>
 </div>
@@ -43,32 +43,67 @@
 <!-- Begin page content -->
 
 <main class="content">
+    <div class="page-header">
+        <h1>🎨 How I created a Twitter bot which paints like Van Gogh</h1>
+    </div>
+<p><em>03 November 2022</em></p>
+<div class="post-content">
+    <p>
+<h2>List of tools I used:</h2>
+<ul>
+	<li><a href="https://n8n.io/">n8n</a>: free and source-available workflow automation tool (I ran my own
+		n8n service on local <a href="https://www.docker.com/">Docker</a>)
+	</li>
+	<li><a href="https://openai.com/dall-e-2/">DALL·E 2</a>: AI system that can create realistic images and
+		art from a description in natural language
+	</li>
+	<li><a href="https://core.telegram.org/bots">Telegram bot</a>: small applications that run entirely
+		within the Telegram app
+	</li>
+	<li><a href="https://en.wikipedia.org/">Wikipedia</a>: you know what this is...</li>
+</ul>
 
-<div class="page-header">
-    <h1>Tag: java</h1>
+<figure class="w-richtext-figure-type-image w-richtext-align-center" data-rt-type="image" data-rt-align="center">
+	<div><img
+			src="https://uploads-ssl.webflow.com/635f732c77408df7618d836b/636387a94a12d44a906eaacb_Capture%20d%E2%80%99e%CC%81cran%202022-11-03%20a%CC%80%2010.19.29.png"
+			loading="lazy" width="auto" height="auto"></div>
+</figure>
+
+<p>First, I needed to generate a random sentence that dalle API will consume to produce images for me.</p>
+<p>
+	As I want, the bot will draw like Vincent Van Gogh, so I started with this sentence structure:
+	"Impressionist painting of ... by Vincent van Gogh"</p>
+<p>After a few tries it works well:</p>
+<figure class="w-richtext-figure-type-image w-richtext-align-center" data-rt-type="image" data-rt-align="center">
+	<div>
+		<img
+				src="https://uploads-ssl.webflow.com/635f732c77408df7618d836b/63638793e987e8e0a267348c_Capture%20d%E2%80%99e%CC%81cran%202022-11-03%20a%CC%80%2010.18.45.png"
+				loading="lazy" width="auto" height="auto">
+	</div>
+</figure>
+<p>So I installed and run locally a n8n service with <a
+		href="https://docs.docker.com/desktop/install/mac-install/">Docker for Mac</a>, please refer to <a
+		href="https://docs.n8n.io/hosting/installation/docker/">this documentation</a> if you want to do the same.
+</p>
+<p>Let's create a new automation workflow on n8n (you can find the JSON here: <a
+		href="https://github.com/gantoin/my-n8n/blob/master/van_gogh.json">https://github.com/gantoin/my-n8n/blob/master/van_gogh.json</a>)
+</p>
+<ol start="">
+	<li>Schedule the trigger of automation → 1 per day, 11:00</li>
+	<li>Get the random words to paint → Wikipedia random page <a
+			href="https://en.wikipedia.org/wiki/Special:Random">https://en.wikipedia.org/wiki/Special:Random</a>
+	</li>
+	<li>Scrap the title of the random page picked</li>
+	<li>Call the DALL-E&nbsp;API to generate the images: I created a project for that, I dockerized it so I&nbsp;can
+		run it locally with my n8n service → <a href="https://github.com/gantoin/dalle2-in-python-as-webservice">https://github.com/gantoin/dalle2-in-python-as-webservice</a>
+	</li>
+	<li>Send the pictures to this Telegram bot (I contributed to it), when you will link your Twitter account to
+		this bot, it will tweet everything you text him → <a
+				href="https://github.com/QuentinWidlocher/telegram-to-twitter-bot">https://github.com/QuentinWidlocher/telegram-to-twitter-bot</a>
+	</li>
+</ol><p>It's done! <a href="https://twitter.com/bot_van_gogh">@bot_van_gogh</a> will post automatically.</p>
+</p>
 </div>
-
-<!--<ul>-->
-        <h4>January 2023</h4>
-        <ul>
-
-    <li>08 - <a href="../blog/2023/190684c344bb70e5c5f9f2339c7be6ed.html">🤖 How to use ChatGPT API in your Java application?</a></li>
-            </ul>
-            <h4>December 2022</h4>
-            <ul>
-
-    <li>30 - <a href="../blog/2023/8f3c78932057d730b351c17b79770e8c.html">💭 How I became a FullStack Java developer with Vaadin?</a></li>
-            </ul>
-            <h4>October 2022</h4>
-            <ul>
-
-    <li>13 - <a href="../blog/2023/legacy_article2.html">☕️ Hexagonal architecture on java applications</a></li>
-            </ul>
-            <h4>August 2022</h4>
-            <ul>
-
-    <li>21 - <a href="../blog/2023/legacy_article3.html">🤖 I fully automatized a YouTube channel</a></li>
-    </ul>
 
 </div>
 <div id="push"></div>
@@ -142,11 +177,11 @@
     </div>
 </footer>
 
-<script src="../js/jquery-1.11.1.min.js"></script>
-<script src="../js/prettify.js"></script>
+<script src="../../js/jquery-1.11.1.min.js"></script>
+<script src="../../js/prettify.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-<link href="../css/style.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
 
 </body>
 </html>
