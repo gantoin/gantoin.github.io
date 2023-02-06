@@ -6,8 +6,8 @@
         <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
         <description>Basic blog of an average Java developer</description>
         <language>en-gb</language>
-        <pubDate>Sun, 5 Feb 2023 00:24:53 +0000</pubDate>
-        <lastBuildDate>Sun, 5 Feb 2023 00:24:53 +0000</lastBuildDate>
+        <pubDate>Mon, 6 Feb 2023 00:23:18 +0000</pubDate>
+        <lastBuildDate>Mon, 6 Feb 2023 00:23:18 +0000</lastBuildDate>
 
             <item>
                 <title>🚌 Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry</title>
@@ -197,7 +197,7 @@ If you want to know more about Confluent Schema Registry, you can check this art
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;In this article, you have learned how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.&lt;/p&gt;
 &lt;p&gt;For more details on how to do, here is a live coding video that I made on YouTube (in French, sorry about that):&lt;/p&gt;
-&lt;p&gt;[soon]&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=xcWidCZTEok&quot;&gt;https://www.youtube.com/watch?v=xcWidCZTEok&lt;/a&gt;&lt;/p&gt;
 
                 </description>
             </item>
