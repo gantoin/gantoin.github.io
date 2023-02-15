@@ -6,8 +6,8 @@
         <atom:link href="https://gantoin.github.io//feed.xml" rel="self" type="application/rss+xml"/>
         <description>Basic blog of an average Java developer</description>
         <language>en-gb</language>
-        <pubDate>Tue, 14 Feb 2023 00:23:07 +0000</pubDate>
-        <lastBuildDate>Tue, 14 Feb 2023 00:23:07 +0000</lastBuildDate>
+        <pubDate>Wed, 15 Feb 2023 00:23:20 +0000</pubDate>
+        <lastBuildDate>Wed, 15 Feb 2023 00:23:20 +0000</lastBuildDate>
 
             <item>
                 <title>🚌 Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry</title>
