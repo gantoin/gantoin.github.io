@@ -1,0 +1,89 @@
+title=How I fully automatized a YouTube channel?
+date=2022-08-21
+type=post
+tags=blog,youtube
+status=published
+~~~~~~
+
+<p>
+    You can check the channel here:
+    <a href="https://www.youtube.com/channel/UCAq2Yn8ASBF76LV85TxR9CQ/">
+        https://www.youtube.com/channel/UCAq2Yn8ASBF76LV85TxR9CQ/</a>
+</p>
+
+<p>
+    One year ago, I discovered a fabulous GitHub project called <a
+        href="https://github.com/offish/twitchtube">twitchtube</a>. This tool creates a compilation of Twitch clips
+    automatically.
+</p>
+
+<p>
+    You just have to give him as input the <a href="https://www.twitch.tv/">Twitch</a> channel or the game you want to
+    compile and the frequency like a week,
+    a month, etc. So I planned to create a channel for video compilations of a game called <a
+        href="https://www.dayz.com/">DayZ</a> and post it monthly.
+</p>
+
+<p>
+    The bot coded by <a href="https://github.com/offish">offish</a> was able to create a compilation video and post it
+    on YouTube. But I wanted the bot to also
+    create a thumbnail for the video, so I upgraded it. You can find the full code of the upgraded project here:
+    <a href="https://github.com/gantoin/twitchtube-for-dayz">https://github.com/gantoin/twitchtube-for-dayz</a>
+</p>
+
+<img src="/img/1/youtube-screenshot.png" alt="Screenshot of the automatized YouTube channel" width="100%"/>
+
+
+<p>
+    To create these thumbnails, I used <a href="https://imagemagick.org/">imagemagick</a> and <a
+        href="https://ffmpeg.org/">ffmpeg</a>. Fantastic tools to
+    manipulate images and videos with
+    simple commands.
+</p>
+
+<p>
+    With imagemagick, I picked 4 images from clips, pasted my logo in the middle, and it's done!
+</p>
+
+<pre class="prettyprint">
+<code>
+    subprocess.call(['ffmpeg', '-i', videos[0], '-ss', '00:00:01.000', '-vframes', '1', path + f"/thumb1.png"])
+    subprocess.call(['ffmpeg', '-i', videos[1], '-ss', '00:00:01.000', '-vframes', '1', path + f"/thumb2.png"])
+    subprocess.call(['ffmpeg', '-i', videos[2], '-ss', '00:00:01.000', '-vframes', '1', path + f"/thumb3.png"])
+    subprocess.call(['ffmpeg', '-i', videos[3], '-ss', '00:00:01.000', '-vframes', '1', path + f"/thumb4.png"])
+
+    subprocess.call(['convert', '-resize', '960x540', path + f"/thumb1.png", path + f"/thumb1-resize.png"])
+    subprocess.call(['convert', '-resize', '960x540', path + f"/thumb2.png", path + f"/thumb2-resize.png"])
+    subprocess.call(['convert', '-resize', '960x540', path + f"/thumb3.png", path + f"/thumb3-resize.png"])
+    subprocess.call(['convert', '-resize', '960x540', path + f"/thumb4.png", path + f"/thumb4-resize.png"])
+
+    subprocess.call(['convert', '-bordercolor', '#fd8b00', '-border', '20', path + f"/thumb1-resize.png", path + f"/thumb_border1.png"])
+    subprocess.call(['convert', '-bordercolor', '#fd8b00', '-border', '20', path + f"/thumb2-resize.png", path + f"/thumb_border2.png"])
+    subprocess.call(['convert', '-bordercolor', '#fd8b00', '-border', '20', path + f"/thumb3-resize.png", path + f"/thumb_border3.png"])
+    subprocess.call(['convert', '-bordercolor', '#fd8b00', '-border', '20', path + f"/thumb4-resize.png", path + f"/thumb_border4.png"])
+</code>
+</pre>
+
+<p>I also customized the bot to put the name of the video dynamically.</p>
+
+<p>I just had to create a scheduled command which runs the startup command: <i>python3 run main.py</i></p>
+
+<p>I also get personally contacted by a streamer who didn't want to appear in my videos... Fortunately offish developed
+    this feature:</p>
+
+<pre class="prettyprint">
+    <code>
+BLACKLIST = ["c BibixHD"]  # channels/games you dont want to be included in the video
+    </code>
+</pre>
+
+<p>And that's all, my YouTube channel was fully automatized. Nowadays, it's not. You know... Maintaining side projects
+    asks a lot of energy. So Twitch updated their APIs and the bot didn't work well.</p>
+
+<p>I should fix it... Some day...</p>
+
+<p>You can check all the source code here: <a
+        href="https://github.com/gantoin/twitchtube-for-dayz/">https://github.com/gantoin/twitchtube-for-dayz/</a>
+</p>
+
+<p>Thanks for reading!</p>

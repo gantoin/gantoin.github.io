@@ -1,29 +1,35 @@
-<!-- Fixed navbar -->
-<div class="site-header" role="navigation">
-    <div class="site-header__wrapper">
-        <div class="site-branding">
-            <a class="no-underline" href="https://gantoin.github.io"><span class="site-branding__image">Home</span></a>
-            <div class="site-branding__wrapper">
-                <h1 class="site-branding__title no-underline">
-                    <a class="no-underline" href="https://gantoin.github.io">Antoine Gauthier</a>
-                </h1>
-                <p class="site-branding__description">Just a Java developer trying to brew up some good code, one
-                    cup at a time.</p>
-            </div>
+	<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>">JBake</a>
         </div>
-        <nav class="site-nav">
-            <a class="site-nav__link no-underline"
-               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>index.html">Blog</a>
-            <a class="site-nav__link no-underline"
-               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">About</a>
-            <a class="site-nav__link no-underline"
-               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>${config.feed_file}">Subscribe</a>
-            <a class="site-nav__link no-underline"
-               href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>archive.html">Archive</a>
-        </nav>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>index.html">Home</a></li>
+            <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">About</a></li>
+            <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>${config.feed_file}">Subscribe</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>archive.html">Archive</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
-</div>
-
-<!-- Begin page content -->
-
-<main class="content">
+    <div class="container">
