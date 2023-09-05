@@ -1,80 +1,70 @@
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+  <#if (config.author_youtube)?has_content>
+  <li>
+    <a href="https://www.youtube.com/channel/${config.author_youtube}" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  </#if>
+  <#if (config.author_twitter)?has_content>
+  <li>
+    <a href="https://twitter.com/${config.author_twitter}" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  </#if>
+  <#if (config.author_github)?has_content>
+  <li>
+    <a href="https://github.com/${config.author_github}" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  </#if>
+  <#if (config.author_email)?has_content>
+  <li>
+    <a href="mailto:${config.author_email}" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  </#if>
+  <#if (config.render_feed)?has_content>
+  <li>
+    <a href="${content.rootpath!}feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  </#if>
+</ul>
+<p class="copyright text-muted">
+<#if (config.author_name)?has_content>
+&copy; ${config.author_name} ${published_date?string('yyyy')} |
+</#if>
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
 </div>
-<div id="push"></div>
 </div>
-
-</main>
-<footer class="site-footer">
-    <div class="site-footer__wrapper--main">
-        <div class="footer-main">
-            <img src="/img/minecraft2.gif" alt="Minecraft gif" class="footer-main__avatar">
-            <div class="footer-main__about">
-                Hi Java enthusiasts!
-                <p>I'm Antoine Gauthier a.k.a gantoin. I'm freelance developer till January 2022. I'm mainly experienced
-                    in Java back-end development and can do front-end with React, Angular, or Ext JS. I'm looking for
-                    challenging assignments in an exciting industry to implement my Java skills and improve my
-                    JavaScript skills.</p>
-            </div>
-            <div class="footer-main__contact">
-                <h3>Connect with me</h3>
-                <ul>
-                    <li>
-                        <a href="mailto:antoine@gauthier.lol" class="no-underline footer-main__link">
-                            <span class="icon">
-                                <svg aria-hidden="true" viewBox="0 0 16 16">
-                                    <path d="M11.9 4.6c0-.1.0-.3-.2-.3C11 3.9 10.2 3.8 9.3 3.8c-3 0-5.4 2.4-5.4 5.4.0 2 1.3 3 2.6 3 1.2.0 2.1-.5 2.9-1.4.1.3.2.6.5.9.3.4.8.6 1.4.6 2 0 4.1-1.8 4.1-5.4.0-3.8-2.7-6.5-6.5-6.5-4.6.0-8.1 3.7-8.1 8.5.0 4 2.8 7 6.8 7 1.6.0 2.8-.3 3.9-.9.1-.1.2-.2.1-.4l-.3-.9c0-.1-.1-.1-.2-.2-.1.0-.2.0-.2.0-.8.5-1.9.7-3.1.7-3.1.0-5.2-2.2-5.2-5.5.0-3.9 2.6-6.8 6.1-6.8 3 0 4.9 1.9 4.9 5 0 2.2-1 3.6-2 3.6-.2.0-.3-.1-.3-.1-.1-.2-.3-.6.0-1.9L11.9 4.6zM9 5.5c.3.0.5.0.7.1L9.4 7.7C9.1 8.9 8.1 10.4 7 10.4c-1 0-1.1-.9-1.1-1.3C5.9 7.1 7.3 5.5 9 5.5z"/>
-                                </svg>
-                            </span>
-                            <span>
-                                Email
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/gantoin" class="no-underline footer-main__link" rel="me">
-                            <span class="icon">
-                                <svg aria-hidden="true" viewBox="0 0 16 16">
-                                    <path d="M7.999.431c-4.285.0-7.76 3.474-7.76 7.761.0 3.428 2.223 6.337 5.307 7.363.388.071.53-.168.53-.374.0-.184-.007-.672-.01-1.32-2.159.469-2.614-1.04-2.614-1.04-.353-.896-.862-1.135-.862-1.135-.705-.481.053-.472.053-.472.779.055 1.189.8 1.189.8.692 1.186 1.816.843 2.258.645.071-.502.271-.843.493-1.037C4.86 11.425 3.049 10.76 3.049 7.786c0-.847.302-1.54.799-2.082C3.768 5.507 3.501 4.718 3.924 3.65c0 0 .652-.209 2.134.796C6.677 4.273 7.34 4.187 8 4.184c.659.003 1.323.089 1.943.261 1.482-1.004 2.132-.796 2.132-.796.423 1.068.157 1.857.077 2.054.497.542.798 1.235.798 2.082.0 2.981-1.814 3.637-3.543 3.829.279.24.527.713.527 1.437.0 1.037-.01 1.874-.01 2.129.0.208.14.449.534.373 3.081-1.028 5.302-3.935 5.302-7.362C15.76 3.906 12.285.431 7.999.431z"/>
-                                </svg>
-                            </span>
-                            <span>
-                                GitHub
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/gant0in" class="no-underline footer-main__link" rel="me">
-                            <span class="icon">
-                                <svg aria-hidden="true" viewBox="0 0 16 16">
-                                    <path d="M15.969 3.058c-.586.26-1.217.436-1.878.515.675-.405 1.194-1.045 1.438-1.809-.632.375-1.332.647-2.076.793-.596-.636-1.446-1.033-2.387-1.033-1.806.0-3.27 1.464-3.27 3.27.0.256.029.506.085.745C5.163 5.404 2.753 4.102 1.14 2.124.859 2.607.698 3.168.698 3.767c0 1.134.577 2.135 1.455 2.722C1.616 6.472 1.112 6.325.671 6.08c0 .014.0.027.0.041.0 1.584 1.127 2.906 2.623 3.206C3.02 9.402 2.731 9.442 2.433 9.442c-.211.0-.416-.021-.615-.059.416 1.299 1.624 2.245 3.055 2.271-1.119.877-2.529 1.4-4.061 1.4-.264.0-.524-.015-.78-.046 1.447.928 3.166 1.469 5.013 1.469 6.015.0 9.304-4.983 9.304-9.304.0-.142-.003-.283-.009-.423C14.976 4.29 15.531 3.714 15.969 3.058z"/>
-                                </svg>
-                            </span>
-                            <span>
-                                Twitter
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="site-footer__wrapper--secondary">
-        <div class="footer-secondary">
-            <div class="footer-secondary__text">
-                <span class="footer-secondary__attribute">Made by <a href="https://github.com/gantoin">@gantoin</a> with cups of coffee. Inspired by <a
-                            href="https://chenhuijing.com/">@huijing</a>.</span>
-                <span class="footer-secondary__copyright">© 2023 Antoine Gauthier - All rights reserved.</span></div>
-            <nav class="footer-secondary__nav"><a class="footer-secondary__resources no-underline"
-                                                  href="https://github.com/gantoin/gantoin.github.io/">Resources</a>
-            </nav>
-        </div>
-    </div>
+</div>
 </footer>
-
-<script src="<#if (content.rootpath)??>${content.rootpath}<#else></#if>js/jquery-1.11.1.min.js"></script>
-<script src="<#if (content.rootpath)??>${content.rootpath}<#else></#if>js/prettify.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
-<link href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>css/style.css" rel="stylesheet">
-
-</body>
-</html>

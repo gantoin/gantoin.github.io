@@ -1,14 +1,31 @@
+<#assign include_type = "post">
+<#assign include_title = content.title!>
+<#assign include_subtitle = content.subtitle!>
+<#assign include_bigimg = content.bigimg!>
+<!DOCTYPE html>
+<html lang="${config.site_lang}">
+
+<#include "head.ftl">
+
+<body>
+<#include "nav.ftl">
+
 <#include "header.ftl">
 
-<#include "menu.ftl">
-<#if (content.title)??>
-    <div class="page-header">
-        <h1>${content.title}</h1>
-    </div>
-<#else></#if>
-<p><em>${content.date?string("dd MMMM yyyy")}</em></p>
-<div class="post-content">
-    <p>${content.body}</p>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-post">
+${content.body}
+</article>
+<#include "disqus.ftl">
+</div>
+</div>
 </div>
 
 <#include "footer.ftl">
+
+<#include "footer-scripts.ftl">
+
+</body>
+</html>

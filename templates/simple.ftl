@@ -1,7 +1,4 @@
 <#assign include_type = "page">
-<#assign include_title = content.title!>
-<#assign include_subtitle = content.subtitle!>
-<#assign include_bigimg = content.bigimg!>
 <!DOCTYPE html>
 <html lang="${config.site_lang}">
 
@@ -10,12 +7,24 @@
 <body>
 <#include "nav.ftl">
 
-<#include "header.ftl">
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2><#if (content.title)?has_content>${content.title}<#else><br/></#if></h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
 
 <div class="container">
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<article role="main" class="blog-post">
+<article role="main" class="blog-page">
 ${content.body}
 </article>
 </div>
