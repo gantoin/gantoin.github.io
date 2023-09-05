@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
-  <id>http://localhost:8820/</id>
+  <id>http://yoursite.com</id>
   <title>Antoine GAUTHIER</title>
-  <updated>2023-09-05T16:13:17+0200</updated>
-  <link rel="alternate" type="text/html" href="http://localhost:8820/" />
-  <link rel='self' type='application/atom+xml' href='http://localhost:8820//feed.xml' />
+  <updated>2023-09-05T14:17:27+0000</updated>
+  <link rel="alternate" type="text/html" href="http://yoursite.com" />
+  <link rel='self' type='application/atom+xml' href='http://yoursite.com/feed.xml' />
   <entry>
-    <id>http://localhost:8820//blog/kafka-avro.html</id>
+    <id>http://yoursite.com/blog/kafka-avro.html</id>
     <title>Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry</title>
     <link></link>
-    <link rel="alternate" type="text/html" href="http://localhost:8820//blog/kafka-avro.html" />
-    <updated>2023-01-26T00:00:00+0100</updated>
+    <link rel="alternate" type="text/html" href="http://yoursite.com/blog/kafka-avro.html" />
+    <updated>2023-01-26T00:00:00+0000</updated>
     <summary>In this article, you will learn how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.
 Introduction
 Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to a message queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications. It is a very power...</summary>
   </entry>
   <entry>
-    <id>http://localhost:8820//blog/landoop-fast-data-dev-M1.html</id>
+    <id>http://yoursite.com/blog/landoop-fast-data-dev-M1.html</id>
     <title>How to run &apos;landoop/fast-data-dev&apos; on Mac M1?</title>
     <link></link>
-    <link rel="alternate" type="text/html" href="http://localhost:8820//blog/landoop-fast-data-dev-M1.html" />
-    <updated>2023-01-19T00:00:00+0100</updated>
+    <link rel="alternate" type="text/html" href="http://yoursite.com/blog/landoop-fast-data-dev-M1.html" />
+    <updated>2023-01-19T00:00:00+0000</updated>
     <summary>Hey guys!
 I was following a lecture about Kafka Schema Registry when I suddenly had to run Landoop and a bunch of tools with Docker on my Mac.
 I met this error after running this Dockerfile:
@@ -31,11 +31,11 @@ fatal error: newosproc
 After a few minutes of searching, I understood that&apos;s because I ran it on my M1 a...</summary>
   </entry>
   <entry>
-    <id>http://localhost:8820//blog/chat-gpt-api.html</id>
+    <id>http://yoursite.com/blog/chat-gpt-api.html</id>
     <title>How to use ChatGPT API in your Java application?</title>
     <link></link>
-    <link rel="alternate" type="text/html" href="http://localhost:8820//blog/chat-gpt-api.html" />
-    <updated>2023-01-08T00:00:00+0100</updated>
+    <link rel="alternate" type="text/html" href="http://yoursite.com/blog/chat-gpt-api.html" />
+    <updated>2023-01-08T00:00:00+0000</updated>
     <summary>Hi guys 👋 I&apos;m sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.
 Today I&apos;ll show you how to use OpenAI ChatGPT API with Java, it&apos;s pretty easy.
 1. Register for an API key
@@ -43,11 +43,11 @@ First, you&apos;ll need to register for an API key by going to the OpenAI API pa
 2. Enter a credit card i...</summary>
   </entry>
   <entry>
-    <id>http://localhost:8820//blog/Twitch-API-OAuth2-Spring-Security.html</id>
+    <id>http://yoursite.com/blog/Twitch-API-OAuth2-Spring-Security.html</id>
     <title>Configure Twitch API OAuth2 provider on a Spring Security app</title>
     <link></link>
-    <link rel="alternate" type="text/html" href="http://localhost:8820//blog/Twitch-API-OAuth2-Spring-Security.html" />
-    <updated>2023-01-04T00:00:00+0100</updated>
+    <link rel="alternate" type="text/html" href="http://yoursite.com/blog/Twitch-API-OAuth2-Spring-Security.html" />
+    <updated>2023-01-04T00:00:00+0000</updated>
     <summary>Hi guys, I&apos;m working on a SaaS to manage Twitch Clips of broadcasters:
 - Create vertical Clips automatically for TikTok, Youtube Shorts, etc.
 - Create compilation for clips to easily make best-of
@@ -60,11 +60,11 @@ Before you begin, you need to have the following:
 A Twitch account and a regi...</summary>
   </entry>
   <entry>
-    <id>http://localhost:8820//blog/Umbrel-Nextcloud-mobile-app.html</id>
+    <id>http://yoursite.com/blog/Umbrel-Nextcloud-mobile-app.html</id>
     <title>How to plug your Umbrel&apos;s Nextcloud into the official Nextcloud mobile app?</title>
     <link></link>
-    <link rel="alternate" type="text/html" href="http://localhost:8820//blog/Umbrel-Nextcloud-mobile-app.html" />
-    <updated>2022-08-21T00:00:00+0200</updated>
+    <link rel="alternate" type="text/html" href="http://yoursite.com/blog/Umbrel-Nextcloud-mobile-app.html" />
+    <updated>2022-08-21T00:00:00+0000</updated>
     <summary>Why you could want to do that?
 You could want to use the Nextcloud app to make saving your phone data easier or to get documents from your cloud easily (without a Tor browser, connect via onion etc.).
 Why is it not possible natively?

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2>Usage</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-page">
+<div class="sect1">
+<h2 id="使い方">使い方</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>引数なしで jbake を実行すると <code>-h</code> を付けたときと同じく使用方法のテキストが表示されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bake_コマンド">Bake コマンド</h3>
+<div class="paragraph">
+<p>bake コマンドはコンテンツとテンプレートを上手い具合に調理して、しっかり火の通ったWebサイトに仕上げます。
+その方法は用途によっていくつか選ぶことが出来ます。</p>
+</div>
+<div class="paragraph">
+<p><code>-b</code> オプションの後ろに何も指定しない場合、現在の作業ディレクトリが bake 対象のコンテンツの位置と認識し、直下の <code>output</code> ディレクトリに調理結果を配置します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -b</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<code>output</code> ディレクトリがまだ無い場合、JBake はこのディレクトリを生成します。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>&lt;source&gt;ディレクトリのみをパラメータに指定した場合、調理結果は&lt;source&gt;ディレクトリの直下に生成されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -b &lt;source&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>加えて&lt;output&gt;ディレクトリも指定すれば、すべてお好みの方法で料理することができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -b &lt;source&gt; &lt;output&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&lt;source&gt;ディレクトリと&lt;output&gt;ディレクトリの両方を指定する場合には、 <code>-b</code> オプションは省略可能です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake &lt;source&gt; &lt;output&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="初期化コマンド">初期化コマンド</h3>
+<div class="paragraph">
+<p>初期化コマンドは、指定したディレクトリにプロジェクトに必要になるディレクトリ構造と多くのサンプルコンテンツ、テンプレートを配置します。
+その際には、テンプレートの記述言語としてどのテンプレートエンジンを使用するかを選ぶことができます。</p>
+</div>
+<div class="paragraph">
+<p><code>-i</code> オプションの後ろに何も指定しない場合、現在の作業ディレクトリ内に、 <a href="http://freemarker.org">Freemarker</a> をテンプレートエンジンとして利用するプロジェクトを生成します、。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -i</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>初期化するディレクトリを指定したい場合には、パラメータとして追加します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -i &lt;directory&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>テンプレートエンジンを変更したい場合には  <code>-t</code> オプションを使って指定します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -i -t &lt;freemarker|groovy|groovy-mte|thymeleaf|jade&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+利用可能なテンプレートエンジンは <a href="http://freemarker.org">Freemarker</a>、 <a href="http://www.groovy-lang.org/">Groovy Simple and Markup</a>、 <a href="http://www.thymeleaf.org/">Thymeleaf</a>、 <a href="https://github.com/neuland/jade4j">Jade</a> です。
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="サンプルプロジェクトの構造">サンプルプロジェクトの構造</h4>
+<div class="paragraph">
+<p>サンプルプロジェクトの構造とテンプレートは JBake をインストールしたディレクトリ ( <code>JBAKE_HOME</code> ) にファイルとして保存されています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>example_project_freemarker.zip</code></p>
+</li>
+<li>
+<p><code>example_project_groovy.zip</code></p>
+</li>
+<li>
+<p><code>example_project_groovy-mte.zip</code></p>
+</li>
+<li>
+<p><code>example_project_thymeleaf.zip</code></p>
+</li>
+<li>
+<p><code>example_project_jade.zip</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>初期化に使用されるプロジェクト構造やテンプレートを変更したい場合、上記のZIPファイルを置き換えてください。
+以降、JBake は置き換えられたファイルを基にして初期化処理を行います。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="サーバーコマンド">サーバーコマンド</h3>
+<div class="paragraph">
+<p>サーバーコマンドを利用すると、HTTP WEBサーバーが立ち上がり、生成されたサイトの見た目を確認することができます。
+リリース前にサイトの内容をプレビューするのに便利です。</p>
+</div>
+<div class="paragraph">
+<p><code>-s</code> オプションを使用すると、JBake はサーバーモードで起動し、http://localhost:8820/ にアクセスすることによって生成されるサイトをプレビューすることができるようになります。
+デフォルトでは <code>output</code> ディレクトリの内容が表示されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -s</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+ローカルポートの番号は設定ファイルによって変更することができます。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>追加のパラメータを指定することによって、表示するディレクトリを変更することができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -s &lt;directory&gt;</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="監視モード">監視モード</h4>
+<div class="paragraph">
+<p>サーバーモードで実行されている間、JBake は Content ディレクトリ内の変更 (新しいファイルの追加や、既存ファイルの変更) を監視し、検知した場合には自動的に変換を実施します。そのため、ブラウザの表示内容更新を行うことで出力結果をすぐに確認することができます。</p>
+</div>
+<div class="paragraph">
+<p>このモードはインクリメンタルレンダリングと組み合わせて使用することをオススメします。
+やり方の詳細については <a href="#コンテンツストアの永続化">[コンテンツストアの永続化]</a> の設定オプションを参照してください。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="コマンドの結合">コマンドの結合</h3>
+<div class="paragraph">
+<p>オプションコマンドは以下のように複数指定することもできます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -b -s</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>上記コマンドでは、JBake はサイトを生成した後にサーバーモードでも起動します。</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

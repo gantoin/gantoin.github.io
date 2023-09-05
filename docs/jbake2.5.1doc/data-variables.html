@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2>Data Variables</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-page">
+<div class="sect1">
+<h2 id="データモデル">データモデル</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>データモデルは（使用するテンプレートエンジンに関係なく）展開され、各テンプレート処理時に参照することができます。
+テンプレートではそのデータモデルを用いて、出力時のロジックを実行することができます。</p>
+</div>
+<div class="sect2">
+<h3 id="global">Global</h3>
+<div class="paragraph">
+<p>これらのデータ値は、すべてのテンプレートで参照することができます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>version</code> = 現在使用している JBake のバージョン</p>
+</li>
+<li>
+<p><code>published_date</code> = Bake (変換) 実施日</p>
+</li>
+<li>
+<p><code>[type]s</code> = [type] 別のコンテンツ一覧 (例: posts の場合 type=post で定義されたすべてのコンテンツ)</p>
+</li>
+<li>
+<p><code>published_content</code> = type に関係なく status=published が定義された全てのコンテンツ</p>
+</li>
+<li>
+<p><code>published_posts</code> = 日付降順に並んだ type=post で status=published なコンテンツの一覧</p>
+</li>
+<li>
+<p><code>published_pages</code> = 日付降順に並んだ type=page で status=published なコンテンツの一覧</p>
+</li>
+<li>
+<p><code>all_content</code> = 全てのコンテンツ (type も status も関係なく)</p>
+</li>
+<li>
+<p><code>alltags</code> = status=published なコンテンツ内で使用されているタグの一覧</p>
+</li>
+<li>
+<p><code>content.rootpath</code> = プロジェクトのルートへの相対パス</p>
+</li>
+<li>
+<p><code>config.[option]</code> =  jbake.properties ファイルに記述された内容のマップ</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>jbake.properties</code> ファイル内の記述を参照する場合には、データ項目名の <code>.</code> を <code>_</code> に変換してください。
+たとえば、 <code>template.index.file=index.ftl</code> を参照する場合には、 <code>config.template_index_file</code> と指定します。</p>
+</div>
+<div class="paragraph">
+<p>テンプレート内では、一覧 ( Collection ) データをループで回して、各コンテンツ内の要素にアクセスすることができます。
+ループのスコープ内では、<code>content.title</code> や、 <code>content.body</code> など、<code>content.[value]</code> という記述でコンテンツの各要素を参照します。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="page_post_custom">Page / Post / Custom</h3>
+<div class="paragraph">
+<p>Page、Post または独自に定義したテンプレート内では、次のデータが定義されています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>content.[value]</code> = 処理するファイルに記述された内容のマップ</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>content.title</code> などのメタデータヘッダや、ファイルのBody要素である <code>content.body</code> など、全てのデータに対してアクセスが可能です。</p>
+</div>
+<div class="paragraph">
+<p>またマップには以下の情報も含まれて居ます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>content.file</code> = ソースファイルへのフルパス</p>
+</li>
+<li>
+<p><code>content.uri</code> = 変換後ファイルのURI</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="index">Index</h3>
+<div class="paragraph">
+<p>このテンプレートでは、ページングを実現するために必要となる変数を参照することができます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>nextFileName</code> = 次ページが存在する場合、そのページのファイル名</p>
+</li>
+<li>
+<p><code>previousFileName</code> = 前ページが存在する場合、そのページのファイル名</p>
+</li>
+<li>
+<p><code>numberOfPages</code> = 総ページ数 (バージョン2.5.1以降)</p>
+</li>
+<li>
+<p><code>currentPageNumber</code> = 現在のページ番号 (バージョン2.5.1以降)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>これらの変数を利用すると、テンプレート内でページを前後するためのUIが提供できるようになります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+これらの変数は存在しない場合もありうるので、参照する際には存在チェックが必要です。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tags">Tags</h3>
+<div class="paragraph">
+<p>このテンプレートでは以下の追加データが定義されています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tag</code> = 処理対象となっているタグ</p>
+</li>
+<li>
+<p><code>tag_posts</code> = 該当タグが定義された type=post で status=published なコンテンツの一覧 (日付降順)</p>
+</li>
+<li>
+<p><code>tagged_documents</code> = type に関係なく status=published で該当タグが定義されたコンテンツの一覧 (日付降順)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

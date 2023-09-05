@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2>Project Structure</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-page">
+<div class="sect1">
+<h2 id="プロジェクトの構造">プロジェクトの構造</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>以下はサンプルのプロジェクトのディレクトリ構造になります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>.
+|-- assets
+|   |-- favicon.gif
+|   |-- robots.txt
+|   |-- img
+|   |   |-- logo.png
+|   |-- js
+|   |   |-- custom.js
+|   |-- css
+|       |-- style.css
+|
+|-- content
+|   |-- about.html
+|   |-- 2013
+|       |-- 01
+|       |   |-- hello-world.html
+|       |-- 02
+|           |-- weekly-links-1.ad
+|           |-- weekly-links-2.md
+|
+|-- templates
+|   |-- index.ftl
+|   |-- page.ftl
+|   |-- post.ftl
+|   |-- feed.ftl
+|
+|-- jbake.properties</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="assets_ディレクトリ">Assets ディレクトリ</h3>
+<div class="paragraph">
+<p>Assets ディレクトリは、画像、CSSファイル、JavaScriptファイル等の静的ファイルを配置する場所です。
+これらのファイルはなんの変換もされず、出力ディレクトリにコピーされます。
+Assets ディレクトリ内の内容はそのままコピーされるため、好きなようにディレクトリ構造を作成しちゃってください。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="content_ディレクトリ">Content ディレクトリ</h3>
+<div class="paragraph">
+<p>Content ディレクトリは変換対象となるコンテンツを配置する場所です。このディレクトリ内のファイルは Bake (テンプレートによって処理) されて出力されます。
+ディレクトリ内には自由にディレクトリ構造を作成することもできます。そのディレクトリ構造は Bake された処理結果にもそのまま適用されます。</p>
+</div>
+<div class="paragraph">
+<p>JBake はコンテンツディレクトリ内のファイルをファイル拡張子によって判断して処理します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.html</code> = 素の HTML コンテンツ</p>
+</li>
+<li>
+<p><code>.md</code> = <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> 記法によるコンテンツ</p>
+</li>
+<li>
+<p><code>.ad</code> = <a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a> 記法によるコンテンツ</p>
+</li>
+<li>
+<p><code>.adoc</code> = これも <a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a> 記法によるコンテンツ</p>
+</li>
+<li>
+<p><code>.asciidoc</code> = 同じく <a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a> 記法によるコンテンツ</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+JBake は <a href="http://pegdown.org">Pegdown</a> を利用してMarkdown記法を処理しています。また、AsciiDoc記法の処理には <a href="http://asciidoctor.org/">Asciidoctor</a> を利用しています。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="templates_ディレクトリ">Templates ディレクトリ</h3>
+<div class="paragraph">
+<p>Templates ディレクトリはテンプレートファイルの配置場所です。これらのファイルはContent ディレクトリ内のファイルと「結合」された状態で出力されます。
+このディレクトリ内のファイルはTemplates ディレクトリ直下に配置されている必要があります。</p>
+</div>
+<div class="paragraph">
+<p>ディレクトリ内のファイルは、ファイル拡張子によって処理に使われるテンプレートエンジンが決まります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>.ftl</code> = <a href="http://freemarker.org">Freemarker</a></p>
+</li>
+<li>
+<p><code>.gsp</code> = <a href="http://www.groovy-lang.org/">Groovy&#8217;s SimpleTemplateEngine</a></p>
+</li>
+<li>
+<p><code>.groovy</code> = <a href="http://www.groovy-lang.org/">Groovy&#8217;s SimpleTemplateEngine</a></p>
+</li>
+<li>
+<p><code>.gxml</code> = <a href="http://www.groovy-lang.org/">Groovy&#8217;s XmlTemplateEngine</a></p>
+</li>
+<li>
+<p><code>.tpl</code> = <a href="http://www.groovy-lang.org/">Groovy&#8217;s MarkupTemplateEngine</a></p>
+</li>
+<li>
+<p><code>.thyme</code> = <a href="http://www.thymeleaf.org/">Thymeleaf</a></p>
+</li>
+<li>
+<p><code>.html</code> = <a href="http://www.thymeleaf.org/">Thymeleaf</a></p>
+</li>
+<li>
+<p><code>.jade</code> = <a href="https://github.com/neuland/jade4j">Jade</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>同じプロジェクト内で違うテンプレートエンジンを混在させることはやめておいたほうが良いです。
+各テンプレートエンジンの詳細については、JBake が提供しているサンプルテンプレートと、それぞれのプロダクトのドキュメント
+ (
+<a href="http://freemarker.org/docs/index.html">Freemarker</a>、
+<a href="http://docs.groovy-lang.org/latest/html/documentation/template-engines.html">Groovy</a>、
+<a href="http://www.thymeleaf.org/doc/html/Using-Thymeleaf.html">Thymeleaf</a>、
+<a href="https://github.com/neuland/jade4j">Jade</a>
+ ) を参照してみてください。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="プロジェクト設定">プロジェクト設定</h3>
+<div class="paragraph">
+<p>プロジェクト固有の設定は、プロジェクトのルートディレクトリにある <code>jbake.properties</code> ファイルに記述します。
+このファイルの記述内容によって JBake はプロジェクトの焼き加減を調整したりします。</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

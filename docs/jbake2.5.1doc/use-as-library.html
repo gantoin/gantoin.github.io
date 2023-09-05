@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2>Use as Library</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-page">
+<div class="sect1">
+<h2 id="ライブラリとしての利用">ライブラリとしての利用</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JBake は他のソフトウェアシステムからライブラリとして利用することも可能です。
+プログラムで自動的に Bake したりとかできます。</p>
+</div>
+<div class="sect2">
+<h3 id="maven_coordinates">Maven coordinates</h3>
+<div class="paragraph">
+<p>メインの JBake アーティファクトは以下の記述で Maven セントラルリポジトリから入手することができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.jbake&lt;/groupId&gt;
+	&lt;artifactId&gt;jbake-core&lt;/artifactId&gt;
+	&lt;version&gt;2.5.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Markdown コンテンツや Freemarker テンプレートエンジンなどをサポートするサードパーティーのライブラリは、 <code>jbake-core</code> のオプションライブラリとして定義されています。そのため、これらを使用する場合にはプロジェクトの依存関係を追加する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>Markdown コンテントをサポートするためには、以下の記述を追加します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.pegdown&lt;/groupId&gt;
+	&lt;artifactId&gt;pegdown&lt;/artifactId&gt;
+	&lt;version&gt;1.6.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>AsciiDoc コンテントをサポートするためには、以下の記述を追加します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+	&lt;artifactId&gt;asciidoctorj&lt;/artifactId&gt;
+	&lt;version&gt;1.5.4.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Freemarker テンプレートをサポートするためには、以下の記述を追加します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.freemarker&lt;/groupId&gt;
+	&lt;artifactId&gt;freemarker&lt;/artifactId&gt;
+	&lt;version&gt;2.3.25-incubating&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Groovy テンプレートをサポートするためには、以下の記述を追加します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
+    &lt;artifactId&gt;groovy&lt;/artifactId&gt;
+    &lt;version&gt;2.4.7&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
+    &lt;artifactId&gt;groovy-templates&lt;/artifactId&gt;
+    &lt;version&gt;2.4.7&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thymeleaf テンプレートをサポートするためには、以下の記述を追加します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;
+	&lt;artifactId&gt;thymeleaf&lt;/artifactId&gt;
+	&lt;version&gt;3.0.2.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Jade テンプレートをサポートするためには、以下の記述を追加します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;dependency&gt;
+	&lt;groupId&gt;de.neuland-bfi&lt;/groupId&gt;
+	&lt;artifactId&gt;jade4j&lt;/artifactId&gt;
+	&lt;version&gt;1.2.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="api">API</h3>
+<div class="paragraph">
+<p>JBake をJavaプログラムから起動する際にメインとなるのは <code>Oven</code> クラスになります。
+このクラスのインスタンスを生成する際にいくつかの引数を渡し、 <code>.bake()</code> メソッドを実行します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="java">try {
+	File source = new File("/path/to/project_source"); //<b class="conum">(1)</b>
+	File destination = new File("/path/to/project_output"); //<b class="conum">(2)</b>
+	Oven oven = new Oven(source, destination, true); //<b class="conum">(3)</b>
+	oven.setupPaths(); //<b class="conum">(4)</b>
+	oven.bake(); //<b class="conum">(5)</b>
+} catch (JBakeException e) { //<b class="conum">(6)</b>
+	// do something with exception here
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>プロジェクトのルートディレクトリを定義します。JBake はこのディレクトリ直下の <code>jbake.properties</code> を参照します。</p>
+</li>
+<li>
+<p>処理結果の出力先ディレクトリを定義します。</p>
+</li>
+<li>
+<p>3つ目の引数はローカルキャッシュ (永続的なコンテンツストア) をクリアして Full Bake (全変換) するかどうかのフラグになります。</p>
+</li>
+<li>
+<p>このメソッドで指定されたパスや、必須となる要素の存在チェックをします。</p>
+</li>
+<li>
+<p>このメソッドで Baking (変換処理) を実施します。</p>
+</li>
+<li>
+<p>パスチェックや変換処理で例外が発生した場合、 JBakeException によって通知されます。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging">Logging</h3>
+<div class="paragraph">
+<p>コマンドラインインターフェイス以外の全ての出力は、 LogBack を利用して行われています。そのため、クラスパス上の logback.xml を編集することによって制御することができます。
+バイナリディストリビューションには、あらかじめ設定された <a href="https://github.com/jbake-org/jbake/blob/master/src/dist/lib/logging/logback.xml">logback.xml</a> が含まれているので、参考にして下さい。</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>How to use ChatGPT API in your Java application? - Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+
+
+<header class="header-section">
+
+
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="post-heading">
+<h1>How to use ChatGPT API in your Java application?</h1>
+<span class="post-meta">
+  <i class="fa fa-calendar-o"></i>
+  2023-01-08
+</span>
+<span class="blog-tags">
+  &nbsp;
+  <i class="fa fa-tags"></i>
+    <a href="../tags/chatgpt.html">chatgpt</a>
+    <a href="../tags/java.html">java</a>
+    <a href="../tags/api.html">api</a>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-post">
+<p>Hi guys 👋 I'm sure you enjoy using chat GPT to produce, optimise, or translate code from any programming language to Java.</p>
+<p>Today I'll show you how to use OpenAI ChatGPT API with Java, it's pretty easy.</p>
+<h2>1. Register for an API key</h2>
+<p>First, you'll need to register for an API key by going to the <a href="https://beta.openai.com/signup/">OpenAI API page</a>. Follow the instructions to create an account and obtain an API key.</p>
+<h2>2. Enter a credit card into your OpenAI account</h2>
+<p>OpenAI blocks the API calls for <code>exceeded your current quota</code> when you don't have any card registered in your account. So, you will need to configure one.</p>
+<h2>3. Implements code like:</h2>
+<pre><code class="language-java">import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import org.json.JSONObject;
+
+public class ChatGPT {
+    public static void chatGPT(String text) throws Exception {
+        String url = &quot;https://api.openai.com/v1/completions&quot;;
+        HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+
+        con.setRequestMethod(&quot;POST&quot;);
+        con.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;);
+        con.setRequestProperty(&quot;Authorization&quot;, &quot;Bearer YOUR-API-KEY&quot;);
+
+        JSONObject data = new JSONObject();
+        data.put(&quot;model&quot;, &quot;text-davinci-003&quot;);
+        data.put(&quot;prompt&quot;, text);
+        data.put(&quot;max_tokens&quot;, 4000);
+        data.put(&quot;temperature&quot;, 1.0);
+
+        con.setDoOutput(true);
+        con.getOutputStream().write(data.toString().getBytes());
+
+        String output = new BufferedReader(new InputStreamReader(con.getInputStream())).lines()
+                .reduce((a, b) -&gt; a + b).get();
+
+        System.out.println(new JSONObject(output).getJSONArray(&quot;choices&quot;).getJSONObject(0).getString(&quot;text&quot;));
+    }
+
+    public static void main(String[] args) throws Exception {
+        chatGPT(&quot;Hello, how are you?&quot;);
+    }
+}
+</code></pre>
+<h2>It works!</h2>
+<pre><code>src.main.java.ChatGPT
+
+
+I'm doing great, thank you for asking. How about you?
+
+Process finished with exit code 0
+</code></pre>
+<h3>Resources used:</h3>
+<ul>
+<li><code>org.json</code> <a href="https://mvnrepository.com/artifact/org.json/json/20220924">https://mvnrepository.com/artifact/org.json/json/20220924</a> (add this dependency to your project)</li>
+<li>this python tutorial I converted to Java <a href="https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031">https://datasans.medium.com/how-to-use-chatgpt-api-directly-in-your-jupyter-notebook-simple-no-gimmicks-be30bdf9f031</a></li>
+</ul>
+
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2>Content Files</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-page">
+<div class="sect1">
+<h2 id="content_ファイル">Content ファイル</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="メタデータヘッダ">メタデータヘッダ</h3>
+<div class="paragraph">
+<p>メタデータヘッダには Content ファイルを処理するための基本的な設定内容を記述します。</p>
+</div>
+<div class="paragraph">
+<p>素のHTMLや、各マークダウン記法によって記述されたファイルの先頭には以下のようなメタデータヘッダが <strong>必須</strong> です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>title=Weekly Links #2
+date=2013-02-01
+type=post
+tags=weekly links, java
+status=published
+~~~~~~</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>status</strong> と <strong>type</strong> のヘッダ項目は <strong>必須</strong> で、その他の項目はオプションです。 <a href="#設定ファイル">[設定ファイル]</a> 内にデフォルトの status が記述されている場合には、status の項目は省略することができます。</p>
+</div>
+<div class="paragraph">
+<p><strong>date</strong> の項目を記述しない場合、該当ファイルの更新日が使われます。</p>
+</div>
+<div class="paragraph">
+<p>AsciiDocで記述されたファイルの場合、メタデータヘッダはオプションになります。
+メタデータは AsciiDoc の記法を使って以下のように定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>= Project Structure
+Jonathan Bullock
+2013-10-17
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+JBake のための属性を AsciiDoc ヘッダに記述する場合、名称の衝突を避けるため <code>jbake-</code> プレフィックスを付けます。
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="status">Status</h4>
+<div class="paragraph">
+<p>この項目には以下の3つの状態のうちのひとつを記述します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>draft</code> - draft (下書き) を記述した場合、公開コンテンツと同じく変換処理はされるけれど、<code>first-post-draft.html</code> のようにファイル名の末尾に <code>-draft</code> が付きます。 また、公開コンテンツには含まれません（一覧などではリンクされません）。</p>
+</li>
+<li>
+<p><code>published</code>  - 変換処理されて、公開もされます。</p>
+</li>
+<li>
+<p><code>published-date</code> - メタデータヘッダの date が現在日時と同じかそれより古い場合に公開対象になります。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="type">Type</h4>
+<div class="paragraph">
+<p>この項目によってページを生成する際のテンプレートを決定します。
+デフォルトテンプレートでは以下の2種類を選択することができます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>type=post</code> post.ftl によって変換を実施</p>
+</li>
+<li>
+<p><code>type=page</code> page.ftl によって変換を実施</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>テンプレートを追加すれば、これ以外の type をプロジェクトに追加することもできます。
+詳しいやり方は <a href="#独自テンプレート">[独自テンプレート]</a> を参照してください。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="独自メタデータ">独自メタデータ</h4>
+<div class="paragraph">
+<p>メタデータヘッダには以下のように独自の項目を記述することもできます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>summary=投稿内容が長いので概要とか書くよ！</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>この項目の記述内容は、テンプレートファイルに以下のように記述することによって利用することができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;p&gt;${content.summary}&lt;/p&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>この機能は <a href="https://disqus.com/">Disqus</a> のコメントのような外部の機能をテンプレートに埋め込んだり、 <a href="https://jquery.com/">jQuery</a> などのJavaScriptのライブラリを使って画像を表示し足りする場合に便利に利用することができます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="階層構造をもつ独自メタデータ">階層構造をもつ独自メタデータ</h4>
+<div class="paragraph">
+<p>メタデータに階層構造を持たせたい場合、以下のようにJSON形式を使用することができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>type=page
+og={"description": "Something"}</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+JSONデータは改行なしの１行で記述する必要があります。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>このJSONデータをテンプレート内で参照する場合には、以下のように記述します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;#if content?? &amp;&amp; content.og??&gt; <b class="conum">(1)</b>
+	&lt;meta property="og:description" content="${content.og.description}"/&gt; <b class="conum">(2)</b>
+&lt;/#if&gt;</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>content</code> と <code>content.og</code> が null ではないことをチェック</p>
+</li>
+<li>
+<p><code>content.og</code> 内の <code>description</code> の内容を出力</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="コンテンツ本体">コンテンツ本体</h3>
+<div class="paragraph">
+<p>メタデータヘッダ記述より後のすべての内容は、コンテンツ本体としてテンプレートに処理されます。
+Markdown記法、AsciiDoc記法によって記述されている場合にはHTMLに変換されます。</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

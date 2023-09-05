@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2>Quickstart Guide</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-page">
+<div class="sect1">
+<h2 id="クイックスタートガイド">クイックスタートガイド</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="セットアップ">セットアップ</h3>
+<div class="paragraph">
+<p>最初に<a href="#インストール">[インストール]</a>に書いてある方法で JBake を準備します。
+次に、コマンドプロンプトを開いて次のコマンドを打って、動作確認をします。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>jbake -h</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>上手くインストールできていれば、以下のような文字が表示されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>JBake v2.5.1 (2017-12-26 17:56) [http://jbake.org]
+
+Usage: jbake ...</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="プロジェクトの作成">プロジェクトの作成</h3>
+<div class="paragraph">
+<p>手っ取り早く始めたい場合、サンプルテンプレートを使ったサンプルプロジェクトを使用することが出来ます。
+まず新しいディレクトリを作成して、その中に入ります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ mkdir project
+$ cd project</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>次に以下のコマンドを打つと、プロジェクトの基本構造とサンプルテンプレートがディレクトリ内に生成されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jbake -i</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+デフォルトでは <a href="http://freemarker.org">Freemarker</a> を使ったテンプレートが展開されます。その他のテンプレートエンジンを指定したい場合については、<a href="#使い方">[使い方]</a> セクションを見てね。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="焼くbake">焼く！(Bake)</h3>
+<div class="paragraph">
+<p>コンテンツを追加したり、テンプレートをカスタマイズしたら次のコマンドでこんがり焼くことができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cd project
+$ jbake -b</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+焼く (Bakeする) ことによって、プロジェクト直下の <code>output</code> ディレクトリに処理された結果が配置されます（デフォルト設定の場合）。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="プレビュー">プレビュー</h3>
+<div class="paragraph">
+<p>サーバーモードで JBake を実行すれば、こんがり焼いたプロジェクトがどのように見えるかすぐに確認できます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ cd project
+$ jbake -s
+
+JBake v2.5.1 (2017-12-26 17:56) [http://jbake.org]
+
+Serving out contents of: [output] on http://localhost:8820/
+(To stop server hit CTRL-C)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ブラウザで <a href="http://localhost:8820" class="bare">http://localhost:8820</a> にアクセスすると、結果が確認できます。</p>
+</div>
+<div class="paragraph">
+<p>こんな感じで、ステキな焦げ色のサイトがものの数分で焼きあがるっていう寸法ですよ！</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

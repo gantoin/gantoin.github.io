@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+<header class="header-section">
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="page-heading">
+<h2>Configuration</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-page">
+<div class="sect1">
+<h2 id="設定ファイル">設定ファイル</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>jbake.properties</code> ファイル (または旧バージョンの custom.properties) によって JBake の設定をカスタマイズすることができます。
+たとえば、コンテンツやテンプレートを配置するディレクトリを変更したり、RSSフィードを生成するかどうかを決めたりすることができます。</p>
+</div>
+<div class="paragraph">
+<p>JBake は全ての項目に関するデフォルト値を (<a href="https://github.com/jbake-org/jbake/blob/master/src/main/resources/default.properties">default.properties</a>) にて定義していますが、それらは <code>jbake.properties</code> によって上書きされます。
+また、ハッシュ文字 ( <code>#</code> ) を行頭に記述することで行コメントを記述することができます。
+以下のセクションではこのファイル内に設定可能なすべての項目について詳しく説明しています。</p>
+</div>
+<div class="sect2">
+<h3 id="ビルトインオプション">ビルトインオプション</h3>
+<div class="sect3">
+<h4 id="assets_ディレクトリ">Assets ディレクトリ</h4>
+<div class="paragraph">
+<p>この項目は、変換対象外のプロジェクトファイルを配置するディレクトリ位置を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># folder that contains all asset files
+asset.folder=assets</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="content_ディレクトリ">Content ディレクトリ</h4>
+<div class="paragraph">
+<p>この項目は、テンプレートによって変換を行う対象となるコンテンツを配置するディレクトリ位置を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># folder that contains all content files
+content.folder=content</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="出力ディレクトリ">出力ディレクトリ</h4>
+<div class="paragraph">
+<p>この項目は、コンテンツの Bake (変換) 結果を出力するディレクトリ位置を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># path to destination folder by default
+destination.folder=output</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="テンプレートディレクトリ">テンプレートディレクトリ</h4>
+<div class="paragraph">
+<p>この項目は、プロジェクトのテンプレートファイルを格納するディレクトリ位置を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># folder that contains all template files
+template.folder=templates</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="index_テンプレートファイル">Index テンプレートファイル</h4>
+<div class="paragraph">
+<p>この項目は、indexページを生成するためのテンプレートファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename of masterindex template file
+template.masterindex.file=index.ftl</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+古いバージョンでは、この項目の名称は <code>template.index.file</code> でした。変わりました。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="アーカイブテンプレートファイル">アーカイブテンプレートファイル</h4>
+<div class="paragraph">
+<p>この項目は、archiveページを生成するためのテンプレートファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename of archive template file
+template.archive.file=archive.ftl</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="フィードテンプレートファイル">フィードテンプレートファイル</h4>
+<div class="paragraph">
+<p>この項目は、feedファイルを生成するためのテンプレートファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename of feed template file
+template.feed.file=feed.ftl</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="サイトマップテンプレートファイル">サイトマップテンプレートファイル</h4>
+<div class="paragraph">
+<p>この項目は、sitemapファイルを生成するためのテンプレートファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename of sitemap template file
+template.sitemap.file=sitemap.ftl</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="タグ一覧テンプレートファイル">タグ一覧テンプレートファイル</h4>
+<div class="paragraph">
+<p>この項目は、各タグの一覧ページを生成するためのテンプレートファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename of tag template file
+template.tag.file=tags.ftl</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ページテンプレートファイル">ページテンプレートファイル</h4>
+<div class="paragraph">
+<p>この項目は、 type=page のコンテンツを処理するためのテンプレートファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename of page template file
+template.page.file=page.ftl</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ポストテンプレートファイル">ポストテンプレートファイル</h4>
+<div class="paragraph">
+<p>この項目は、 type=posst のコンテンツを処理するためのテンプレートファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename of post template file
+template.post.file=post.ftl</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="テンプレートの文字コード">テンプレートの文字コード</h4>
+<div class="paragraph">
+<p>この項目は、 テンプレートファイルを解析する際の文字コードを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># character encoding MIME name used in templates.
+# use one of http://www.iana.org/assignments/character-sets/character-sets.xhtml
+template.encoding=UTF-8</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="indexページ処理フラグ">Indexページ処理フラグ</h4>
+<div class="paragraph">
+<p>この項目は、 Indexページ生成の ON / OFF を制御します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># render index file?
+render.index=true</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+この項目はコンテンツファイルを独自のIndexファイルとして利用する場合に有用です。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="アーカイブページ処理フラグ">アーカイブページ処理フラグ</h4>
+<div class="paragraph">
+<p>この項目は、 アーカイブページ生成の ON / OFF を制御します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># render archive file?
+render.archive=true</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="フィードファイル処理フラグ">フィードファイル処理フラグ</h4>
+<div class="paragraph">
+<p>この項目は、 フィードファイル生成の ON / OFF を制御します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># render feed file?
+render.feed=true</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="サイトマップファイル処理フラグ">サイトマップファイル処理フラグ</h4>
+<div class="paragraph">
+<p>この項目は、 サイトマップファイル生成の ON / OFF を制御します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># render sitemap.xml file?
+render.sitemap=false</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="タグ一覧ページ処理フラグ">タグ一覧ページ処理フラグ</h4>
+<div class="paragraph">
+<p>この項目は、タグ一覧ページ生成の ON / OFF を制御します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># render tag files?
+render.tags=true</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="indexページ出力ファイル名">Indexページ出力ファイル名</h4>
+<div class="paragraph">
+<p>この項目は、Indexページを生成する際のファイル名を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename to use for index file
+index.file=index.html</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="アーカイブページ出力ファイル名">アーカイブページ出力ファイル名</h4>
+<div class="paragraph">
+<p>この項目は、アーカイブページを生成する際のファイル名を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename to use for archive file
+archive.file=archive.html</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="フィードファイル出力名">フィードファイル出力名</h4>
+<div class="paragraph">
+<p>この項目は、フィードファイルを生成する際のファイル名を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename to use for feed
+feed.file=feed.xml</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="サイトマップファイル出力名">サイトマップファイル出力名</h4>
+<div class="paragraph">
+<p>この項目は、サイトマップファイルを生成する際のファイル名を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># filename to use for sitemap file
+sitemap.file=sitemap.xml</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="タグ一覧ページ出力先ディレクトリ">タグ一覧ページ出力先ディレクトリ</h4>
+<div class="paragraph">
+<p>この項目は、タグ一覧ページを出力するディレクトリを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># folder name to use for tag files
+tag.path=tags</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="タグ文字列のサニタイズ処理フラグ">タグ文字列のサニタイズ処理フラグ</h4>
+<div class="paragraph">
+<p>この項目は、タグの文字列をファイル名として使用する際にサニタイズを行うかどうかを制御します (例：スペースをハイフンに変換する等)。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># sanitize tag value before it is used as filename (i.e. replace spaces with hyphens)
+tag.sanitize=false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>この項目を true にした場合、タグ文字列 <code>west wing</code> は <code>west-wing</code> に置換され、生成されるファイル名は <code>west-wing.html</code> になります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ファイル出力時の文字コード">ファイル出力時の文字コード</h4>
+<div class="paragraph">
+<p>この項目は、ファイルを出力する際に使用される文字コードを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># character encoding MIME name used for rendering.
+# use one of http://www.iana.org/assignments/character-sets/character-sets.xhtml
+render.encoding=UTF-8</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="コンテンツ出力時のファイル拡張子">コンテンツ出力時のファイル拡張子</h4>
+<div class="paragraph">
+<p>この項目は、コンテンツファイルの変換出力を行う際のファイル拡張子を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># file extension for output content files
+output.extension=.html</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="下書きコンテンツファイルのサフィックス">下書きコンテンツファイルのサフィックス</h4>
+<div class="paragraph">
+<p>この項目は、下書き (status=draft) コンテンツを出力する際にファイル名につけるサフィックス文字列を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># draft content suffix
+draft.suffix=-draft</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="サーバーモードのポート番号">サーバーモードのポート番号</h4>
+<div class="paragraph">
+<p>この項目は、サーバーモードで起動する際に使用するポート番号を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># default server port
+server.port=8820</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="freemarker_プロジェクトファイル">Freemarker プロジェクトファイル</h4>
+<div class="paragraph">
+<p>この項目は、Freemarker を用いたサンプルプロジェクトのZIPファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># zip file containing example project structure using freemarker templates
+example.project.freemarker=example_project_freemarker.zip</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="groovy_simpletemplateengine_プロジェクトファイル">Groovy SimpleTemplateEngine プロジェクトファイル</h4>
+<div class="paragraph">
+<p>この項目は、Groovy SimpleTemplateEngine を用いたサンプルプロジェクトのZIPファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># zip file containing example project structure using groovy templates
+example.project.groovy=example_project_groovy.zip</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="groovy_markuptempateengine_プロジェクトファイル">Groovy MarkupTempateEngine プロジェクトファイル</h4>
+<div class="paragraph">
+<p>この項目は、Groovy MarkupTempateEngine を用いたサンプルプロジェクトのZIPファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># zip file containing example project structure using groovy markup templates
+example.project.groovy-mte=example_project_groovy-mte.zip</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="thymeleaf_プロジェクトファイル">Thymeleaf プロジェクトファイル</h4>
+<div class="paragraph">
+<p>この項目は、Thymeleaf を用いたサンプルプロジェクトのZIPファイルを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># zip file containing example project structure using thymeleaf templates
+example.project.thymeleaf=example_project_thymeleaf.zip</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="asciidoctor_設定値">Asciidoctor 設定値</h4>
+<div class="paragraph">
+<p>Asciidoc記法で記述されたコンテンツを変換する際に Asciidoctor に設定するパラメータを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># default asciidoctor options
+asciidoctor.attributes=source-highlighter=prettify</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>この設定の値を複数設定する場合には、KEY=VALUE のセットをカンマ区切りで記述します。
+デフォルト設定では、シンタックスハイライトを Prettify を用いて行うように設定されています。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="asciidoctor_オプション">Asciidoctor オプション</h4>
+<div class="paragraph">
+<p>Asciidoctor実行時に渡すオプションを定義します。</p>
+</div>
+<div class="sect4">
+<h5 id="gem_path"><strong>gem path</strong></h5>
+<div class="paragraph">
+<p>この項目は、外部ディレクトリから gem をロードするように <a href="http://asciidoctor.org/docs/asciidoctorj/#gem_path">gem path</a> を設定します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>asciidoctor.option.gemPath=/var/lib/gems/2.1.0</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+実行環境に現在設定されている gem path を確認する場合には、 <code>gem environment gempath</code> を実行してください。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="requires"><strong>requires</strong></h5>
+<div class="paragraph">
+<p>Asciidoctor実行時に参照するライブラリを追加する場合には、以下のような記述を追加してください。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>asciidoctor.option.requires=asciidoctor-diagram</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+複数のライブラリを追加する場合には、カンマ区切りで記述します。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jbake_の設定を_asciidoctor_にエクスポート">JBake の設定を Asciidoctor にエクスポート</h4>
+<div class="paragraph">
+<p>この項目は、JBake の設定を Asciidoctor に属性としてエクスポートし、コンテンツ変換時に参照できるようにするかどうかを制御します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># should JBake config options be exported to Asciidoctor engine?
+asciidoctor.attributes.export=false</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+デフォルトではこの項目はfalseに設定されています。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>エクスポートをする際のプレフィックスを定義することもできます。これはAsciiDocが既存で持つ属性との名称の衝突を避けるために有用です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># prefix that should be used when JBake config options are exported
+asciidoctor.attributes.export.prefix=</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+デフォルトではこの項目は無効に設定されています。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="コンテンツファイルのステータスデフォルト値">コンテンツファイルのステータスデフォルト値</h4>
+<div class="paragraph">
+<p>この項目は、コンテンツファイルのステータスが記述されていなかった場合のデフォルト値を定義します。
+この項目を有効にした場合、各コンテンツファイル内のステータス項目は必須ではなくなります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># default status
+#default.status=published</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+デフォルトではこの項目は無効に設定されています。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="日付フォーマットのデフォルト値">日付フォーマットのデフォルト値</h4>
+<div class="paragraph">
+<p>この項目は、コンテンツファイルのメタデータヘッダに記述された date 項目を JBake がパースする際に用いられます。</p>
+</div>
+<div class="paragraph">
+<p>使用できるパターン文字列に関しては <a href="https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html">Java API docs</a> の記述を参照して下さい。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># default date format used in content files
+date.format=yyyy-MM-dd</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="markdown_エクステンション">Markdown エクステンション</h4>
+<div class="paragraph">
+<p>この項目は、Markdown記法で記述されたコンテンツを変換する際に有効となる Markdown エクステンションを設定します。
+複数の値を設定する場合にはカンマで区切って記述します。
+設定可能なエクステンションの詳細については <a href="https://github.com/sirthias/pegdown">Pegdown docs</a> を参照してください。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># comma delimited default markdown extensions
+markdown.extensions=HARDWRAPS,AUTOLINKS,FENCED_CODE_BLOCKS,DEFINITIONS</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>ALL</code> を設定することで全ての利用可能なエクステンションを有効にすることが出来ます。また名称の前にハイフンをつけることにより、特定のエクステンションを無効にすることもできます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># comma delimited default markdown extensions
+markdown.extensions=ALL,-HARDWRAPS</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="markdown_処理タイムアウト値">Markdown 処理タイムアウト値</h4>
+<div class="paragraph">
+<p>この項目には、Markdown記法で記述されたコンテンツを Pegdown パーサーが変換処理する際のタイムアウト時間をミリ秒単位で定義します。
+この値は、個々の Markdown コンテンツの処理時間を制限します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># millis to parse single markdown page. See PegDown Parse configuration for details
+markdown.maxParsingTimeInMillis=2000</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="コンテンツストアの永続化">コンテンツストアの永続化</h4>
+<div class="paragraph">
+<p>この項目は、コンテンツファイルの処理中に構築されたコンテンツストアをディスクに保存して永続化するかどうかを制御します。
+ディスクに保存されている場合、次の解析時には変更のかかったコンテンツのみが処理されます。
+永続化がされていない場合には、毎回すべてのファイルを解析することになります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># database store (local, memory)
+db.store=memory</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>local = コンテンツストアはディスクに永続化されます</p>
+</li>
+<li>
+<p>memory = コンテンツストアは Bake中のみメモリに展開されます</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="コンテンツストアを永続化する際のパス">コンテンツストアを永続化する際のパス</h4>
+<div class="paragraph">
+<p>この項目は、コンテンツストアの永続化を行う際にデータを保存するディレクトリを定義します。
+コンテンツストアの永続化が有効な場合のみ参照されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># database path
+db.path=cache</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="thymeleaf_ロケール">Thymeleaf ロケール</h4>
+<div class="paragraph">
+<p>この項目は、Thymeleaf がテンプレートを処理する際のロケールを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># thymeleaf locale
+thymeleaf.locale=en</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="asset_ディレクトリ内の隠しファイル制御フラグ">Asset ディレクトリ内の隠しファイル制御フラグ</h4>
+<div class="paragraph">
+<p>この項目は、Asset ディレクトリ内にある隠しファイルを処理の対象にするかどうかを制御します。
+この項目の値に <code>true</code> を設定した場合、<code>.DS_Store</code> や <code>desktop.ini</code> のようなファイルは処理の対象外となります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>asset.ignore=false</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="index_ページのページング制御フラグ">Index ページのページング制御フラグ</h4>
+<div class="paragraph">
+<p>この項目を有効にした場合、Indexページを出力する際にページングが有効になります。
+次の項目とあわせて使用します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>index.paginate=false</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ページ毎のコンテンツ件数">ページ毎のコンテンツ件数</h4>
+<div class="paragraph">
+<p>この項目は、ページングが有効な場合の1ページあたりに表示されるコンテンツ件数を定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>index.posts_per_page=10</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="拡張子なし_uri_の有効化フラグ">拡張子なし URI の有効化フラグ</h4>
+<div class="paragraph">
+<p>この項目は、拡張子なし URI を有効にするかどうかを定義します。この項目を有効にした場合、JBake は /blog/2014/03/26/post.html ではなく、 /blog/2014/03/26/post/index.html にファイルを出力し、拡張子なしでURIを参照できるようにします。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>uri.noExtension=false</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+プレフィックスを定義するためには次の項目を定義する必要があります。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="拡張子なし_uri_が有効な場合のプレフィックス">拡張子なし URI が有効な場合のプレフィックス</h4>
+<div class="paragraph">
+<p>この項目は、拡張子なし URI に用いられるプレフィックスを定義します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>uri.noExtension.prefix=/blog/</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="独自設定オプション">独自設定オプション</h3>
+<div class="paragraph">
+<p><code>jbake.properties</code> ファイルには独自の設定を追加することも可能です。
+サンプルプロジェクトにはサイトのホストURLを定義する <code>site.host</code> が記述されています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>site.host=http://jbake.org</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>この独自設定オプションは、フィードファイル用テンプレート内で以下のようにリンクの絶対URLを生成するために参照されています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>...
+&lt;title&gt;&lt;#escape x as x?xml&gt;${post.title}&lt;/#escape&gt;&lt;/title&gt;
+&lt;link&gt;${config.site_host}/${post.uri}&lt;/link&gt;
+&lt;pubDate&gt;${post.date?string("EEE, d MMM yyyy HH:mm:ss Z")}&lt;/pubDate&gt;
+...</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>

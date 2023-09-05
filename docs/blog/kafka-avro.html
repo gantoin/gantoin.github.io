@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry - Antoine GAUTHIER</title>
+  <meta name="author" content="" />
+  <meta name="description" content="">
+  <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-social.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+
+  <link rel="stylesheet" href="../css/asciidoctor.css">
+  <link rel="stylesheet" href="../css/prettify.css">
+  <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">Antoine GAUTHIER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archive.html">Archive</a></li>
+                <li><a href="../tags.html">Tags</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+
+            <div class="avatar-container">
+                <div class="avatar-img-border">
+                    <a href="../index.html">
+                        <img class="avatar-img" src="../images/moi.jpg"/>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+</nav>
+
+
+
+<header class="header-section">
+
+
+<div class="intro-header no-img">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="post-heading">
+<h1>Make your Kafka bus more robust with Apache Avro & Confluent Schema Registry</h1>
+<span class="post-meta">
+  <i class="fa fa-calendar-o"></i>
+  2023-01-26
+</span>
+<span class="blog-tags">
+  &nbsp;
+  <i class="fa fa-tags"></i>
+    <a href="../tags/kafka.html">kafka</a>
+    <a href="../tags/avro.html">avro</a>
+    <a href="../tags/blog.html">blog</a>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-post">
+<p>In this article, you will learn how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.</p>
+<h2>Introduction</h2>
+<p>Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to a message queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications. It is a very powerful tool, but it is not without its challenges. One of the most common challenges is the lack of data validation.</p>
+<p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/images/blog_content/avro1.png" alt="Kafka bus" /></p>
+<p>It is important to understand that Kafka take bytes as input and output. It is up to the application to serialize and deserialize. Also, if you don't have a total control on application that consume your data, you can't be sure that the data will be valid.</p>
+<p>If you need to update your data model, you will have to deal with backward compatibility with probably some consumer that will not be able to read the new data.</p>
+<h2>Let's make the Kafka cluster validating the data?</h2>
+<p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/images/blog_content/avro2.png" alt="Kafka validator" /></p>
+<p>In theory, it is possible to validate the data in the Kafka cluster. But, the most important, it is not very efficient. You will break what Kafka is doing best: <strong>distributing data fast</strong>.</p>
+<p>That's definitely not what we want.</p>
+<h2>Solution: Apache Avro &amp; Confluent Schema Registry</h2>
+<p>The solution is to use Apache Avro and Confluent Schema Registry.</p>
+<p><img src="https://raw.githubusercontent.com/gantoin/gantoin.github.io/master/assets/images/blog_content/avro3.png" alt="Kafka validator" /></p>
+<h2>How to implement it?</h2>
+<h3>1. Define your data model</h3>
+<p>First, you need to define your data model. It is very important to understand that Avro is a schema-based serialization format.</p>
+<p>You will need to add Apache Avro dependency in your project.</p>
+<pre><code class="language-xml">
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.avro&lt;/groupId&gt;
+    &lt;artifactId&gt;avro&lt;/artifactId&gt;
+    &lt;version&gt;1.10.2&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.avro&lt;/groupId&gt;
+    &lt;artifactId&gt;avro-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.10.2&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<p>To define a new model you will have to create a new Avro schema. It is a JSON file that describe the data model.</p>
+<pre><code class="language-json">{
+  &quot;namespace&quot;: &quot;fr.gantoin.domain&quot;,
+  &quot;name&quot;: &quot;Book&quot;,
+  &quot;type&quot;: &quot;record&quot;,
+  &quot;fields&quot;: [
+    {
+      &quot;name&quot;: &quot;title&quot;,
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;doc&quot;: &quot;The title of the book&quot;
+    },
+    {
+      &quot;name&quot;: &quot;author&quot;,
+      &quot;type&quot;: [
+        &quot;null&quot;,
+        {
+          &quot;namespace&quot;: &quot;fr.gantoin.domain&quot;,
+          &quot;name&quot;: &quot;Author&quot;,
+          &quot;type&quot;: &quot;record&quot;,
+          &quot;fields&quot;: [
+            {
+              &quot;name&quot;: &quot;firstName&quot;,
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;doc&quot;: &quot;The author's first name&quot;
+            },
+            {
+              &quot;name&quot;: &quot;lastName&quot;,
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;doc&quot;: &quot;The author's last name&quot;
+            }
+          ]
+        }
+      ],
+      &quot;default&quot;: null,
+      &quot;doc&quot;: &quot;The author of the book&quot;
+    },
+    {
+      &quot;name&quot;: &quot;year&quot;,
+      &quot;type&quot;: &quot;int&quot;,
+      &quot;logicalType&quot;: &quot;timestamp-millis&quot;,
+      &quot;doc&quot;: &quot;The year of the book&quot;
+    }
+  ]
+}
+</code></pre>
+<p>You can create really complex data model with Avro. You can check the <a href="https://avro.apache.org/docs/current/spec.html">Avro documentation</a> for more information.</p>
+<p>You will also have to create a maven profile to generate the Java classes from the Avro schema.</p>
+<pre><code class="language-xml">
+&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.avro&lt;/groupId&gt;
+  &lt;artifactId&gt;avro-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;1.10.2&lt;/version&gt;
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;phase&gt;generate-sources&lt;/phase&gt;
+      &lt;goals&gt;
+        &lt;goal&gt;schema&lt;/goal&gt;
+        &lt;goal&gt;protocol&lt;/goal&gt;
+        &lt;goal&gt;idl-protocol&lt;/goal&gt;
+      &lt;/goals&gt;
+      &lt;configuration&gt;
+        &lt;sourceDirectory&gt;${project.basedir}/src/main/resources/avro&lt;/sourceDirectory&gt;
+        &lt;stringType&gt;String&lt;/stringType&gt;
+        &lt;createSetters&gt;false&lt;/createSetters&gt;
+        &lt;enableDecimalLogicalType&gt;true&lt;/enableDecimalLogicalType&gt;
+        &lt;fieldVisibility&gt;private&lt;/fieldVisibility&gt;
+      &lt;/configuration&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+&lt;/plugin&gt;
+</code></pre>
+<p>With a simple command, you will be able to generate the Java classes from the Avro schema.</p>
+<pre><code class="language-bash">mvn clean package
+</code></pre>
+<h3>2. Register your schema in the Confluent Schema Registry</h3>
+<p>Once you have defined your data model, you will have to register it in the Confluent Schema Registry.<br />
+Confluent Schema Registry is a schema registry for Avro developed by Confluent.</p>
+<p>Is it important to know that with this kind of architecture, your schema registry become a vital part of your infrastructure. If your schema registry is down, your Kafka cluster will not be able to validate the data.</p>
+<p>To try it, you can start with the project fast-data-dev. It is a docker image that contains a Kafka cluster with Confluent Schema Registry:<br />
+<a href="https://hub.docker.com/r/landoop/fast-data-dev/dockerfile">https://hub.docker.com/r/landoop/fast-data-dev/dockerfile</a>.</p>
+<h3>3. Use the Confluent Schema Registry in your application</h3>
+<p>Now, you can use the Confluent Schema Registry in your application. First, add the Confluent Avro serializer and deserializer dependency in your project:</p>
+<pre><code class="language-xml">
+&lt;dependency&gt;
+  &lt;groupId&gt;io.confluent&lt;/groupId&gt;
+  &lt;artifactId&gt;kafka-avro-serializer&lt;/artifactId&gt;
+  &lt;version&gt;6.2.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>And Confluence Schema Registry dependency.</p>
+<pre><code class="language-xml">
+&lt;dependency&gt;
+  &lt;groupId&gt;io.confluent&lt;/groupId&gt;
+  &lt;artifactId&gt;kafka-schema-registry-client&lt;/artifactId&gt;
+  &lt;version&gt;6.2.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>You will need to add the Confluent Maven repository.</p>
+<pre><code class="language-xml">
+&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;confluent&lt;/id&gt;
+    &lt;name&gt;Confluent&lt;/name&gt;
+    &lt;url&gt;https://packages.confluent.io/maven/&lt;/url&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
+</code></pre>
+<p>You will also have to configure the Kafka producer and consumer to use the Confluent Avro serializer and deserializer.</p>
+<pre><code class="language-java">
+@Configuration
+public class KafkaSenderConfiguration {
+    @Bean
+    public ProducerFactory&lt;String, GenericRecord&gt; producerFactory() {
+        return new DefaultKafkaProducerFactory&lt;&gt;(Map.of(
+                ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers,
+                ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
+                ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class,
+                &quot;schema.registry.url&quot;, schemaRegistryUrl,
+                &quot;specific.avro.reader&quot;, true,
+                &quot;auto.register.schemas&quot;, true
+        ));
+    }
+}
+</code></pre>
+<p>Here, is referred the serializer and the schema registry url.</p>
+<h3>4. Use the Confluent Schema Registry in your consumer</h3>
+<pre><code class="language-java">
+@Configuration
+public class KafkaReceiverConfiguration {
+    @Bean
+    public ConsumerFactory&lt;String, GenericRecord&gt; consumerFactory() {
+        return new DefaultKafkaConsumerFactory&lt;&gt;(Map.of(
+                ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers,
+                ConsumerConfig.GROUP_ID_CONFIG, groupId,
+                ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
+                ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class,
+                &quot;schema.registry.url&quot;, schemaRegistryUrl,
+                &quot;specific.avro.reader&quot;, true,
+                &quot;auto.register.schemas&quot;, true
+        ));
+    }
+}
+</code></pre>
+<h3>5. Update your data model</h3>
+<p>If you need to update your data model, you will have to update the Avro schema and register it in the Confluent Schema Registry.<br />
+Once it is done, you can send your new data model with the new version. Your old consumer will still be able to read your data.<br />
+If you want to know more about Confluent Schema Registry, you can check this article:<br />
+<a href="https://docs.confluent.io/current/schema-registry/docs/index.html">https://docs.confluent.io/current/schema-registry/docs/index.html</a>.</p>
+<h2>Conclusion</h2>
+<p>In this article, you have learned how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.</p>
+<p>For more details on how to do, here is a live coding video that I made on YouTube (in French, sorry about that):</p>
+<p><a href="https://www.youtube.com/watch?v=xcWidCZTEok">https://www.youtube.com/watch?v=xcWidCZTEok</a></p>
+
+</article>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container beautiful-jekyll-footer">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+    <li>
+    <a href="https://www.youtube.com/channel/UCRj2b3SVmPRRG5X5psJ8nrw" title="Youtube">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/gant0in" title="Twitter">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/gantoin" title="GitHub">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:antoine@gauthier.lol" title="Email me">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="../feed.xml" title="RSS">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+</ul>
+<p class="copyright text-muted">
+&copy; gantoin 2023 |
+Baked with <a href="http://jbake.org">JBake v2.5.1</a>
+</p>
+<p class="theme-by text-muted">
+  Theme by <a href="https://github.com/Yamane/beautiful-jbake/" target="_blank">beautiful-jbake</a>
+  adapted from <a href="http://deanattali.com/beautiful-jekyll/" target="_blank">beautiful-jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/prettify.js"></script>
+<script src="../js/run_prettify.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>
