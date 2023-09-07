@@ -2,9 +2,20 @@
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
   <id>https://gantoin.github.io</id>
   <title>Antoine GAUTHIER</title>
-  <updated>2023-09-07T00:14:53+0000</updated>
+  <updated>2023-09-07T07:49:27+0000</updated>
   <link rel="alternate" type="text/html" href="https://gantoin.github.io" />
   <link rel='self' type='application/atom+xml' href='https://gantoin.github.io/feed.xml' />
+  <entry>
+    <id>https://gantoin.github.io/blog/single-responsibility-principle.html</id>
+    <title>Principe de responsabilité unique (SOLID)</title>
+    <link></link>
+    <link rel="alternate" type="text/html" href="https://gantoin.github.io/blog/single-responsibility-principle.html" />
+    <updated>2023-09-07T00:00:00+0000</updated>
+    <summary>Le principe de responsabilité unique (SRP) est le premier principe de SOLID. Il a été introduit par Robert C. Martin en 2003 dans son livre Agile Software Development, Principles, Patterns, and Practices.
+J&apos;aimerais revenir dessus car je pense qu&apos;il est très important de le comprendre et de l&apos;appliquer.
+Que sont les principes SOLID ?
+Les principes SOLID sont un ensemble de principes de conception l...</summary>
+  </entry>
   <entry>
     <id>https://gantoin.github.io/blog/kafka-avro.html</id>
     <title>Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry</title>
