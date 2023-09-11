@@ -92,6 +92,8 @@ Par exemple :
 
 ![](https://upload.wikimedia.org/wikipedia/commons/3/39/Strategy_Pattern_in_UML.png)
 
+On peut voir que la classe `Context` utilise une interface `Strategy` pour définir une famille d'algorithmes. La classe `Context` peut utiliser n'importe quelle classe qui implémente l'interface `Strategy`.
+
 ## Pourquoi le principe ouvert/fermé est-il important ?
 
 Le principe ouvert/fermé est important car il permet de créer des classes, méthodes, services plus maintenables, flexibles et évolutifs.
