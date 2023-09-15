@@ -149,6 +149,7 @@ class BigSquare extends Square {
 <p>Le Strategy Pattern est un design pattern qui permet de définir une famille d'algorithmes, d'encapsuler chacun d'eux et de les rendre interchangeables.</p>
 <p>Par exemple :</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Strategy_Pattern_in_UML.png" alt="" /></p>
+<p>On peut voir que la classe <code>Context</code> utilise une interface <code>Strategy</code> pour définir une famille d'algorithmes. La classe <code>Context</code> peut utiliser n'importe quelle classe qui implémente l'interface <code>Strategy</code>.</p>
 <h2>Pourquoi le principe ouvert/fermé est-il important ?</h2>
 <p>Le principe ouvert/fermé est important car il permet de créer des classes, méthodes, services plus maintenables, flexibles et évolutifs.</p>
 <p>Si on ne respecte pas ce principe, on risque de devoir modifier une classe existante pour ajouter une nouvelle fonctionnalité. Cela peut être problématique si cette classe est utilisée dans plusieurs endroits de l'application.</p>

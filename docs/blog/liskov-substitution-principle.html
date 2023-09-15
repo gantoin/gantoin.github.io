@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Antoine GAUTHIER</title>
+  <title>Principe de substitution de Liskov (SOLID) - Antoine GAUTHIER</title>
   <meta name="author" content="" />
   <meta name="description" content="">
   <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
@@ -54,103 +54,116 @@
     </div>
 </nav>
 
+
+
 <header class="header-section">
+
+
 <div class="intro-header no-img">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-heading"><h1>#architecture</h1></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="post-heading">
+<h1>Principe de substitution de Liskov (SOLID)</h1>
+<span class="post-meta">
+  <i class="fa fa-calendar-o"></i>
+  2023-09-11
+</span>
+<span class="blog-tags">
+  &nbsp;
+  <i class="fa fa-tags"></i>
+    <a href="../tags/solid.html">solid</a>
+    <a href="../tags/java.html">java</a>
+    <a href="../tags/architecture.html">architecture</a>
+</span>
+</div>
+</div>
+</div>
+</div>
 </div>
 </header>
 
-<div class="container" role="main">
+
+<div class="container">
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role="main" class="blog-post">
+<p>Le principe de substitution de Liskov (LSP) est le troisième principe de SOLID. Il a été introduit par Barbara Liskov en 1987 dans son article Data abstraction and hierarchy.</p>
+<h2>Que sont les principes SOLID ?</h2>
+<p>Les principes SOLID sont un ensemble de principes de conception logicielle qui permettent de créer des logiciels plus maintenables, flexibles et évolutifs.</p>
+<p>Il ne s'agit pas de framework ou de bibliothèque, mais de principes qui peuvent être appliqués dans n'importe quel langage de programmation (pour du développement orienté objet POO/OOP). C'est pourquoi il parfois difficle de mesurer la &quot;solidité&quot; d'un code.</p>
+<p>Le principal avantage de ces principes est qu'ils permettent de détecter et corriger de potentiels erreurs d'architecture ou de &quot;code smell&quot; dans une application.</p>
+<h2>Qu'est-ce que le principe de substitution de Liskov ?</h2>
+<p>Le principe de substitution de Liskov conciste à dire qu'une classe fille doit pouvoir être substituée à sa classe mère sans altérer le bon fonctionnement du programme.</p>
+<p>On parle d'alteration fu programme si le comportement du programme est inattendu ou si une exception est levée.</p>
+<p>Par exemple, voici une classe parente, Rectangle.java :</p>
+<pre><code class="language-java">class Rectangle {
+    private int width;
+    private int height;
+    public Rectangle(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
+    }
+    public void setWidth(int width) {
+        this.width = width;
+    }
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    public int getArea() {
+        return width * height;
+    }
+}
+</code></pre>
+<p>Et voici une classe fille, Square.java :</p>
+<pre><code class="language-java">class Square extends Rectangle {
+    public Square(int side) {
+        super(side, side);
+    }
+    @Override
+    public void setWidth(int width) {
+        super.setWidth(width);
+        super.setHeight(width);
+    }
+    @Override
+    public void setHeight(int height) {
+        super.setWidth(height);
+        super.setHeight(height);
+    }
+}
+</code></pre>
+<p>On peut voir que la classe Square étend la classe Rectangle. C'est-à-dire que la classe Square hérite de la classe Rectangle.</p>
+<p>La classe Square a une seule responsabilité : représenter un carré.</p>
+<p>Est-ce que ma classe Carré peut remplacer complètement ma classe Rectangle ? Non.</p>
+<p>Un comportement inattendu si on set la largeur, ce sont la largeur et la hauteur qui sont modifiées. C'est un comportement inattendu car on s'attend à ce que la largeur et la hauteur soient indépendantes.</p>
+<p>Ce code ne respecte pas le LSP (principe de substitution de Liskov).</p>
+<p>On peut facilement détecter un comportement inattendu si notre code contient des méthodes vides, des vérifications de type, un durcissement des conditions ou des exceptions lancées dans tous les sens.</p>
+<p>Les relations entre les classes doivent être cohérentes d'un point de vue logiciel et non d'un point de vue métier (du monde réel).<br />
+Les relations du monde réel ne correspondent pas forcément avec les relations du programme :</p>
+<p>Par exemple :</p>
+<pre><code class="language-java">class Bird {
+    public void fly() {
+        // ...
+    }
+}
 
-<div class="posts-list">
-<article class="post-preview">
-<h2 class="post-title"><a href="../blog/liskov-substitution-principle.html">Principe de substitution de Liskov (SOLID)</a></h2>
+class Duck extends Bird {
+    public void quack() {
+        // ...
+    }
+}
+</code></pre>
+<p>Dans le monde réel, un canard est un oiseau. Mais dans le programme, un canard n'est pas un oiseau car il ne peut pas voler.</p>
+<h2>Conclusion</h2>
+<p>Le principe de substitution de Liskov permet d'interchanger les enfants d’une classe sans que cela ait d’incidence sur l'exécution du code.</p>
 
-<p class="post-meta">
-  <i class="fa fa-calendar-o"></i>
-  2023-09-11
-  <span class="blog-tags">
-    &nbsp;
-    <i class="fa fa-tags"></i>
-      <a href="../tags/solid.html">solid</a>
-      <a href="../tags/java.html">java</a>
-      <a href="../tags/architecture.html">architecture</a>
-  </span>
-</p>
-
-<div class="post-entry-container">
-  <div class="post-entry">
-    Le principe de substitution de Liskov (LSP) est le troisième principe de SOLID. Il a été introduit par Barbara Liskov en 1987 dans son article Data abstraction and hierarchy.
-Que sont les principes SOLID ?
-Les principes SOLID sont un ensemble de principes de conception logicielle qui permettent de créer des logiciels plus maintenables, flexibles et évolutifs.
-Il ne s'agit pas de framework ou de bib...
-    <p></p>
-    <a href="../blog/liskov-substitution-principle.html" class="post-read-more">[Read More]</a>
-  </div>
-</div>
 </article>
-<article class="post-preview">
-<h2 class="post-title"><a href="../blog/open-closed-principle.html">Principe ouvert/fermé (SOLID)</a></h2>
-
-<p class="post-meta">
-  <i class="fa fa-calendar-o"></i>
-  2023-09-08
-  <span class="blog-tags">
-    &nbsp;
-    <i class="fa fa-tags"></i>
-      <a href="../tags/solid.html">solid</a>
-      <a href="../tags/java.html">java</a>
-      <a href="../tags/architecture.html">architecture</a>
-  </span>
-</p>
-
-<div class="post-entry-container">
-  <div class="post-entry">
-    Le principe ouvert/fermé (OCP) est le deuxième principe de SOLID. Il a été introduit par Bertrand Meyer en 1988 dans son livre Object Oriented Software Construction.
-J'aimerais revenir dessus car je pense qu'il est très important de le comprendre et de l'appliquer.
-Que sont les principes SOLID ?
-Les principes SOLID sont un ensemble de principes de conception logicielle qui permettent de créer des l...
-    <p></p>
-    <a href="../blog/open-closed-principle.html" class="post-read-more">[Read More]</a>
-  </div>
-</div>
-</article>
-<article class="post-preview">
-<h2 class="post-title"><a href="../blog/single-responsibility-principle.html">Principe de responsabilité unique (SOLID)</a></h2>
-
-<p class="post-meta">
-  <i class="fa fa-calendar-o"></i>
-  2023-09-07
-  <span class="blog-tags">
-    &nbsp;
-    <i class="fa fa-tags"></i>
-      <a href="../tags/solid.html">solid</a>
-      <a href="../tags/java.html">java</a>
-      <a href="../tags/architecture.html">architecture</a>
-  </span>
-</p>
-
-<div class="post-entry-container">
-  <div class="post-entry">
-    Le principe de responsabilité unique (SRP) est le premier principe de SOLID. Il a été introduit par Robert C. Martin en 2003 dans son livre Agile Software Development, Principles, Patterns, and Practices.
-J'aimerais revenir dessus car je pense qu'il est très important de le comprendre et de l'appliquer.
-Que sont les principes SOLID ?
-Les principes SOLID sont un ensemble de principes de conception l...
-    <p></p>
-    <a href="../blog/single-responsibility-principle.html" class="post-read-more">[Read More]</a>
-  </div>
-</div>
-</article>
-</div>
-
 </div>
 </div>
 </div>
