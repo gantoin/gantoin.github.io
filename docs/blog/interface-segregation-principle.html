@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Antoine GAUTHIER</title>
+  <title>Principe de ségrégation des interfaces (SOLID) - Antoine GAUTHIER</title>
   <meta name="author" content="" />
   <meta name="description" content="">
   <link rel="alternate" type="application/atom+xml" href="../feed.xml" title="Antoine GAUTHIER"/>
@@ -22,7 +22,6 @@
   <link rel="shortcut icon" href="../favicon.ico">
 </head>
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container-fluid">
 
@@ -56,33 +55,27 @@
 </nav>
 
 
-<div id="header-big-imgs" data-num-img=1 data-img-src-1="../images/index.jpg"></div>
 
-<header class="header-section has-img">
+<header class="header-section">
 
-<div class="big-img intro-header">
-<div class="container">
-<div class="row">
-<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<div class="page-heading">
-<h1>Antoine GAUTHIER</h1>
-  <hr class="small">
-  <span class="page-subheading">Personal blog of a French software engineer</span>
-</div>
-</div>
-</div>
-</div>
-<span class='img-desc'></span>
-</div>
 
 <div class="intro-header no-img">
 <div class="container">
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-<div class="page-heading">
-<h1>Antoine GAUTHIER</h1>
-  <hr class="small">
-  <span class="page-subheading">Personal blog of a French software engineer</span>
+<div class="post-heading">
+<h1>Principe de ségrégation des interfaces (SOLID)</h1>
+<span class="post-meta">
+  <i class="fa fa-calendar-o"></i>
+  2023-09-19
+</span>
+<span class="blog-tags">
+  &nbsp;
+  <i class="fa fa-tags"></i>
+    <a href="../tags/solid.html">solid</a>
+    <a href="../tags/java.html">java</a>
+    <a href="../tags/architecture.html">architecture</a>
+</span>
 </div>
 </div>
 </div>
@@ -91,103 +84,81 @@
 </header>
 
 
-<div class="container" role="main">
+<div class="container">
 <div class="row">
 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-<div class="posts-list">
-<article class="post-preview">
-<h2 class="post-title"><a href="../blog/single-responsibility-principle.html">Principe de responsabilité unique (SOLID)</a></h2>
-
-<p class="post-meta">
-  <i class="fa fa-calendar-o"></i>
-  2023-09-07
-  <span class="blog-tags">
-    &nbsp;
-    <i class="fa fa-tags"></i>
-      <a href="../tags/solid.html">solid</a>
-      <a href="../tags/java.html">java</a>
-      <a href="../tags/architecture.html">architecture</a>
-  </span>
-</p>
-
-<div class="post-entry-container">
-  <div class="post-entry">
-    Le principe de responsabilité unique (SRP) est le premier principe de SOLID. Il a été introduit par Robert C. Martin en 2003 dans son livre Agile Software Development, Principles, Patterns, and Practices.
-J'aimerais revenir dessus car je pense qu'il est très important de le comprendre et de l'appliquer.
-Que sont les principes SOLID ?
-Les principes SOLID sont un ensemble de principes de conception l...
-    <p></p>
-    <a href="../blog/single-responsibility-principle.html" class="post-read-more">[Read More]</a>
-  </div>
-</div>
-</article>
-<article class="post-preview">
-<h2 class="post-title"><a href="../blog/kafka-avro.html">Make your Kafka bus more robust with Apache Avro &amp; Confluent Schema Registry</a></h2>
-
-<p class="post-meta">
-  <i class="fa fa-calendar-o"></i>
-  2023-01-26
-  <span class="blog-tags">
-    &nbsp;
-    <i class="fa fa-tags"></i>
-      <a href="../tags/kafka.html">kafka</a>
-      <a href="../tags/avro.html">avro</a>
-      <a href="../tags/blog.html">blog</a>
-  </span>
-</p>
-
-<div class="post-entry-container">
-  <div class="post-entry">
-    In this article, you will learn how to use Apache Avro and Confluent Schema Registry to make your Kafka bus more robust.
-Introduction
-Apache Kafka is a distributed streaming platform. It is used to publish and subscribe to streams of records, similar to a message queue or enterprise messaging system. Kafka is often used as a data bus to connect different systems and applications. It is a very power...
-    <p></p>
-    <a href="../blog/kafka-avro.html" class="post-read-more">[Read More]</a>
-  </div>
-</div>
-</article>
-<article class="post-preview">
-<h2 class="post-title"><a href="../blog/landoop-fast-data-dev-M1.html">How to run &apos;landoop/fast-data-dev&apos; on Mac M1?</a></h2>
-
-<p class="post-meta">
-  <i class="fa fa-calendar-o"></i>
-  2023-01-19
-  <span class="blog-tags">
-    &nbsp;
-    <i class="fa fa-tags"></i>
-      <a href="../tags/blog.html">blog</a>
-      <a href="../tags/docker.html">docker</a>
-      <a href="../tags/arm.html">arm</a>
-  </span>
-</p>
-
-<div class="post-entry-container">
-  <div class="post-entry">
-    Hey guys!
-I was following a lecture about Kafka Schema Registry when I suddenly had to run Landoop and a bunch of tools with Docker on my Mac.
-I met this error after running this Dockerfile:
-Setting advertised host to 127.0.0.1.
-runtime: failed to create new OS thread (have 2 already; errno=22)
-fatal error: newosproc
-
-After a few minutes of searching, I understood that's because I ran it on my M1 a...
-    <p></p>
-    <a href="../blog/landoop-fast-data-dev-M1.html" class="post-read-more">[Read More]</a>
-  </div>
-</div>
-</article>
-</div>
-
-<ul class="pager main-pager">
-<li class="previous">
-  <a href="../">&larr; Newer Posts</a>
-</li>
-<li class="next">
-  <a href="../3/">Older Posts &rarr;</a>
-</li>
+<article role="main" class="blog-post">
+<p>Le principe de ségrégation des interfaces (ISP) est le quatrième principe de SOLID. Il a été introduit par Robert C. Martin en 1996 dans son article Designing Object Oriented C++ Applications Using the Booch Method.</p>
+<h2>Qu'est-ce que le principe de ségrégation des interfaces ?</h2>
+<p>Le principe de ségrégation des interfaces conciste à dire qu'une classe ne doit pas être forcée d'implémenter une méthode dont elle n'a pas besoin.</p>
+<p>&quot;Clients should not be forced to depend on methods that they do not use&quot; - Robert C. Martin</p>
+<p>Par exemple, voici une interface, Machine.java :</p>
+<pre><code class="language-java">interface Machine {
+    void print(Document d);
+    void fax(Document d);
+    void scan(Document d);
+}
+</code></pre>
+<p>Et voici une classe qui implémente cette interface, MultiFunctionPrinter.java :</p>
+<pre><code class="language-java">class MultiFunctionPrinter implements Machine {
+    @Override
+    public void print(Document d) {
+        //
+    }
+    @Override
+    public void fax(Document d) {
+        //
+    }
+    @Override
+    public void scan(Document d) {
+        //
+    }
+}
+</code></pre>
+<p>Cette classe implémente les trois méthodes de l'interface Machine, mais elle n'a pas besoin de la méthode fax(Document d). Elle est donc forcée d'implémenter une méthode dont elle n'a pas besoin.</p>
+<p>Pour résoudre ce problème, il faut séparer l'interface Machine en trois interfaces plus petites, Printer.java, Scanner.java et Fax.java :</p>
+<pre><code class="language-java">interface Printer {
+    void print(Document d);
+}
+interface Scanner {
+    void scan(Document d);
+}
+interface Fax {
+    void fax(Document d);
+}
+</code></pre>
+<p>Et voici une classe qui implémente ces trois interfaces, OldFashionedPrinter.java :</p>
+<pre><code class="language-java">class OldFashionedPrinter implements Printer, Scanner, Fax {
+    @Override
+    public void print(Document d) {
+        //
+    }
+    @Override
+    public void scan(Document d) {
+        //
+    }
+    @Override
+    public void fax(Document d) {
+        //
+    }
+}
+</code></pre>
+<p>Cette classe implémente les trois interfaces Printer, Scanner et Fax, mais elle n'est pas forcée d'implémenter des méthodes dont elle n'a pas besoin.</p>
+<h2>Pourquoi le principe de ségrégation des interfaces est-il important ?</h2>
+<p>Ce principe vous force à créer des interfaces qui doivent rester petites, pour que les classes qui les implémentent puissent les remplacer à 100%.</p>
+<p>Cela permet de minimiser les dépendances entre les classes, et donc de rendre le code plus ciblé sur ce qu'il doit faire.</p>
+<h2>Conclusion</h2>
+<p>Si vous devez implémenter des méthodes dont vous n'avez pas besoin, c'est que votre interface est trop grosse. Votre application ne respecte probablement pas le principe de ségrégation des interfaces.</p>
+<p>Vous devrez fragmenter votre interface en plusieurs interfaces plus petites, pour que les classes qui les implémentent puissent les remplacer à 100%.</p>
+<h2>Aller plus loin</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/SOLID">SOLID (object-oriented design) - Wikipedia</a></li>
+<li><a href="https://www.youtube.com/watch?v=rtmFCcjEgEw">SOLID: The First 5 Principles of Object Oriented Design - YouTube</a></li>
+<li><a href="https://stackify.com/solid-design-principles/">SOLID Principles of Object-Oriented Design Explained with Examples</a></li>
+<li><a href="https://stackify.com/interface-segregation-principle/">SOLID Design Principles Explained: The Interface Segregation Principle with Code Examples</a></li>
 </ul>
 
+</article>
 </div>
 </div>
 </div>

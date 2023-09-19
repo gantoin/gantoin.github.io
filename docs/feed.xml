@@ -2,9 +2,19 @@
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='ja'>
   <id>https://gantoin.github.io</id>
   <title>Antoine GAUTHIER</title>
-  <updated>2023-09-19T00:15:34+0000</updated>
+  <updated>2023-09-19T08:00:56+0000</updated>
   <link rel="alternate" type="text/html" href="https://gantoin.github.io" />
   <link rel='self' type='application/atom+xml' href='https://gantoin.github.io/feed.xml' />
+  <entry>
+    <id>https://gantoin.github.io/blog/interface-segregation-principle.html</id>
+    <title>Principe de ségrégation des interfaces (SOLID)</title>
+    <link></link>
+    <link rel="alternate" type="text/html" href="https://gantoin.github.io/blog/interface-segregation-principle.html" />
+    <updated>2023-09-19T00:00:00+0000</updated>
+    <summary>Le principe de ségrégation des interfaces (ISP) est le quatrième principe de SOLID. Il a été introduit par Robert C. Martin en 1996 dans son article Designing Object Oriented C++ Applications Using the Booch Method.
+Qu&apos;est-ce que le principe de ségrégation des interfaces ?
+Le principe de ségrégation des interfaces conciste à dire qu&apos;une classe ne doit pas être forcée d&apos;implémenter une méthode dont ...</summary>
+  </entry>
   <entry>
     <id>https://gantoin.github.io/blog/liskov-substitution-principle.html</id>
     <title>Principe de substitution de Liskov (SOLID)</title>
